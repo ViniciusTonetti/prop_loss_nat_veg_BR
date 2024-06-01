@@ -69,6 +69,30 @@ MB_sum <- MB %>%
   summarise(across(`1985`:`2022`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
 
 
+# converting from tibble to data frame to change row names
+MB_sum <- as.data.frame(MB_sum)
+row.names(MB_sum) <- MB_sum[[1]]
+MB_sum <- MB_sum[,-1]
+
+
+# Calculating the proportional loss
+
+# First, creating an empty dataframe to be filled
+mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
+mtx <- as.data.frame(mtx)
+
+row.names(mtx) <- row.names(MB_sum)
+colnames(mtx) <- paste("prop_loss_", 1986:2022, sep = "")
+
+
+# loop to fill the matrix
+for (i in 2:ncol(MB_sum)) {
+  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,"sum_1985"]
+}
+
+mtx
+
+
 
 
 
