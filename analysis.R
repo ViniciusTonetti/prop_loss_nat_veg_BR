@@ -68,6 +68,14 @@ MB %>%
 
 # Classes level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
 
+# Land cover classes excluded:
+
+# Water
+# Rocky outcrop
+# Salt flat
+# Beach and Dune
+
+
 # Classes included in this analysis:
 # Forest Formation                  
 # Savanna Formation                 
@@ -168,7 +176,7 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -217,7 +225,7 @@ ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/prop_loss_excl_pantanal.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/2_prop_loss_excl_pantanal.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -270,7 +278,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/prop_loss_excl_pantanal_pampa.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/3_prop_loss_excl_pantanal_pampa.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -324,7 +332,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/prop_loss_excl_pantanal_pampa_caatinga.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/4_prop_loss_excl_pantanal_pampa_caatinga.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
