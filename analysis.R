@@ -116,13 +116,21 @@ mtx_longer <- mtx %>%
 
 # Plotting
 
-biome_colors <- c("Amazônia" = "forestgreen", "Caatinga" = "#F1B6DA", "Cerrado" = "#CCBB44",
-                  "Mata Atlântica" = "lightgreen", Pampa = "#4477AA", Pantanal = "#BABABA")
+biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+                  "Mata Atlântica" = "#DF5E1F", Pampa = "#4477AA", Pantanal = "#B254A5")
 
 ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
+  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf), fill = "gray80") +
+  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf), fill = "#DFE3E8") +
+  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf), fill = "#FFE5E0") +
+  geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf), fill = "gray90") +
+  geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf), fill = "#E3CCCD") +
+  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf), fill = "#DFF7D3") +
+  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf), fill = "#FEFED9") +
+  geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf), fill = "#B4D4DA", alpha = 0.1) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 1)+
-  scale_color_manual(values = biome_colors) +
+  scale_color_manual(values = biome_colors, name = "Biome") +
   geom_hline(yintercept = 0) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1992) +
@@ -139,6 +147,11 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-# ggsave(paste(output, "/prop_loss.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
+
+
+
+
+
 
 
