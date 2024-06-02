@@ -1,4 +1,4 @@
-# Code to create curves of proportional loss of native vegetation in Brazil through presidential terms
+# Code to create curves of proportional loss of native vegetation in Brazil through presidential terms since 1985
 # Vinicius Tonetti  - vrtonetti@gmail.com
 # ------------------------------------------------------------------------------
 
@@ -114,23 +114,31 @@ mtx_longer <- mtx %>%
     values_to = "prop_loss"           
   )
 
+
 # Plotting
 
 biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
                   "Mata Atlântica" = "#DF5E1F", Pampa = "#4477AA", Pantanal = "#B254A5")
 
+
 ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
-  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf), fill = "gray80") +
-  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf), fill = "#DFE3E8") +
-  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf), fill = "#FFE5E0") +
-  geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf), fill = "gray90") +
-  geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf), fill = "#E3CCCD") +
-  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf), fill = "#DFF7D3") +
-  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf), fill = "#FEFED9") +
-  geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf), fill = "#B4D4DA", alpha = 0.1) +
+  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
+  geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 1)+
-  scale_color_manual(values = biome_colors, name = "Biome") +
+  scale_color_manual(values = biome_colors, name = "") +
+  scale_fill_manual(name = "",
+                    values = c("gray80", "#DFE3E8",
+                               "#FFE5E0", "gray90", 
+                               "#E3CCCD", "#DFF7D3",
+                               "#FEFED9", "#B4D4DA"),
+                    guide = guide_legend(override.aes = list(alpha = 1))) +
   geom_hline(yintercept = 0) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1992) +
@@ -143,15 +151,11 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   scale_x_continuous(
     breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
     labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+  xlab("Year") + 
+  ylab("Proportion of natural vegetation loss") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
 ggsave(paste(output, "/prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
-
-
-
-
-
 
 
