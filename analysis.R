@@ -10,6 +10,11 @@ rm(list = ls())
 library(tidyverse)
 library(readxl)
 
+# Directories ------------------------------------------------------------------
+
+input <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/data"
+output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/outputs"
+
 
 # Loading data -----------------------------------------------------------------
 # Data downloaded on 30/05/2024 from MapBiomas collection 8 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES BIOMA & ESTADOS (COLEÇÃO 8) – dados de área (ha) de cobertura e uso da terra por bioma e estado de 1985 a 2022 (atualizada em 01/09/2023)
@@ -17,7 +22,7 @@ library(readxl)
 # https://brasil.mapbiomas.org/estatisticas/
 
 
-MB <- readxl::read_excel(path = "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/data/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sheet = "COBERTURA_COL8.0", )
+MB <- readxl::read_excel(path = paste(input, "/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sep = ""), sheet = "COBERTURA_COL8.0", )
 
 # Filtering data ---------------------------------------------------------------
 
@@ -111,15 +116,29 @@ mtx_longer <- mtx %>%
 
 # Plotting
 
-biome_colors <- c("Amazônia" = "forestgreen", "Caatinga" = "yellow", "Cerrado" = "orange",
-                  "Mata Atlântica" = "lightgreen", Pampa = "lightblue", Pantanal = "brown")
+biome_colors <- c("Amazônia" = "forestgreen", "Caatinga" = "#F1B6DA", "Cerrado" = "#CCBB44",
+                  "Mata Atlântica" = "lightgreen", Pampa = "#4477AA", Pantanal = "#BABABA")
 
-ggplot(data = mtx_longer, aes(x  = year, y= prop_loss)) +
+ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   geom_point(aes(color = biome))+
-  geom_line(aes(color = biome, group = biome), lwd = 1.5)+
+  geom_line(aes(color = biome, group = biome), lwd = 1)+
   scale_color_manual(values = biome_colors) +
-  theme_classic()
+  geom_hline(yintercept = 0) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1992) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
+  scale_x_continuous(
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
+# ggsave(paste(output, "/prop_loss.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
