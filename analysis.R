@@ -2,6 +2,7 @@
 # Vinicius Tonetti  - vrtonetti@gmail.com
 # ------------------------------------------------------------------------------
 
+# Cleaning directory
 rm(list = ls())
 
 # Packages ---------------------------------------------------------------------
@@ -11,9 +12,12 @@ library(readxl)
 
 
 # Loading data -----------------------------------------------------------------
+# Data downloaded on 30/05/2024 from MapBiomas collection 8 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES BIOMA & ESTADOS (COLEÇÃO 8) – dados de área (ha) de cobertura e uso da terra por bioma e estado de 1985 a 2022 (atualizada em 01/09/2023)
+
+# https://brasil.mapbiomas.org/estatisticas/
+
 
 MB <- readxl::read_excel(path = "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/data/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sheet = "COBERTURA_COL8.0", )
-
 
 # Filtering data ---------------------------------------------------------------
 
@@ -23,8 +27,7 @@ unique(MB$biome)
 # Filtering, summarizing, and summing values for each year
 
 # First, checking classes considered natural vegetation
-
-# Checking level_1 class
+# Checking level_1 class considering natural vegetation only
 MB %>% 
   filter(level_0 == "Natural") %>% 
   select(level_1) %>% 
@@ -61,8 +64,7 @@ MB %>%
 # Classes level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
 
 
-# Summing area values for the selected values above
-
+# Summing area values for the selected values above ----------------------------
 MB_sum <- MB %>% 
   filter(level_0 == "Natural") %>% 
   group_by(biome) %>%
@@ -75,7 +77,7 @@ row.names(MB_sum) <- MB_sum[[1]]
 MB_sum <- MB_sum[,-1]
 
 
-# Calculating the proportional loss
+# Calculating the proportional loss --------------------------------------------
 
 # First, creating an empty dataframe to be filled
 mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
@@ -92,6 +94,31 @@ for (i in 2:ncol(MB_sum)) {
 
 mtx
 
+
+################################################################################
+# Plotting data ----------------------------------------------------------------
+
+# Converting data from wider to longer
+mtx[ ,"biome"] <- row.names(mtx)
+
+mtx_longer <- mtx %>%
+  pivot_longer(
+    cols = starts_with("prop_loss_"),  
+    names_to = "year",                 
+    names_prefix = "prop_loss_",      
+    values_to = "prop_loss"           
+  )
+
+# Plotting
+
+biome_colors <- c("Amazônia" = "forestgreen", "Caatinga" = "yellow", "Cerrado" = "orange",
+                  "Mata Atlântica" = "lightgreen", Pampa = "lightblue", Pantanal = "brown")
+
+ggplot(data = mtx_longer, aes(x  = year, y= prop_loss)) +
+  geom_point(aes(color = biome))+
+  geom_line(aes(color = biome, group = biome), lwd = 1.5)+
+  scale_color_manual(values = biome_colors) +
+  theme_classic()
 
 
 
