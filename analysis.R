@@ -68,6 +68,18 @@ MB %>%
 
 # Classes level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
 
+# Classes included in this analysis:
+# Forest Formation                  
+# Savanna Formation                 
+# Flooded Forest                    
+# Wetland                           
+# Grassland                         
+# Magrove                           
+# Wooded Restinga                   
+# Restinga Herbácea/Arbustiva       
+# Other Non Forest Natural Formation
+
+
 
 # Summing area values for the selected values above ----------------------------
 MB_sum <- MB %>% 
