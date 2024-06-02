@@ -115,7 +115,7 @@ mtx_longer <- mtx %>%
   )
 
 
-# Plotting
+# Plotting the proportion of vegetation loss considering all biomes ------------
 
 biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
                   "Mata Atlântica" = "#DF5E1F", Pampa = "#4477AA", Pantanal = "#B254A5")
@@ -156,6 +156,163 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
+
+
+
+# Plotting the proportion of vegetation loss excluding Pantanal ----------------
+
+mtx_longer_no_Pantanal <- mtx_longer %>% 
+  filter(biome != "Pantanal")
+
+
+biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+                  "Mata Atlântica" = "#DF5E1F", Pampa = "#4477AA")
+
+
+ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) +
+  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
+  geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
+  geom_point(aes(color = biome))+
+  geom_line(aes(color = biome, group = biome), lwd = 1)+
+  scale_color_manual(values = biome_colors, name = "") +
+  scale_fill_manual(name = "",
+                    values = c("gray80", "#DFE3E8",
+                               "#FFE5E0", "gray90", 
+                               "#E3CCCD", "#DFF7D3",
+                               "#FEFED9", "#B4D4DA"),
+                    guide = guide_legend(override.aes = list(alpha = 1))) +
+  geom_hline(yintercept = 0) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1992) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
+  scale_x_continuous(
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+  xlab("Year") + 
+  ylab("Proportion of natural vegetation loss") + 
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#ggsave(paste(output, "/prop_loss_excl_pantanal.png", sep = ""), width = 10, height = 7, dpi = 300)
+
+
+
+# Plotting the proportion of vegetation loss excluding Pantanal and Pampa ------
+
+mtx_longer_no_Pantanal_Pampa <- mtx_longer %>% 
+  filter(biome != "Pantanal") %>% 
+  filter(biome != "Pampa")
+
+
+biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+                  "Mata Atlântica" = "#DF5E1F")
+
+
+ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_loss)) +
+  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
+  geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
+  geom_point(aes(color = biome))+
+  geom_line(aes(color = biome, group = biome), lwd = 1)+
+  scale_color_manual(values = biome_colors, name = "") +
+  scale_fill_manual(name = "",
+                    values = c("gray80", "#DFE3E8",
+                               "#FFE5E0", "gray90", 
+                               "#E3CCCD", "#DFF7D3",
+                               "#FEFED9", "#B4D4DA"),
+                    guide = guide_legend(override.aes = list(alpha = 1))) +
+  geom_hline(yintercept = 0) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1992) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
+  scale_x_continuous(
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+  scale_y_continuous(
+    breaks = c(-0.02, -0.01, 0, 0.007),
+    labels = c(-0.02, -0.01, 0, 0.007)) +
+  xlab("Year") + 
+  ylab("Proportion of natural vegetation loss") + 
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#ggsave(paste(output, "/prop_loss_excl_pantanal_pampa.png", sep = ""), width = 10, height = 7, dpi = 300)
+
+
+
+# Plotting the proportion of vegetation loss excluding Pantanal, Pampa, and Caatinga ------
+
+mtx_longer_no_Pantanal_Pampa_Caatinga <- mtx_longer %>% 
+  filter(biome != "Pantanal") %>% 
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Caatinga")
+
+
+biome_colors <- c("Amazônia" = "#24693D", "Cerrado" = "#CCBB44",
+                  "Mata Atlântica" = "#DF5E1F")
+
+
+ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), y= prop_loss)) +
+  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
+  geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
+  geom_point(aes(color = biome))+
+  geom_line(aes(color = biome, group = biome), lwd = 1)+
+  scale_color_manual(values = biome_colors, name = "") +
+  scale_fill_manual(name = "",
+                    values = c("gray80", "#DFE3E8",
+                               "#FFE5E0", "gray90", 
+                               "#E3CCCD", "#DFF7D3",
+                               "#FEFED9", "#B4D4DA"),
+                    guide = guide_legend(override.aes = list(alpha = 1))) +
+  geom_hline(yintercept = 0) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1992) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
+  scale_x_continuous(
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+  scale_y_continuous(
+    breaks = c(-0.02, -0.01, 0, 0.0035),
+    labels = c(-0.02, -0.01, 0, 0.0035)) +
+  xlab("Year") + 
+  ylab("Proportion of natural vegetation loss") + 
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#ggsave(paste(output, "/prop_loss_excl_pantanal_pampa_caatinga.png", sep = ""), width = 10, height = 7, dpi = 300)
+
 
 
