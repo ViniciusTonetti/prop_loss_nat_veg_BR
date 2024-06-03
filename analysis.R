@@ -172,7 +172,7 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
     breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
     labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
   xlab("Year") + 
-  ylab("Proportion of natural vegetation loss") + 
+  ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
@@ -221,7 +221,7 @@ ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) 
     breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
     labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
   xlab("Year") + 
-  ylab("Proportion of natural vegetation loss") + 
+  ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
@@ -274,7 +274,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
     breaks = c(-0.02, -0.01, 0, 0.007),
     labels = c(-0.02, -0.01, 0, 0.007)) +
   xlab("Year") + 
-  ylab("Proportion of natural vegetation loss") + 
+  ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
@@ -328,7 +328,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), 
     breaks = c(-0.02, -0.01, 0, 0.0035),
     labels = c(-0.02, -0.01, 0, 0.0035)) +
   xlab("Year") + 
-  ylab("Proportion of natural vegetation loss") + 
+  ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
