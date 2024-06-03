@@ -53,7 +53,10 @@ MB %>%
 MB <- MB %>% 
   filter(level_2 != "Rocky outcrop") %>% 
   filter(level_2 != "Salt flat") %>% 
-  filter(level_2 != "Beach and Dune")
+  filter(level_2 != "Beach and Dune") %>% 
+  filter(level_2 != "Wetland") %>%
+  filter(level_2 != "Grassland") %>%
+  filter(level_2 != "Other Non Forest Natural Formation")
 
 
 # Checking level_3 class
@@ -74,18 +77,18 @@ MB %>%
 # Rocky outcrop
 # Salt flat
 # Beach and Dune
+# "Wetland"
+# "Grassland"
+# "Other Non Forest Natural Formation"
 
 
 # Classes included in this analysis:
 # Forest Formation                  
 # Savanna Formation                 
 # Flooded Forest                    
-# Wetland                           
-# Grassland                         
 # Magrove                           
 # Wooded Restinga                   
-# Restinga Herbácea/Arbustiva       
-# Other Non Forest Natural Formation
+# Restinga Herbácea/Arbustiva
 
 
 
@@ -119,6 +122,10 @@ for (i in 2:ncol(MB_sum)) {
 
 mtx
 
+# Replacing Portuguese names to English names
+row.names(mtx)[which(row.names(mtx) == "Amazônia")] <- "Amazon"
+row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
+
 
 ################################################################################
 # Plotting data ----------------------------------------------------------------
@@ -137,8 +144,8 @@ mtx_longer <- mtx %>%
 
 # Plotting the proportion of vegetation loss considering all biomes ------------
 
-biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
-                  "Mata Atlântica" = "#DF5E1F", Pampa = "#4477AA", Pantanal = "#B254A5")
+biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+                  "Atlantic Forest" = "#DF5E1F", Pampa = "#4477AA", Pantanal = "#B254A5")
 
 
 ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
@@ -176,7 +183,7 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/1_prop_loss_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -186,8 +193,8 @@ mtx_longer_no_Pantanal <- mtx_longer %>%
   filter(biome != "Pantanal")
 
 
-biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
-                  "Mata Atlântica" = "#DF5E1F", Pampa = "#4477AA")
+biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+                  "Atlantic Forest" = "#DF5E1F", Pampa = "#4477AA")
 
 
 ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) +
@@ -225,7 +232,7 @@ ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/2_prop_loss_excl_pantanal.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -236,8 +243,8 @@ mtx_longer_no_Pantanal_Pampa <- mtx_longer %>%
   filter(biome != "Pampa")
 
 
-biome_colors <- c("Amazônia" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
-                  "Mata Atlântica" = "#DF5E1F")
+biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+                  "Atlantic Forest" = "#DF5E1F")
 
 
 ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_loss)) +
@@ -278,7 +285,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/3_prop_loss_excl_pantanal_pampa.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -290,8 +297,8 @@ mtx_longer_no_Pantanal_Pampa_Caatinga <- mtx_longer %>%
   filter(biome != "Caatinga")
 
 
-biome_colors <- c("Amazônia" = "#24693D", "Cerrado" = "#CCBB44",
-                  "Mata Atlântica" = "#DF5E1F")
+biome_colors <- c("Amazon" = "#24693D", "Cerrado" = "#CCBB44",
+                  "Atlantic Forest" = "#DF5E1F")
 
 
 ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), y= prop_loss)) +
@@ -325,14 +332,14 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), 
     breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
     labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
   scale_y_continuous(
-    breaks = c(-0.02, -0.01, 0, 0.0035),
-    labels = c(-0.02, -0.01, 0, 0.0035)) +
+    breaks = c(-0.02, -0.01, 0, 0.007),
+    labels = c(-0.02, -0.01, 0, 0.007)) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/4_prop_loss_excl_pantanal_pampa_caatinga.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
