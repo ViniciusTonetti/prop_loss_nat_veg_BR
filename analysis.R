@@ -468,14 +468,152 @@ mtx_long_Bolsonaro <- mtx_long_Bolsonaro %>%
   left_join(biome_areas, by = "biome")
 
 
-## Plotting bar charts
+## Plotting bar charts ---------------------------------------------------------
 
-ggplot(mtx_long_Sarney, aes(x = biome, y = total_prop_loss, fill = biome)) +
-  geom_bar(stat = "identity", aes(width = area / max(area))) +
-  geom_errorbar(aes(ymin = median_total_prop_loss - iqr_prop_loss / 2, ymax = median_total_prop_loss + iqr_prop_loss / 2), width = 0.2) +
-  labs(x = "Biome", y = "Total Proportional Loss", title = "Total Proportional Loss by Biome with Interquartile Range") +
-  theme_classic() 
+mtx_long_Sarney %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "José Sarney") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
+
+
+mtx_long_Collor %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Fernando Collor") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
+
+mtx_long_Itamar_Franco %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Itamar Franco") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
+
+
+mtx_long_FHC %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Fernando Henrique Cardoso") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
 
 
 
+mtx_long_Lula %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Luis Inácio Lula da Silva") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
 
+
+mtx_long_Dilma %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Dilma Rousseff") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
+
+
+mtx_long_Temer %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Michel Temer") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
+
+
+mtx_long_Bolsonaro %>%
+  filter(biome != "Pampa") %>% 
+  filter(biome != "Pantanal") %>% 
+  distinct(total_prop_loss, .keep_all = TRUE) %>%
+  ggplot(aes(x = biome, y = total_prop_loss)) +
+  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
+  labs(x = "", y = "Proportional loss of native vegetation", title = "Jair Bolsonaro") +
+  geom_hline(yintercept = 0)+
+  theme_classic()+
+  theme(
+    text = element_text(size = 14),       # Adjusts the base font size
+    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+  )
+
+
+
+  
+  
