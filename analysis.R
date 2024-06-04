@@ -183,7 +183,7 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -232,7 +232,7 @@ ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -285,7 +285,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -339,7 +339,143 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+
+
+################################################################################
+## Plotting bar graphs per presidential terms ----------------------------------
+
+# Informing biome areas (actually percentage of area each biome occupies)
+
+biome_areas <- tibble(
+  biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
+  area = c(49, 13, 24, 10, 2, 2)
+)
+
+
+# Filtering data per presidential term
+# Sarney -----------------------------------------------------------------------
+
+mtx_long_Sarney <- mtx_longer %>% 
+  filter(year >= 1985 & year <= 1990) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+         
+# Adding area information
+mtx_long_Sarney <- mtx_long_Sarney %>%
+  left_join(biome_areas, by = "biome")
+print(mtx_long_Sarney, n = 90)
+
+
+# Collor -----------------------------------------------------------------------
+
+mtx_long_Collor <- mtx_longer %>% 
+  filter(year > 1990 & year <= 1992) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+
+# Adding area information
+mtx_long_Collor <- mtx_long_Collor %>%
+  left_join(biome_areas, by = "biome")
+
+
+# Itamar Franco ----------------------------------------------------------------
+
+mtx_long_Itamar_Franco <- mtx_longer %>% 
+  filter(year > 1992 & year < 1995) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+
+# Adding area information
+mtx_long_Itamar_Franco <- mtx_long_Itamar_Franco %>%
+  left_join(biome_areas, by = "biome")
+
+
+# FHC --------------------------------------------------------------------------
+
+mtx_long_FHC <- mtx_longer %>% 
+  filter(year >= 1995 & year < 2003) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+
+# Adding area information
+mtx_long_FHC <- mtx_long_FHC %>%
+  left_join(biome_areas, by = "biome")
+
+
+# Lula -------------------------------------------------------------------------
+
+mtx_long_Lula <- mtx_longer %>% 
+  filter(year >= 2003 & year < 2011) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+
+# Adding area information
+mtx_long_Lula <- mtx_long_Lula %>%
+  left_join(biome_areas, by = "biome")
+
+
+# Dilma ------------------------------------------------------------------------
+
+mtx_long_Dilma <- mtx_longer %>% 
+  filter(year >= 2011 & year < 2017) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+
+# Adding area information
+mtx_long_Dilma <- mtx_long_Dilma %>%
+  left_join(biome_areas, by = "biome")
+
+
+# Temer ------------------------------------------------------------------------
+
+mtx_long_Temer <- mtx_longer %>% 
+  filter(year >= 2017 & year < 2019) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+
+# Adding area information
+mtx_long_Temer <- mtx_long_Temer %>%
+  left_join(biome_areas, by = "biome")
+
+
+# Bolsonaro --------------------------------------------------------------------
+
+mtx_long_Bolsonaro <- mtx_longer %>% 
+  filter(year >= 2019 & year < 2022) %>% 
+  group_by(biome) %>%
+  mutate(total_prop_loss = sum(prop_loss),
+         iqr_prop_loss = IQR(prop_loss),
+         median_total_prop_loss = median(prop_loss))
+  
+
+# Adding area information
+mtx_long_Bolsonaro <- mtx_long_Bolsonaro %>%
+  left_join(biome_areas, by = "biome")
+
+
+## Plotting bar charts
+
+ggplot(mtx_long_Sarney, aes(x = biome, y = total_prop_loss, fill = biome)) +
+  geom_bar(stat = "identity", aes(width = area / max(area))) +
+  geom_errorbar(aes(ymin = median_total_prop_loss - iqr_prop_loss / 2, ymax = median_total_prop_loss + iqr_prop_loss / 2), width = 0.2) +
+  labs(x = "Biome", y = "Total Proportional Loss", title = "Total Proportional Loss by Biome with Interquartile Range") +
+  theme_classic() 
+
 
 
 
