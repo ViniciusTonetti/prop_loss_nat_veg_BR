@@ -150,12 +150,12 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
 
 ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
-  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
-  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
   geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
-  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
-  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2016.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2017.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 1)+
@@ -172,18 +172,18 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2016.9) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   scale_x_continuous(
-    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
-    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2016.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -197,14 +197,14 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
                   "Atlantic Forest" = "#DF5E1F", Pampa = "#4477AA")
 
 
-ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) +
+ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss))+
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
-  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
-  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
   geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
-  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
-  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2016.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2017.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 1)+
@@ -221,18 +221,18 @@ ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss)) 
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2016.9) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   scale_x_continuous(
-    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
-    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2016.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -249,12 +249,12 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
 
 ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_loss)) +
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
-  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
-  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
   geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
-  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
-  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2016.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2017.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 1)+
@@ -271,21 +271,18 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2016.9) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   scale_x_continuous(
-    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
-    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
-  scale_y_continuous(
-    breaks = c(-0.02, -0.01, 0, 0.007),
-    labels = c(-0.02, -0.01, 0, 0.007)) +
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2016.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -303,12 +300,12 @@ biome_colors <- c("Amazon" = "#24693D", "Cerrado" = "#CCBB44",
 
 ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), y= prop_loss)) +
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
-  geom_rect(aes(xmin = 1990.2, xmax = 1991.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
-  geom_rect(aes(xmin = 1992.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
+  geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
+  geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
   geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
-  geom_rect(aes(xmin = 2011.2, xmax = 2015.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
-  geom_rect(aes(xmin = 2016.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2016.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2017.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 1)+
@@ -325,21 +322,17 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), 
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2015.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2016.9) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   scale_x_continuous(
-    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2015.9, 2019, 2022),
-    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2015 (August)", "2019", "2022")) +
-  scale_y_continuous(
-    breaks = c(-0.02, -0.01, 0, 0.007),
-    labels = c(-0.02, -0.01, 0, 0.007)) +
+    breaks = c(1985, 1990, 1992, 1995, 2003, 2011, 2016.9, 2019, 2022),
+    labels = c("1985", "1990", "1992", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-#ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -357,7 +350,7 @@ biome_areas <- tibble(
 # Sarney -----------------------------------------------------------------------
 
 mtx_long_Sarney <- mtx_longer %>% 
-  filter(year >= 1985 & year <= 1990) %>% 
+  filter(year >= 1985 & year < 1990) %>% 
   group_by(biome) %>%
   mutate(total_prop_loss = sum(prop_loss),
          iqr_prop_loss = IQR(prop_loss),
@@ -372,7 +365,7 @@ print(mtx_long_Sarney, n = 90)
 # Collor -----------------------------------------------------------------------
 
 mtx_long_Collor <- mtx_longer %>% 
-  filter(year > 1990 & year <= 1992) %>% 
+  filter(year >= 1990 & year <= 1992) %>% 
   group_by(biome) %>%
   mutate(total_prop_loss = sum(prop_loss),
          iqr_prop_loss = IQR(prop_loss),
@@ -456,7 +449,7 @@ mtx_long_Temer <- mtx_long_Temer %>%
 # Bolsonaro --------------------------------------------------------------------
 
 mtx_long_Bolsonaro <- mtx_longer %>% 
-  filter(year >= 2019 & year < 2022) %>% 
+  filter(year >= 2019 & year <= 2022) %>% 
   group_by(biome) %>%
   mutate(total_prop_loss = sum(prop_loss),
          iqr_prop_loss = IQR(prop_loss),
@@ -470,149 +463,193 @@ mtx_long_Bolsonaro <- mtx_long_Bolsonaro %>%
 
 ## Plotting bar charts ---------------------------------------------------------
 
-mtx_long_Sarney %>%
+biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
+
+# Sarney -----------------------------------------------------------------------
+
+(bar_chart_Sarney <- mtx_long_Sarney %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "José Sarney") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
   theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
+    text = element_text(size = 0),       # Adjusts the base font size
+    axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+    axis.text = element_text(size = 15),  # Adjusts the font size of axis text
     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+  )+
+    scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4, y = -0.03, label = "José Sarney", size = 5)
+   )
+
+?geom_text()
+
+# Collor -----------------------------------------------------------------------
 
 
-mtx_long_Collor %>%
+(bar_chart_Collor <- mtx_long_Collor %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Fernando Collor") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
   theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1.1, y = -0.025, label = "Fernando Collor", size = 5)
+)
 
-mtx_long_Itamar_Franco %>%
+
+# Itamar Franco ----------------------------------------------------------------
+
+(bar_chart_Itamar <- mtx_long_Itamar_Franco %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Itamar Franco") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
-  theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1.1, y = -0.015, label = "Itamar Franco", size = 5)
+)
 
 
-mtx_long_FHC %>%
+# FHC --------------------------------------------------------------------------
+
+(bar_chart_FHC <- mtx_long_FHC %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Fernando Henrique Cardoso") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
-  theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1.5, y = -0.05, label = "Fernando Henrique Cardoso", size = 5)
+)
 
 
+# Lula -------------------------------------------------------------------------
 
-mtx_long_Lula %>%
+(bar_chart_Lula <- mtx_long_Lula %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Luis Inácio Lula da Silva") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
   theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1.5, y = -0.04, label = "Luis Inácio Lula da Silva", size = 5)
+)
 
 
-mtx_long_Dilma %>%
+# Dilma ------------------------------------------------------------------------
+
+(bar_chart_Dilma <- mtx_long_Dilma %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Dilma Rousseff") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
-  theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1.5, y = -0.02, label = "Dilma Rousseff", size = 5)
+)
 
 
-mtx_long_Temer %>%
+# Temer ------------------------------------------------------------------------
+
+
+(bar_chart_Temer <- mtx_long_Temer %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Michel Temer") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
-  theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1, y = 0.0025, label = "Michel Temer", size = 5)
+)
 
 
-mtx_long_Bolsonaro %>%
+# Bolsonaro --------------------------------------------------------------------
+
+(bar_chart_Bolsonaro <- mtx_long_Bolsonaro %>%
   filter(biome != "Pampa") %>% 
   filter(biome != "Pantanal") %>% 
   distinct(total_prop_loss, .keep_all = TRUE) %>%
   ggplot(aes(x = biome, y = total_prop_loss)) +
   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
   geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.7) +
-  labs(x = "", y = "Proportional loss of native vegetation", title = "Jair Bolsonaro") +
+  labs(x = "", y = "", title = "") +
   geom_hline(yintercept = 0)+
   theme_classic()+
-  theme(
-    text = element_text(size = 14),       # Adjusts the base font size
-    axis.title = element_text(size = 14), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 12),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )
-
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 1, y = 0.003, label = "Jair Bolsonaro", size = 5)
+)
 
 
   
