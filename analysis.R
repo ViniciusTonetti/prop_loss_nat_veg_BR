@@ -557,6 +557,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
+   scale_y_continuous(breaks = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02) ,labels = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02))+
    annotate("text", x = 1.85, y = -0.06, label = "Fernando Henrique Cardoso \n 8 years", size = 4.5)
 )
 
@@ -627,6 +628,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
+   #scale_y_continuous(breaks = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02) ,labels = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02))+
    annotate("text", x = 1.5, y = -0.005, label = "Michel Temer - 2 years", size = 4.5)
 )
 
@@ -650,6 +652,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
+   scale_y_continuous(breaks = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02) ,labels = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02))+
    annotate("text", x = 1.5, y = -0.02, label = "Jair Bolsonaro - 4 years", size = 4.5)
 )
 
@@ -659,6 +662,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
 #ggsave(paste(output, "/bar_charts.png", sep = ""), width = 20, height = 7, dpi = 300)
+
 
   
   
