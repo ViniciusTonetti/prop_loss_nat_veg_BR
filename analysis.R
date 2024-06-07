@@ -185,7 +185,7 @@ ggplot(data = mtx_longer, aes(x  = as.numeric(year), y= prop_loss)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_1_prop_loss_all_biomes_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -234,7 +234,7 @@ ggplot(data = mtx_longer_no_Pantanal, aes(x  = as.numeric(year), y= prop_loss))+
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_2_prop_loss_excl_pantanal_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -284,7 +284,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_3_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 
@@ -334,7 +334,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa_Caatinga, aes(x  = as.numeric(year), 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/_4_prop_loss_excl_pantanal_pampa_caatinga_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -486,10 +486,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
   )+
     scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 3.5, y = -0.033, label = "José Sarney", size = 5)
+   annotate("text", x = 3.3, y = -0.033, label = "José Sarney - 5 years", size = 4.5)
    )
 
-?geom_text()
+
 
 # Collor -----------------------------------------------------------------------
 
@@ -511,7 +511,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 1.5, y = -0.025, label = "Fernando Collor", size = 5)
+   annotate("text", x = 1.65, y = -0.025, label = "Fernando Collor - 3 years", size = 4.5)
 )
 
 
@@ -534,7 +534,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 1.5, y = -0.015, label = "Itamar Franco", size = 5)
+   annotate("text", x = 1.65, y = -0.017, label = "Itamar Franco - 2 years", size = 4.5)
 )
 
 
@@ -557,7 +557,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 2, y = -0.05, label = "Fernando Henrique Cardoso", size = 5)
+   annotate("text", x = 1.85, y = -0.06, label = "Fernando Henrique Cardoso \n 8 years", size = 4.5)
 )
 
 
@@ -580,7 +580,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 1.8, y = -0.04, label = "Luis Inácio Lula da Silva", size = 5)
+   annotate("text", x = 1.9, y = -0.04, label = "Luis Inácio Lula da Silva \n 8 years", size = 4.5)
 )
 
 
@@ -603,7 +603,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 1.5, y = -0.02, label = "Dilma Rousseff", size = 5)
+   annotate("text", x = 1.55, y = -0.025, label = "Dilma Rousseff - 6 years", size = 4.5)
 )
 
 
@@ -627,7 +627,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 1.25, y = 0.0025, label = "Michel Temer", size = 5)
+   annotate("text", x = 1.5, y = -0.005, label = "Michel Temer - 2 years", size = 4.5)
 )
 
 
@@ -650,7 +650,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 1.25, y = 0.003, label = "Jair Bolsonaro", size = 5)
+   annotate("text", x = 1.5, y = -0.02, label = "Jair Bolsonaro - 4 years", size = 4.5)
 )
 
 
@@ -658,7 +658,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/bar_charts.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/bar_charts.png", sep = ""), width = 20, height = 7, dpi = 300)
 
   
   
