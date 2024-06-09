@@ -129,13 +129,17 @@ row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 
 mtx$prop_loss_1985 <- c(0, 0, 0, 0, 0, 0)
 
-paste("prop_loss_", 1985:2022, sep = "")
 mtx <- mtx[,paste("prop_loss_", 1985:2022, sep = "")]
 
 
 # Building a matrix for change in the rate
 
 mtx_rate <- mtx
+colnames(mtx_rate) <- paste("rate_change_", 1985:2022, sep = "")
+
+for (i in 2:ncol(mtx_rate)) {
+  mtx_rate[,i] <- mtx_rate[,i] - mtx_rate[,i-1]
+}
 
 ################################################################################
 # Plotting data ----------------------------------------------------------------
