@@ -138,8 +138,9 @@ mtx_rate <- mtx
 colnames(mtx_rate) <- paste("rate_change_", 1985:2022, sep = "")
 
 for (i in 2:ncol(mtx_rate)) {
-  mtx_rate[,i] <- mtx_rate[,i] - mtx_rate[,i-1]
+  mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
 }
+
 
 ################################################################################
 # Plotting data ----------------------------------------------------------------
