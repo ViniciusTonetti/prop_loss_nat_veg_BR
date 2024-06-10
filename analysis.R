@@ -202,7 +202,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -266,7 +266,7 @@ ggplot(data = mtx_rate_long_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= rat
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave(paste(output, "/_2_rate_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/2_rate_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -314,9 +314,10 @@ mtx_long_Sarney <- mtx_longer %>%
     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
   )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 3.3, y = -0.01, label = "José Sarney\n5 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "José Sarney - 5 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
    )
+
 
 
 # Collor -----------------------------------------------------------------------
@@ -348,8 +349,8 @@ mtx_long_Collor <- mtx_longer %>%
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 2, y = -0.01, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 
@@ -382,8 +383,8 @@ mtx_long_Itamar_Franco <- mtx_longer %>%
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 2, y = -0.01, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 
@@ -417,8 +418,8 @@ mtx_long_FHC <- mtx_longer %>%
    )+
    scale_x_discrete(labels = biome_labels)+
    scale_y_continuous(breaks = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02) ,labels = c(-0.06, -0.04, -0.02, 0, 0.01, 0.02))+
-   annotate("text", x = 2, y = -0.01, label = "Fernando Henrique Cardoso \n 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 
@@ -452,8 +453,8 @@ mtx_long_Lula <- mtx_longer %>%
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 3.3, y = -0.01, label = "Luis Inácio Lula da Silva \n 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Luis Inácio Lula da Silva - 8 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 
@@ -486,8 +487,8 @@ mtx_long_Dilma <- mtx_longer %>%
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text",x = 3.3, y = -0.01, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.5, y = 0.003, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 
@@ -521,8 +522,8 @@ mtx_long_Temer <- mtx_longer %>%
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 3.3, y = -0.01, label = "Michel Temer - 2 years", size = 5)+
-    scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 
@@ -556,8 +557,8 @@ mtx_long_Bolsonaro <- mtx_longer %>%
      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 3.3, y = -0.01, label = "Jair Bolsonaro - 4 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.013, -0.0065, 0, 0.003) ,labels = c(-0.013, -0.0065, 0, 0.003), limits = c(-0.013, 0.003))
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
 )
 
 print(mtx_long_Bolsonaro, n = 100)
@@ -566,7 +567,7 @@ print(mtx_long_Bolsonaro, n = 100)
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/_3_bar_charts_mean_prop_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
+ggsave(paste(output, "/3_bar_charts_mean_prop_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
@@ -595,14 +596,15 @@ mtx_rate_long_Sarney <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 # Plot
 (bar_chart_rate_Sarney <- mtx_rate_long_Sarney %>%
     filter(biome != "Pampa", biome != "Pantanal") %>% 
     distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
+    ggplot(aes(x = biome, y = mean_rate_prop)) +
     geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
     geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
     labs(x = "", y = "", title = "") +
@@ -615,8 +617,8 @@ mtx_rate_long_Sarney <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "José Sarney - 5 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "José Sarney - 5 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 
@@ -629,7 +631,8 @@ mtx_rate_long_Collor <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 # Plot
@@ -649,8 +652,8 @@ mtx_rate_long_Collor <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Fernando Collor - 3 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Fernando Collor - 3 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
   )
 
 # Itamar Franco ----------------------------------------------------------------
@@ -662,7 +665,8 @@ mtx_rate_long_Itamar_Franco <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 # Plot
@@ -682,8 +686,8 @@ mtx_rate_long_Itamar_Franco <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Itamar Franco - 2 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Itamar Franco - 2 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 # FHC --------------------------------------------------------------------------
@@ -695,7 +699,8 @@ mtx_rate_long_FHC <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 # Plot
@@ -715,8 +720,8 @@ mtx_rate_long_FHC <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Fernando Henrique Cardoso - 8 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Fernando Henrique Cardoso - 8 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 
@@ -730,7 +735,8 @@ mtx_rate_long_Lula <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 
@@ -751,8 +757,8 @@ mtx_rate_long_Lula <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Luis Inácio Lula da Silva - 8 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Luis Inácio Lula da Silva - 8 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 
@@ -765,7 +771,8 @@ mtx_rate_long_Dilma <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 # Plot
@@ -785,8 +792,8 @@ mtx_rate_long_Dilma <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Dilma Rouseff - 6 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Dilma Rouseff - 6 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 # Temer ------------------------------------------------------------------------
@@ -798,7 +805,8 @@ mtx_rate_long_Temer <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 
@@ -819,8 +827,8 @@ mtx_rate_long_Temer <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Michel Temer - 2 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Michel Temer - 2 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 # Bolsonaro --------------------------------------------------------------------
@@ -832,7 +840,8 @@ mtx_rate_long_Bolsonaro <- mtx_rate_long %>%
   mutate(total_rate_loss = sum(rate_change),
          iqr_rate_loss = IQR(rate_change),
          median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year)) %>% 
+         num_years = n_distinct(year),
+         mean_rate_prop = total_rate_loss/num_years) %>% 
   left_join(biome_areas, by = "biome")
 
 
@@ -853,15 +862,15 @@ mtx_rate_long_Bolsonaro <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.0061, label = "Jair Bolsonaro - 4 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, 0, 0.006) ,labels = c(-0.0045, 0, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = 0.006, label = "Jair Bolsonaro - 4 years", size = 5, hjust = 1)+
+    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
 )
 
 ## Combining plots in a single plot
 
 (all_bar_charts_rate <- plot_grid(bar_chart_rate_Sarney, bar_chart_rate_Collor, bar_chart_rate_Itamar_Franco, bar_chart_rate_FHC, bar_chart_rate_Lula, bar_chart_rate_Dilma, bar_chart_rate_Temer, bar_chart_rate_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/_4_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
+ggsave(paste(output, "/4_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
