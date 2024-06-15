@@ -160,7 +160,9 @@ for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
 }
 
-# Creating long data frames to don't repeat this part of the code each time
+# Creating long data frames ----------------------------------------------------
+
+mtx$biome <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
   select(-prop_loss_1985) %>% 
@@ -189,18 +191,8 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
                   "Atlantic Forest" = "#DF5E1F")
 
 
-# Converting data from wider to longer
-mtx[ ,"biome"] <- row.names(mtx)
-
-
 # plot -------------------------------------------------------------------------
-(plot_prop_loss_gain <- mtx %>%
-  select(-prop_loss_1985) %>% 
-  pivot_longer(cols = starts_with("prop_loss_"),  
-               names_to = "year",                 
-               names_prefix = "prop_loss_",      
-               values_to = "prop_loss") %>% 
-  filter(biome != "Pantanal", biome != "Pampa") %>%
+(plot_prop_loss_gain <- mtx_loss_gain_long %>%
   ggplot(aes(x  = as.numeric(year), y= prop_loss)) +
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
@@ -237,7 +229,7 @@ mtx[ ,"biome"] <- row.names(mtx)
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -546,7 +538,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-#ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
+ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
