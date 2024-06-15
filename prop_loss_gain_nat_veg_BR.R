@@ -5,6 +5,7 @@
 # Cleaning directory
 rm(list = ls())
 
+
 # Packages ---------------------------------------------------------------------
 
 library(tidyverse)
@@ -23,8 +24,8 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 
 # https://brasil.mapbiomas.org/estatisticas/
 
-
 MB <- readxl::read_excel(path = paste(input, "/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sep = ""), sheet = "COBERTURA_COL8.0", )
+
 
 # Filtering data ---------------------------------------------------------------
 
@@ -32,7 +33,6 @@ MB <- readxl::read_excel(path = paste(input, "/TABELA-GERAL-MAPBIOMAS-COL8.0-BIO
 unique(MB$biome)
 
 # Filtering, summarizing, and summing values for each year
-
 # First, checking classes considered natural vegetation
 # Checking level_1 class considering natural vegetation only
 MB %>% 
@@ -93,8 +93,8 @@ MB %>%
 # Restinga Herbácea/Arbustiva
 
 
-
 # Summing area values for the selected values above ----------------------------
+
 MB_sum <- MB %>% 
   filter(level_0 == "Natural") %>% 
   group_by(biome) %>%
@@ -102,6 +102,7 @@ MB_sum <- MB %>%
 
 
 # converting from tibble to data frame to change row names
+
 MB_sum <- as.data.frame(MB_sum)
 row.names(MB_sum) <- MB_sum[[1]]
 MB_sum <- MB_sum[,-1]
@@ -110,6 +111,7 @@ MB_sum <- MB_sum[,-1]
 # Calculating the proportional loss --------------------------------------------
 
 # First, creating an empty dataframe to be filled
+
 mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
 mtx <- as.data.frame(mtx)
 
@@ -280,43 +282,43 @@ biome_areas <- tibble(
 )
 
 
-
 ## Plotting bar charts proportion loss/ gain -----------------------------------
 
 biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 # Sarney -----------------------------------------------------------------------
 
-# Filtering data
-mtx_long_Sarney <- mtx_longer %>% 
+bar_chart_Sarney <- mtx_longer %>% 
   filter(year >= 1985 & year < 1990) %>% 
   group_by(biome) %>%
   mutate(total_prop_loss = sum(prop_loss),
          iqr_prop_loss = IQR(prop_loss),
          median_total_prop_loss = median(prop_loss),
-         num_years = n_distinct(year)) %>% 
-  left_join(biome_areas, by = "biome")
-
-# Plot
-(bar_chart_Sarney <- mtx_long_Sarney %>%
-  filter(biome != "Pampa", biome != "Pantanal") %>% 
-  distinct(total_prop_loss, .keep_all = TRUE) %>%
-  ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
-  geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-  geom_errorbar(aes(ymin = median_total_prop_loss - (iqr_prop_loss / 2), ymax = median_total_prop_loss + (iqr_prop_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-  labs(x = "", y = "", title = "") +
-  geom_hline(yintercept = 0)+
-  theme_classic()+
-  theme(
-    text = element_text(size = 0),       # Adjusts the base font size
-    axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-    axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-    plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-  )+
-   scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.003))
-   )
+         num_years = n_distinct(year),
+         q1 = quantile(prop_loss, probs = 0.25),
+         q3 = quantile(prop_loss, probs = 0.75)) %>%
+  ungroup() %>% 
+  mutate(biome_x = as.numeric(factor(biome))) %>% 
+  left_join(biome_areas, by = "biome") %>%
+    filter(biome != "Pampa", biome != "Pantanal") %>% 
+    distinct(total_prop_loss, .keep_all = TRUE) %>%
+    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
+    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+    geom_segment(aes(x = biome_x -(area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
+    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+    labs(x = "", y = "", title = "") +
+    geom_hline(yintercept = 0)+
+    theme_classic()+
+    theme(
+      text = element_text(size = 0),       # Adjusts the base font size
+      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+    )+
+    scale_x_discrete(labels = biome_labels)+
+    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "José Sarney - 5 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.016, -0.008, 0, 0.003) ,labels = c(-0.016, -0.008, 0, 0.003), limits = c(-0.016, 0.009))
+)
 
 
 
