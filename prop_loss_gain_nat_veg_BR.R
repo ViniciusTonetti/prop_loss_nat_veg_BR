@@ -160,6 +160,27 @@ for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
 }
 
+# Creating long data frames to don't repeat this part of the code each time
+
+mtx_loss_gain_long <- mtx %>%
+  select(-prop_loss_1985) %>% 
+  pivot_longer(cols = starts_with("prop_loss_"),  
+               names_to = "year",                 
+               names_prefix = "prop_loss_",      
+               values_to = "prop_loss") %>% 
+  filter(biome != "Pantanal", biome != "Pampa")
+
+
+mtx_rate$biome <- row.names(mtx_rate)
+  
+mtx_rate_long <- mtx_rate %>%
+  select(-rate_change_1985) %>% 
+  pivot_longer(cols = starts_with("rate_change_"),  
+               names_to = "year",                 
+               names_prefix = "rate_change_",      
+               values_to = "rate_change") %>% 
+  filter(biome != "Pantanal", biome != "Pampa")
+
 
 ################################################################################
 # Plotting the proportion of vegetation loss/gain ------------------------------
@@ -221,17 +242,6 @@ mtx[ ,"biome"] <- row.names(mtx)
 
 ################################################################################
 ## Plotting bar graphs per presidential terms ----------------------------------
-
-# Creating long data frame to don't repeat this part of the code each time
-
-mtx_loss_gain_long <- mtx %>%
-  select(-prop_loss_1985) %>% 
-  pivot_longer(cols = starts_with("prop_loss_"),  
-               names_to = "year",                 
-               names_prefix = "prop_loss_",      
-               values_to = "prop_loss") %>% 
-  filter(biome != "Pantanal", biome != "Pampa")
-
 
 # Informing percentage of area each biome occupy and creating biome labels
 
@@ -536,7 +546,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
@@ -587,7 +597,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     )+
     scale_x_discrete(labels = biome_labels)+
     annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-    scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+    scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                       labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                       limits = c(-0.0056, 0.0052))
 )
 
 
