@@ -163,29 +163,19 @@ for (i in 2:ncol(mtx_rate)) {
 ################################################################################
 # Plotting the proportion of vegetation loss/gain ------------------------------
 
-# Converting data from wider to longer
-mtx[ ,"biome"] <- row.names(mtx)
-
-mtx_longer <- mtx %>%
-  pivot_longer(
-    cols = starts_with("prop_loss_"),  
-    names_to = "year",                 
-    names_prefix = "prop_loss_",      
-    values_to = "prop_loss"           
-  )
-
-
-# Plotting the proportion of vegetation loss excluding Pantanal and Pampa ------
-
-mtx_longer_no_Pantanal_Pampa <- mtx_longer %>% 
-  filter(biome != "Pantanal", biome != "Pampa")
-
-
 biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
                   "Atlantic Forest" = "#DF5E1F")
 
+# Converting data from wider to longer
+mtx[ ,"biome"] <- row.names(mtx)
 
-ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_loss)) +
+(plot_prop_loss_gain <- mtx %>%
+  pivot_longer(cols = starts_with("prop_loss_"),  
+               names_to = "year",                 
+               names_prefix = "prop_loss_",      
+               values_to = "prop_loss") %>% 
+  filter(biome != "Pantanal", biome != "Pampa") %>%
+  ggplot(aes(x  = as.numeric(year), y= prop_loss)) +
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
   geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
@@ -219,6 +209,7 @@ ggplot(data = mtx_longer_no_Pantanal_Pampa, aes(x  = as.numeric(year), y= prop_l
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+)
 
 #ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
@@ -270,7 +261,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "José Sarney - 5 years", size = 5)+
    scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
 )
-
 
 
 # Collor -----------------------------------------------------------------------
