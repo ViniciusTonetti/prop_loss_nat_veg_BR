@@ -27,7 +27,8 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 MB <- readxl::read_excel(path = paste(input, "/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sep = ""), sheet = "COBERTURA_COL8.0", )
 
 
-# Filtering data ---------------------------------------------------------------
+# Checking and filtering data --------------------------------------------------
+################################################################################
 
 # Checking unique biome classes
 unique(MB$biome)
@@ -119,9 +120,10 @@ row.names(MB_sum) <- MB_sum[[1]]
 MB_sum <- MB_sum[,-1]
 
 
-# Calculating the proportional loss --------------------------------------------
+# Preparing data to plot ------------------------------------------------------
+################################################################################
 
-# First, creating an empty dataframe to be filled
+# First, creating an empty dataframe to be filled with the prop loss/gain of natural vegetation
 
 mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
 mtx <- as.data.frame(mtx)
@@ -130,22 +132,25 @@ row.names(mtx) <- row.names(MB_sum)
 colnames(mtx) <- paste("prop_loss_", 1986:2022, sep = "")
 
 
-# loop to fill the matrix
+# loop to fill the matrix with the prop loss/gain of natural vegetation
+
 for (i in 2:ncol(MB_sum)) {
   mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,"sum_1985"]
 }
 
 
 # Replacing Portuguese names to English names
+
 row.names(mtx)[which(row.names(mtx) == "Amazônia")] <- "Amazon"
 row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 
+# Filling the prop of loss/gain in 1985 with zeros
 mtx$prop_loss_1985 <- c(0, 0, 0, 0, 0, 0)
 
 mtx <- mtx[,paste("prop_loss_", 1985:2022, sep = "")]
 
 
-# Building a matrix for change in the rate
+# Filling the matrix with the change of rate gain/loss native vegetation
 
 mtx_rate <- mtx
 colnames(mtx_rate) <- paste("rate_change_", 1985:2022, sep = "")
