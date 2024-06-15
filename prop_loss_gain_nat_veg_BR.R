@@ -165,25 +165,26 @@ for (i in 2:ncol(mtx_rate)) {
 mtx$biome <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
+  filter(biome != "Pantanal", biome != "Pampa") %>% 
   select(-prop_loss_1985) %>% 
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
                names_prefix = "prop_loss_",      
-               values_to = "prop_loss") %>% 
-  filter(biome != "Pantanal", biome != "Pampa")
+               values_to = "prop_loss")
+  
 
 
 mtx_rate$biome <- row.names(mtx_rate)
   
 mtx_rate_long <- mtx_rate %>%
+  filter(biome != "Pantanal", biome != "Pampa") %>% 
   select(-rate_change_1985) %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
-               values_to = "rate_change") %>% 
-  filter(biome != "Pantanal", biome != "Pampa")
-
-
+               values_to = "rate_change") 
+  
+  
 ################################################################################
 # Plotting the proportion of vegetation loss/gain ------------------------------
 
@@ -229,7 +230,7 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -566,13 +567,12 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
   mutate(total_rate_change = sum(rate_change),
          median_total_rate_change = median(rate_change),
          num_years = n_distinct(year),
-         mean_rate_prop = total_rate_change/num_years,
+         mean_rate_prop = total_rate_change/(num_years-1), # For Sarney the mean should be calculated from 1986 - 1989 since values in 1985 are not being considered
          q1 = quantile(rate_change, probs = 0.25),
          q3 = quantile(rate_change, probs = 0.75)) %>%
   ungroup() %>% 
   mutate(biome_x = as.numeric(factor(biome))) %>% 
   left_join(biome_areas, by = "biome") %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
     distinct(total_rate_change, .keep_all = TRUE) %>%
     ggplot(aes(x = biome, y = mean_rate_prop)) +
     geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -589,9 +589,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     )+
     scale_x_discrete(labels = biome_labels)+
     annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-    scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                       labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                       limits = c(-0.0056, 0.0052))
+    scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                       labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                       limits = c(-0.0072, 0.0052))
 )
 
 
@@ -609,7 +609,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -626,9 +625,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
@@ -646,7 +645,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -663,9 +661,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
@@ -683,7 +681,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -700,9 +697,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
@@ -720,7 +717,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -737,9 +733,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Luís Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
@@ -757,7 +753,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -774,9 +769,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
@@ -794,7 +789,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -811,9 +805,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
@@ -831,7 +825,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
    left_join(biome_areas, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -848,18 +841,20 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
-                      limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0072, 0.0052))
 )
 
 
 ## Combining plots in a single plot
 
-(all_bar_charts_rate <- plot_grid(plot_rate_long_Sarney, plot_rate_long_Collor, plot_rate_long_Itamar, plot_rate_long_FHC,
-                                  plot_rate_long_Lula, plot_rate_long_Dilma, plot_rate_long_Temer, plot_rate_long_Bolsonaro,                                         labels = "", ncol = 4, nrow = 2))
+(all_bar_charts_rate <- plot_grid(plot_rate_long_Sarney, plot_rate_long_Collor, plot_rate_long_Itamar,
+                                  plot_rate_long_FHC, plot_rate_long_Lula, plot_rate_long_Dilma,
+                                  plot_rate_long_Temer, plot_rate_long_Bolsonaro,
+                                  labels = "", ncol = 4, nrow = 2))
 
-#ggsave(paste(output, "/4_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
+ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
