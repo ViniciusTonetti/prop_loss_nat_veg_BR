@@ -585,24 +585,24 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 # Sarney -----------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Sarney <- mtx_rate_long %>% 
+(plot_rate_long_Sarney <- mtx_rate_long %>% 
   filter(year >= 1985 & year < 1990) %>% 
   group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
+  mutate(total_rate_change = sum(rate_change),
+         median_total_rate_change = median(rate_change),
          num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-# Plot
-(bar_chart_rate_Sarney <- mtx_rate_long_Sarney %>%
+         mean_rate_prop = total_rate_change/num_years,
+         q1 = quantile(rate_change, probs = 0.25),
+         q3 = quantile(rate_change, probs = 0.75)) %>%
+  ungroup() %>% 
+  mutate(biome_x = as.numeric(factor(biome))) %>% 
+  left_join(biome_areas, by = "biome") %>%
     filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
+    distinct(total_rate_change, .keep_all = TRUE) %>%
     ggplot(aes(x = biome, y = mean_rate_prop)) +
     geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
+    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
     labs(x = "", y = "", title = "") +
     geom_hline(yintercept = 0)+
     theme_classic()+
@@ -613,258 +613,260 @@ mtx_rate_long_Sarney <- mtx_rate_long %>%
       plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "José Sarney - 5 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "José Sarney - 5 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
 
 
 # Collor -----------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Collor <- mtx_rate_long %>% 
-  filter(year >= 1990 & year <= 1992) %>% 
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
+(plot_rate_long_Collor <- mtx_rate_long %>% 
+   filter(year >= 1990 & year <= 1992) %>% 
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+)
 
-# Plot
-(bar_chart_rate_Collor <- mtx_rate_long_Collor %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Fernando Collor - 3 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
-  )
 
 # Itamar Franco ----------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Itamar_Franco <- mtx_rate_long %>% 
-  filter(year > 1992 & year < 1995) %>% 
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-# Plot
-(bar_chart_rate_Itamar_Franco <- mtx_rate_long_Itamar_Franco %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Itamar Franco - 2 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+(plot_rate_long_Itamar <- mtx_rate_long %>% 
+   filter(year > 1992 & year < 1995) %>% 
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
+
 
 # FHC --------------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_FHC <- mtx_rate_long %>% 
-  filter(year >= 1995 & year < 2003) %>% 
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-# Plot
-(bar_chart_rate_FHC <- mtx_rate_long_FHC %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Fernando Henrique Cardoso - 8 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+(plot_rate_long_FHC <- mtx_rate_long %>% 
+   filter(year >= 1995 & year < 2003) %>% 
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
-
 
 
 # Lula -------------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Lula <- mtx_rate_long %>% 
-  filter(year >= 2003 & year < 2011) %>%  
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-
-# Plot
-(bar_chart_rate_Lula <- mtx_rate_long_Lula %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Luis Inácio Lula da Silva - 8 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+(plot_rate_long_Lula <- mtx_rate_long %>% 
+   filter(year >= 2003 & year < 2011) %>%  
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Luís Inácio Lula da Silva - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
 
 
 # Dilma ------------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Dilma <- mtx_rate_long %>% 
-  filter(year >= 2011 & year < 2017) %>%  
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-# Plot
-(bar_chart_rate_Dilma <- mtx_rate_long_Dilma %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Dilma Rouseff - 6 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+(plot_rate_long_Dilma <- mtx_rate_long %>% 
+   filter(year >= 2011 & year < 2017) %>%   
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
+
 
 # Temer ------------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Temer <- mtx_rate_long %>% 
-  filter(year >= 2017 & year < 2019) %>% 
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-
-# Plot
-(bar_chart_rate_Temer <- mtx_rate_long_Temer %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Michel Temer - 2 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+(plot_rate_long_Temer <- mtx_rate_long %>% 
+   filter(year >= 2017 & year < 2019) %>%    
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
+
 
 # Bolsonaro --------------------------------------------------------------------
 
-# Filtering data
-mtx_rate_long_Bolsonaro <- mtx_rate_long %>% 
-  filter(year >= 2019 & year <= 2022) %>% 
-  group_by(biome) %>%
-  mutate(total_rate_loss = sum(rate_change),
-         iqr_rate_loss = IQR(rate_change),
-         median_total_rate_loss = median(rate_change),
-         num_years = n_distinct(year),
-         mean_rate_prop = total_rate_loss/num_years) %>% 
-  left_join(biome_areas, by = "biome")
-
-
-# Plot
-(bar_chart_rate_Bolsonaro <- mtx_rate_long_Bolsonaro %>%
-    filter(biome != "Pampa", biome != "Pantanal") %>% 
-    distinct(biome, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = total_rate_loss/num_years)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_errorbar(aes(ymin = median_total_rate_loss - (iqr_rate_loss / 2), ymax = median_total_rate_loss + (iqr_rate_loss / 2)), width = 0.1, color = "red", size = 0.6) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = 0.006, label = "Jair Bolsonaro - 4 years", size = 5, hjust = 1)+
-    scale_y_continuous(breaks = c(-0.0045, -0.002, 0, 0.003, 0.006) ,labels = c(-0.0045, -0.002, 0, 0.003, 0.006), limits = c(-0.0045, 0.006))
+(plot_rate_long_Bolsonaro <- mtx_rate_long %>% 
+   filter(year >= 2019 & year <= 2022) %>%    
+   group_by(biome) %>%
+   mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
+          num_years = n_distinct(year),
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
+   ungroup() %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
+   distinct(total_rate_change, .keep_all = TRUE) %>%
+   ggplot(aes(x = biome, y = mean_rate_prop)) +
+   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   labs(x = "", y = "", title = "") +
+   geom_hline(yintercept = 0)+
+   theme_classic()+
+   theme(
+     text = element_text(size = 0),       # Adjusts the base font size
+     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
+     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
+     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+   )+
+   scale_x_discrete(labels = biome_labels)+
+   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
 )
+
 
 ## Combining plots in a single plot
 
-(all_bar_charts_rate <- plot_grid(bar_chart_rate_Sarney, bar_chart_rate_Collor, bar_chart_rate_Itamar_Franco, bar_chart_rate_FHC, bar_chart_rate_Lula, bar_chart_rate_Dilma, bar_chart_rate_Temer, bar_chart_rate_Bolsonaro, labels = "", ncol = 4, nrow = 2))
+(all_bar_charts_rate <- plot_grid(plot_rate_long_Sarney, plot_rate_long_Collor, plot_rate_long_Itamar, plot_rate_long_FHC,
+                                  plot_rate_long_Lula, plot_rate_long_Dilma, plot_rate_long_Temer, plot_rate_long_Bolsonaro,                                         labels = "", ncol = 4, nrow = 2))
 
 #ggsave(paste(output, "/4_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
