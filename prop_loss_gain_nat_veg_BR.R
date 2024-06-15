@@ -217,17 +217,15 @@ mtx[ ,"biome"] <- row.names(mtx)
 ################################################################################
 ## Plotting bar graphs per presidential terms ----------------------------------
 
-# Informing percentage of area each biome occupy
+# Informing percentage of area each biome occupy and creating biome labels
 
 biome_areas <- tibble(
   biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
   area = c(49, 13, 24, 10, 2, 2)
 )
 
-
-## Plotting bar charts proportion loss/ gain -----------------------------------
-
 biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
+
 
 # Sarney -----------------------------------------------------------------------
 
