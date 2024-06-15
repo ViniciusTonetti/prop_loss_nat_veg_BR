@@ -34,24 +34,31 @@ unique(MB$biome)
 
 # Filtering, summarizing, and summing values for each year
 # First, checking classes considered natural vegetation
+
 # Checking level_1 class considering natural vegetation only
+
 MB %>% 
   filter(level_0 == "Natural") %>% 
   select(level_1) %>% 
   distinct()
 
-# excluding from level_1 class: "Water" 
+
+# excluding from level_1 class: "Water"
+
 MB <- MB %>% 
   filter(level_0 == "Natural") %>% 
   filter(level_1 != "5. Water")
 
 
 # Checking level_2 class
+
 MB %>% 
   select(level_2) %>% 
   distinct()
 
-# excluding from level_2 class: "Rocky outcrop", "Salt flat", "Beach and Dune"  
+
+# excluding from level_2 class: "Rocky outcrop", "Salt flat", "Beach and Dune", "Wetland", "Grassland", "Other Non Forest Natural Formation"
+
 MB <- MB %>% 
   filter(level_2 != "Rocky outcrop") %>% 
   filter(level_2 != "Salt flat") %>% 
@@ -62,14 +69,18 @@ MB <- MB %>%
 
 
 # Checking level_3 class
+
 MB %>% 
   select(level_3) %>% 
   distinct()
 
+
 # Checking level_4 class
+
 MB %>% 
   select(level_4) %>% 
   distinct()
+
 
 # Classes level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
 
@@ -84,7 +95,7 @@ MB %>%
 # "Other Non Forest Natural Formation"
 
 
-# Classes included in this analysis:
+# Classes considered in this analysis:
 # Forest Formation                  
 # Savanna Formation                 
 # Flooded Forest                    
