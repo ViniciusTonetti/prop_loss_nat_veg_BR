@@ -166,9 +166,12 @@ for (i in 2:ncol(mtx_rate)) {
 biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
                   "Atlantic Forest" = "#DF5E1F")
 
+
 # Converting data from wider to longer
 mtx[ ,"biome"] <- row.names(mtx)
 
+
+# plot -------------------------------------------------------------------------
 (plot_prop_loss_gain <- mtx %>%
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
@@ -518,10 +521,10 @@ biome_areas <- tibble(
 )
 
 
-
 ## Plotting bar charts rate proportion loss/ gain ------------------------------
 
 biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
+
 
 # Sarney -----------------------------------------------------------------------
 
