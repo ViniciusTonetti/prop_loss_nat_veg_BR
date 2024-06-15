@@ -11,6 +11,7 @@ rm(list = ls())
 library(tidyverse)
 library(readxl)
 library(cowplot)
+library(scales)
 
 
 # Directories ------------------------------------------------------------------
@@ -173,6 +174,7 @@ mtx[ ,"biome"] <- row.names(mtx)
 
 # plot -------------------------------------------------------------------------
 (plot_prop_loss_gain <- mtx %>%
+  select(-prop_loss_1985) %>% 
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
                names_prefix = "prop_loss_",      
@@ -220,6 +222,17 @@ mtx[ ,"biome"] <- row.names(mtx)
 ################################################################################
 ## Plotting bar graphs per presidential terms ----------------------------------
 
+# Creating long data frame to don't repeat this part of the code each time
+
+mtx_loss_gain_long <- mtx %>%
+  select(-prop_loss_1985) %>% 
+  pivot_longer(cols = starts_with("prop_loss_"),  
+               names_to = "year",                 
+               names_prefix = "prop_loss_",      
+               values_to = "prop_loss") %>% 
+  filter(biome != "Pantanal", biome != "Pampa")
+
+
 # Informing percentage of area each biome occupy and creating biome labels
 
 biome_areas <- tibble(
@@ -232,7 +245,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 # Sarney -----------------------------------------------------------------------
 
-(bar_chart_Sarney <- mtx_longer %>% 
+(bar_chart_Sarney <- mtx_loss_gain_long %>% 
   filter(year >= 1985 & year < 1990) %>% 
   group_by(biome) %>%
   mutate(total_prop_loss = sum(prop_loss),
@@ -247,8 +260,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     distinct(total_prop_loss, .keep_all = TRUE) %>%
     ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
     geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
     labs(x = "", y = "", title = "") +
     geom_hline(yintercept = 0)+
     theme_classic()+
@@ -260,13 +273,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     )+
     scale_x_discrete(labels = biome_labels)+
     annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      #labels = scales::scientific_format(), # testing how is to put labels in scientific notation
+                      limits = c(-0.015, 0.003))
 )
 
 
 # Collor -----------------------------------------------------------------------
 
-(bar_chart_Collor <- mtx_longer %>% 
+(bar_chart_Collor <- mtx_loss_gain_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -281,8 +297,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -294,13 +310,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      limits = c(-0.015, 0.003))
 )
 
 
 # Itamar Franco ----------------------------------------------------------------
 
-(bar_chart_Itamar <- mtx_longer %>% 
+(bar_chart_Itamar <- mtx_loss_gain_long %>% 
    filter(year > 1992 & year < 1995) %>% 
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -315,8 +333,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -328,13 +346,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      limits = c(-0.015, 0.003))
 )
 
 
 # FHC --------------------------------------------------------------------------
 
-(bar_chart_FHC <- mtx_longer %>% 
+(bar_chart_FHC <- mtx_loss_gain_long %>% 
    filter(year >= 1995 & year < 2003) %>%  
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -349,8 +369,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -362,13 +382,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003), 
+                      limits = c(-0.015, 0.003))
 )
 
 
 # Lula -------------------------------------------------------------------------
 
-(bar_chart_Lula <- mtx_longer %>% 
+(bar_chart_Lula <- mtx_loss_gain_long %>% 
    filter(year >= 2003 & year < 2011) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -383,8 +405,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -396,13 +418,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Luis Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      limits = c(-0.015, 0.003))
 )
 
 
 # Dilma ------------------------------------------------------------------------
 
-(bar_chart_Dilma<- mtx_longer %>% 
+(bar_chart_Dilma<- mtx_loss_gain_long %>% 
    filter(year >= 2011 & year < 2017) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -417,8 +441,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -430,13 +454,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      limits = c(-0.015, 0.003))
 )
 
 
 # Temer ------------------------------------------------------------------------
 
-(bar_chart_Temer <- mtx_longer %>% 
+(bar_chart_Temer <- mtx_loss_gain_long %>% 
    filter(year >= 2011 & year < 2017) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -451,8 +477,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -464,13 +490,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      limits = c(-0.015, 0.003))
 )
 
 
 # Bolsonaro --------------------------------------------------------------------
 
-(bar_chart_Bolsonaro <- mtx_longer %>% 
+(bar_chart_Bolsonaro <- mtx_loss_gain_long %>% 
    filter(year >= 2019 & year <= 2022) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -485,8 +513,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -498,7 +526,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.014, -0.008, 0, 0.003) ,labels = c(-0.014, -0.008, 0, 0.003), limits = c(-0.014, 0.003))
+   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
+                      labels = c(-0.015, -0.0075, 0, 0.003),
+                      limits = c(-0.015, 0.003))
 )
 
 
@@ -506,7 +536,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-#ggsave(paste(output, "/3_bar_charts_mean_prop_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
+ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
@@ -544,8 +574,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     distinct(total_rate_change, .keep_all = TRUE) %>%
     ggplot(aes(x = biome, y = mean_rate_prop)) +
     geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
     labs(x = "", y = "", title = "") +
     geom_hline(yintercept = 0)+
     theme_classic()+
@@ -579,8 +609,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -592,7 +622,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
@@ -614,8 +646,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -627,7 +659,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
@@ -649,8 +683,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -662,7 +696,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
@@ -684,8 +720,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -697,7 +733,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Luís Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
@@ -719,8 +757,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -732,7 +770,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
@@ -754,8 +794,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -767,7 +807,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
@@ -789,8 +831,8 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.6)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0, color = "red", size = 0.6) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -802,7 +844,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052) ,labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052), limits = c(-0.0056, 0.0052))
+   scale_y_continuous(breaks = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      labels = c(-0.0056, -0.0025, 0, 0.0025, 0.0052),
+                      limits = c(-0.0056, 0.0052))
 )
 
 
