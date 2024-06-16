@@ -201,6 +201,7 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
 # plot -------------------------------------------------------------------------
 
 # path to biomes shapefile
+# Biome delimitation used by MapBiomas downloaded from https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/15842-biomas.html?=&t=acesso-ao-produto (2019 version)
 
 biomes_shapefile <- st_read("D:/_Vinicius/Mapas/Biomas brasileiros/IBGE 2019/lm_bioma_250.shp")
 biomes_shapefile$Bioma <- c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal")
@@ -213,7 +214,7 @@ ggplot() +
   theme_void() +
   theme(legend.position = "none") 
 
-ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 300)
+#ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 300)
 
 
 # Line chart
@@ -255,7 +256,7 @@ ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -567,7 +568,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
@@ -882,7 +883,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
                                   plot_rate_long_Temer, plot_rate_long_Bolsonaro,
                                   labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 # Plotting coloured barplots ---------------------------------------------------
@@ -1208,6 +1209,6 @@ colors_presidents = c("gray80", "#DFE3E8",
 
 (all_bar_charts_prop_color <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/2_bar_charts_loss_gain_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/2_bar_charts_loss_gain_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
