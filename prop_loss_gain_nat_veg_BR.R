@@ -212,7 +212,8 @@ ggplot() +
   geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
   scale_fill_manual(values = biome_colors) +
   theme_void() +
-  theme(legend.position = "none") 
+  theme(legend.position = "none")+
+  annotation_scale(location = "bl", width_hint = 0.5)
 
 #ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 300)
 
