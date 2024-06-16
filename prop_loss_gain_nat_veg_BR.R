@@ -2,6 +2,10 @@
 # Vinicius Tonetti  - vrtonetti@gmail.com
 # ------------------------------------------------------------------------------
 
+# set R messages in English
+Sys.setenv(LANG = "en_US.UTF-8")
+
+
 # Cleaning directory
 rm(list = ls())
 
@@ -12,6 +16,8 @@ library(tidyverse)
 library(readxl)
 library(cowplot)
 library(scales)
+library(sf)
+library(ggspatial)
 
 
 # Directories ------------------------------------------------------------------
@@ -189,10 +195,29 @@ mtx_rate_long <- mtx_rate %>%
 # Plotting the proportion of vegetation loss/gain ------------------------------
 
 biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
-                  "Atlantic Forest" = "#DF5E1F")
+                  "Atlantic Forest" = "#DF5E1F", "Pampa" = "white", "Pantanal" = "white")
 
 
 # plot -------------------------------------------------------------------------
+
+# path to biomes shapefile
+
+biomes_shapefile <- st_read("D:/_Vinicius/Mapas/Biomas brasileiros/IBGE 2019/lm_bioma_250.shp")
+biomes_shapefile$Bioma <- c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal")
+
+# Map 
+
+ggplot() +
+  geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
+  scale_fill_manual(values = biome_colors) +
+  theme_void() +
+  theme(legend.position = "none") 
+
+ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 300)
+
+
+# Line chart
+
 (plot_prop_loss_gain <- mtx_loss_gain_long %>%
   ggplot(aes(x  = as.numeric(year), y= prop_loss)) +
   geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
@@ -230,7 +255,7 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
