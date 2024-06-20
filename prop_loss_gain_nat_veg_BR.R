@@ -265,9 +265,19 @@ ggplot() +
 
 # Informing percentage of area each biome occupy and creating biome labels
 
-biome_areas_original_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
-                                    area = c(49, 13, 24, 10, 2, 2)) # Original proportion each biome occupy
+# Original proportion each biome occupy
 
+biome_areas_original_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
+                                    area = c(49, 13, 24, 10, 2, 2))
+
+
+# Calculating proportion area biomes currently occupy
+
+current_dist_total <- sum(MB_sum[,ncol(MB_sum)])
+round((MB_sum[,ncol(MB_sum)]/current_total)*100, digits = 1)
+
+biome_areas_current_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
+                                   area = round((MB_sum[,ncol(MB_sum)]/current_total)*100, digits = 1))
 
 
 biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
@@ -285,7 +295,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -322,7 +332,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -360,7 +370,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -396,7 +406,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -432,7 +442,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -468,7 +478,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -504,7 +514,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -540,7 +550,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years)) +
@@ -587,7 +597,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
          q3 = quantile(rate_change, probs = 0.75)) %>%
   ungroup() %>% 
   mutate(biome_x = as.numeric(factor(biome))) %>% 
-  left_join(biome_areas_original_dist, by = "biome") %>%
+  left_join(biome_areas_current_dist, by = "biome") %>%
     distinct(total_rate_change, .keep_all = TRUE) %>%
     ggplot(aes(x = biome, y = mean_rate_prop)) +
     geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -623,7 +633,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -659,7 +669,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -695,7 +705,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -731,7 +741,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -767,7 +777,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -803,7 +813,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -839,7 +849,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop)) +
    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75", position = position_dodge(width = 0.1)) +
@@ -893,7 +903,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -932,7 +942,7 @@ colors_presidents = c("gray80", "#DFE3E8",
            q3 = quantile(prop_loss, probs = 0.75)) %>%
     ungroup() %>% 
     mutate(biome_x = as.numeric(factor(biome))) %>% 
-    left_join(biome_areas_original_dist, by = "biome") %>%
+    left_join(biome_areas_current_dist, by = "biome") %>%
     filter(biome != "Pampa", biome != "Pantanal") %>% 
     distinct(total_prop_loss, .keep_all = TRUE) %>%
     ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -971,7 +981,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -1010,7 +1020,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -1049,7 +1059,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -1088,7 +1098,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -1127,7 +1137,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
@@ -1166,7 +1176,7 @@ colors_presidents = c("gray80", "#DFE3E8",
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
    mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_original_dist, by = "biome") %>%
+   left_join(biome_areas_current_dist, by = "biome") %>%
    filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = total_prop_loss/num_years, fill = biome)) +
