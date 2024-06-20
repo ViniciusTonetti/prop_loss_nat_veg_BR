@@ -265,10 +265,8 @@ ggplot() +
 
 # Informing percentage of area each biome occupy and creating biome labels
 
-biome_areas <- tibble(
-  biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
-  area = c(49, 13, 24, 10, 2, 2)
-)
+biome_areas_original_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
+                                    area = c(49, 13, 24, 10, 2, 2)) # Original proportion
 
 biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
