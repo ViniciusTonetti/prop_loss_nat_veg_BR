@@ -266,7 +266,7 @@ ggplot() +
 # Informing percentage of area each biome occupy and creating biome labels
 
 biome_areas_original_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
-                                    area = c(49, 13, 24, 10, 2, 2)) # Original proportion
+                                    area = c(49, 13, 24, 10, 2, 2)) # Original proportion each biome occupy
 
 biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
@@ -571,19 +571,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 ################################################################################
 ## Plotting bar graphs rate of the prop loss/increase --------------------------
-
-# Informing percentage of area each biome occupy
-
-biome_areas <- tibble(
-  biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
-  area = c(49, 13, 24, 10, 2, 2)
-)
-
-
-## Plotting bar charts rate proportion loss/ gain ------------------------------
-
-biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
-
 
 # Sarney -----------------------------------------------------------------------
 
