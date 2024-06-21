@@ -306,10 +306,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
     annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "José Sarney - 5 years", size = 5)+
@@ -343,10 +343,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
@@ -379,10 +379,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
@@ -415,10 +415,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
@@ -451,10 +451,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
@@ -487,10 +487,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
@@ -523,10 +523,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
@@ -558,10 +558,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
@@ -588,7 +588,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
   group_by(biome) %>%
   mutate(total_rate_change = sum(rate_change),
          median_total_rate_change = median(rate_change),
-         num_years = n_distinct(year) - 1,
+         num_years = n_distinct(year) - 1, # For Sarney the mean should be calculated from 1986 - 1989 since values in 1985 are not being considered
          mean_rate_prop = total_rate_change/num_years, 
          q1 = quantile(rate_change, probs = 0.25),
          q3 = quantile(rate_change, probs = 0.75)) %>%
@@ -604,15 +604,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
     geom_hline(yintercept = 0)+
     theme_classic()+
     theme(
-      text = element_text(size = 0),       # Adjusts the base font size
-      axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-      axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-      plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+      text = element_text(size = 0),       
+      axis.title = element_text(size = 0), 
+      axis.text = element_text(size = 15),  
+      plot.title = element_text(size = 14)  
     )+
     scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-    scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                       labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+    annotate("text", x = 4.3, y = -0.0067, hjust = 1, label = "José Sarney - 5 years", size = 5)+
+    scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                       labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                        limits = c(-0.0072, 0.0052))
 )
 
@@ -640,15 +640,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
@@ -676,15 +676,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
@@ -712,15 +712,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
@@ -748,15 +748,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
@@ -784,15 +784,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
@@ -820,15 +820,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
@@ -856,15 +856,15 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
-     text = element_text(size = 0),       # Adjusts the base font size
-     axis.title = element_text(size = 0), # Adjusts the font size of axis titles
-     axis.text = element_text(size = 15),  # Adjusts the font size of axis text
-     plot.title = element_text(size = 14)  # Adjusts the font size of the plot title
+     text = element_text(size = 0),       
+     axis.title = element_text(size = 0), 
+     axis.text = element_text(size = 15),  
+     plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.004, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
-                      labels = c(-0.0072, -0.0025, 0, 0.0025, 0.0052),
+   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
+                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
                       limits = c(-0.0072, 0.0052))
 )
 
