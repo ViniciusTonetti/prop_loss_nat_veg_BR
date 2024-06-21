@@ -313,10 +313,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
     annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
                       #labels = scales::scientific_format(), # testing how is to put labels in scientific notation
-                      limits = c(-0.015, 0.003))
+                      limits = c(-0.017, 0.003))
 )
 
 
@@ -350,11 +350,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
-                      limits = c(-0.015, 0.003))+
-   scale_fill_manual(values = biome_colors) +
-   theme(legend.position = "none")
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
 
 
@@ -388,9 +386,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
-                      limits = c(-0.015, 0.003))
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
 
 
@@ -424,9 +422,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003), 
-                      limits = c(-0.015, 0.003))
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
 
 
@@ -460,9 +458,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
-                      limits = c(-0.015, 0.003))
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
 
 
@@ -496,9 +494,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
-                      limits = c(-0.015, 0.003))
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
 
 
@@ -532,11 +530,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
-                      limits = c(-0.015, 0.003))
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
-
 
 # Bolsonaro --------------------------------------------------------------------
 
@@ -568,9 +565,9 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.015, -0.0075, 0, 0.003),
-                      labels = c(-0.015, -0.0075, 0, 0.003),
-                      limits = c(-0.015, 0.003))
+   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
+                      labels = c(-0.017, -0.0085, 0, 0.003),
+                      limits = c(-0.017, 0.003))
 )
 
 
