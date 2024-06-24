@@ -215,6 +215,29 @@ ggplot() +
   theme(legend.position = "none")+
   annotation_scale(location = "bl", width_hint = 0.5)
 
+
+# Define the longitude and latitude limits for your data
+min_longitude <- -75
+max_longitude <- -35
+min_latitude <- -35
+max_latitude <- 5
+
+ggplot() +
+  geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
+  scale_fill_manual(values = biome_colors) +
+  scale_x_continuous(breaks = seq(min_longitude, max_longitude, by = 10)) +
+  scale_y_continuous(breaks = seq(min_latitude, max_latitude, by = 10)) +
+  theme_void() +
+  theme(
+    legend.position = "none",
+    panel.grid.major = element_line(color = "lightgray", size = 1),
+    axis.text = element_text(color = "gray50", margin = margin(t = 15, r = 15, b = 15, l = 15), size = 20),
+    axis.ticks = element_line(color = "gray50"),
+    plot.margin = unit(c(1, 1, 1, 1), "cm")
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.5) +
+  coord_sf(xlim = c(min_longitude, max_longitude), ylim = c(min_latitude, max_latitude), expand = FALSE)
+
 #ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 300)
 
 
