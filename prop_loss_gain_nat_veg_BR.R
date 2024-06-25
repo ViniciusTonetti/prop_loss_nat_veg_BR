@@ -609,7 +609,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -910,7 +910,7 @@ ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, heigh
                                   plot_rate_long_Temer, plot_rate_long_Bolsonaro,
                                   labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 # Plotting coloured barplots ---------------------------------------------------
@@ -1252,7 +1252,7 @@ colors_presidents <- c("#FFCCCC", "#FFFFE0",
 
 (all_bar_charts <- plot_grid(bar_chart_Sarney, bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/2_bar_charts_loss_gain_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/2_bar_charts_loss_gain_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
@@ -1576,7 +1576,7 @@ ggsave(paste(output, "/2_bar_charts_loss_gain_COLOR.png", sep = ""), width = 20,
                                   plot_rate_long_Temer, plot_rate_long_Bolsonaro,
                                   labels = "", ncol = 4, nrow = 2))
 
-ggsave(paste(output, "/3_bar_charts_rate_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/3_bar_charts_rate_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 
