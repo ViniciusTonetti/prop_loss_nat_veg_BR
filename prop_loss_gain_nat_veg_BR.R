@@ -23,7 +23,7 @@ library(ggspatial)
 # Directories ------------------------------------------------------------------
 
 input <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/data"
-output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/outputs"
+output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/outputs/prop_loss"
 
 
 # Loading data -----------------------------------------------------------------
