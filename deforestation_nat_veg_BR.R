@@ -31,14 +31,16 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 
 # https://brasil.mapbiomas.org/estatisticas/
 
-MB <- readxl::read_excel(path = paste(input, "/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sep = ""), sheet = "COBERTURA_COL8.0", )
+MB <- readxl::read_excel(path = paste(input, "/TABELA-DESMATAMENTO-E-VEGETACAO-SECUNDARIA-BIOMA-x-ESTADO-MAPBIOMAS-COL8.0-v2.xlsx", sep = ""), sheet = "PIVOT_STATE_BIOME", )
 
 
 # Checking and filtering data --------------------------------------------------
 ################################################################################
 
-# Checking unique biome classes
-unique(MB$biome)
+# Checking cols and rows
+colnames(MB)
+row.names(MB)
+
 
 # Filtering, summarizing, and summing values for each year
 # First, checking classes considered natural vegetation
