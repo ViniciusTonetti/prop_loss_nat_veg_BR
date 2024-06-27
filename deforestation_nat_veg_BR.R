@@ -82,108 +82,36 @@ unique(MB$level_2) # "Forest Formation", "Savanna Formation", "Flooded Forest"
 # Excluding classes - "Rocky outcrop", "Magrove", "Tidal Flat", "Other Non Forest Natural Formation"
 # According to MapBiomas legend - "Other Non Forest Natural Formation" correponds to "Outras Formações Naturais não florestais que não puderam ser categorizadas" IBGE classes - "Herbácea (Planícies fluviomarinhas)", "Vegetação com influência marinha (Restinga) Pm - Arbustiva (das dunas)", "Vegetação com influência marinha (Restinga) Pm - Herbácea (das praias)"
 
-  
-
-
-
-
-
-
-
-# Checking if values in the tab "STATE_BIOME" are the same in the tab "PIVOT_STATE_BIOME"
-
-MB %>% 
-  group_by(BIOME) %>% 
-  filter(dr_class_name == "Supressão Veg. Primária") %>% 
-  summarise(across(`1986`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Filtering, summarizing, and summing values for each year
-# First, checking classes considered natural vegetation
-
-# Checking level_1 class considering natural vegetation only
-
-MB %>% 
-  filter(level_0 == "Natural") %>% 
-  select(level_1) %>% 
-  distinct()
-
-
-# excluding from level_1 class: "Water"
 
 MB <- MB %>% 
-  filter(level_0 == "Natural") %>% 
-  filter(level_1 != "5. Water")
+  filter(!level_2 %in% c("Rocky outcrop", "Magrove",
+                         "Tidal Flat", "Other Non Forest Natural Formation"))
 
 
-# Checking level_2 class
+# Checking if it was excluded and other classes
 
-MB %>% 
-  select(level_2) %>% 
-  distinct()
+unique(MB$level_2)
+unique(MB$level_3)
+unique(MB$level_4)
 
-
-# excluding from level_2 class: "Rocky outcrop", "Salt flat", "Beach and Dune", "Wetland", "Grassland", "Other Non Forest Natural Formation"
-
-MB <- MB %>% 
-  filter(level_2 != "Rocky outcrop") %>% 
-  filter(level_2 != "Salt flat") %>% 
-  filter(level_2 != "Beach and Dune") %>% 
-  filter(level_2 != "Wetland") %>%
-  filter(level_2 != "Grassland") %>%
-  filter(level_2 != "Other Non Forest Natural Formation")
-
-
-# Checking level_3 class
-
-MB %>% 
-  select(level_3) %>% 
-  distinct()
-
-
-# Checking level_4 class
-
-MB %>% 
-  select(level_4) %>% 
-  distinct()
-
-
-# Classes level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
 
 # Land cover classes excluded:
 
-# Water
-# Rocky outcrop
-# Salt flat
-# Beach and Dune
-# "Wetland"
-# "Grassland"
-# "Other Non Forest Natural Formation"
+#"Rocky outcrop",
+#"Magrove"
+#"Tidal Flat"
+#"Other Non Forest Natural Formation"
 
 
-# Classes considered in this analysis:
-# Forest Formation                  
-# Savanna Formation                 
-# Flooded Forest                    
-# Magrove                           
-# Wooded Restinga                   
-# Restinga Herbácea/Arbustiva
+# Land cover classes considered in this analysis:
+
+#"Forest Formation"
+#"Savanna Formation"
+#"Flooded Forest"
+#"Wetland"
+#"Grassland"
+#"Wooded Restinga"  
+#"Shrub Restinga"   
 
 
 # Summing area values for the selected values above ----------------------------
