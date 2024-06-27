@@ -116,11 +116,13 @@ unique(MB$level_4)
 
 # Summing area values for the selected values above ----------------------------
 # Considering values from 1990 as suggested by Marcos Rosa, because first years of mapping are not reliable
+# Including year 1989 to consider the proportional increase/decrease of deforestation related to the first year,
+# this approach is similar to the calculation of the proportional loss/gain of native vegetation in the first year of analysis (1985)
 
 MB_sum <- MB %>% 
   group_by(BIOME) %>% 
   filter(dr_class_name == "Supressão Veg. Primária") %>% 
-  summarise(across(`1990`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+  summarise(across(`1989`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
 
 
 # converting from tibble to data frame to change row names
