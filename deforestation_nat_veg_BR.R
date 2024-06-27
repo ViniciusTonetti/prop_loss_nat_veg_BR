@@ -27,11 +27,11 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 
 
 # Loading data -----------------------------------------------------------------
-# Data downloaded on 30/05/2024 from MapBiomas collection 8 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES BIOMA & ESTADOS (COLEÇÃO 8) – dados de área (ha) de cobertura e uso da terra por bioma e estado de 1985 a 2022 (atualizada em 01/09/2023)
+# Data downloaded on 27/06/2024 from MapBiomas collection 8 from the tab "estatísticas" > DESMATAMENTO E VEGETAÇÃO SECUNDÁRIA (COLEÇÃO 8) –  dados de área (ha) de desmatamento e vegetação secundária por classe de cobertura para os recortes de bioma e estado de 1986 e 2022 (Versão 2, atualizada em 20/02/2024 com filtro espacial de 1ha)
 
 # https://brasil.mapbiomas.org/estatisticas/
 
-MB <- readxl::read_excel(path = paste(input, "/TABELA-DESMATAMENTO-E-VEGETACAO-SECUNDARIA-BIOMA-x-ESTADO-MAPBIOMAS-COL8.0-v2.xlsx", sep = ""), sheet = "PIVOT_STATE_BIOME", )
+MB <- readxl::read_excel(path = paste(input, "/TABELA-DESMATAMENTO-E-VEGETACAO-SECUNDARIA-BIOMA-x-ESTADO-MAPBIOMAS-COL8.0-v2.xlsx", sep = ""), sheet = "STATE_BIOME")
 
 
 # Checking and filtering data --------------------------------------------------
@@ -40,6 +40,78 @@ MB <- readxl::read_excel(path = paste(input, "/TABELA-DESMATAMENTO-E-VEGETACAO-S
 # Checking cols and rows
 colnames(MB)
 row.names(MB)
+
+
+# Checking if values in the tab "STATE_BIOME" are the same in the tab "PIVOT_STATE_BIOME"
+# Filtering below and comparing to the data in the spreadsheet, tab "PIVOT_STATE_BIOME"
+# Data is matching
+
+MB %>% 
+  group_by(BIOME) %>% 
+  filter(dr_class_name == "Supressão Veg. Primária") %>% 
+  summarise(across(`1986`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+
+
+# Checking each class
+
+unique(MB$dr_class_id)
+unique(MB$dr_class_name)
+unique(MB$class_id)
+unique(MB$level_1_id)
+unique(MB$level_2_id)
+unique(MB$level_3_id)
+unique(MB$level_4_id)
+unique(MB$level_0)    # "Natural", "Anthropic", "Not applied"
+
+# Filtering level_0 =  "Natural"
+
+MB <- MB %>% 
+  filter(level_0 == "Natural")
+
+
+# Checking each class
+
+unique(MB$level_1) # "1. Forest", "2. Non Forest Natural Formation"
+
+unique(MB$level_2) # "Forest Formation", "Savanna Formation", "Flooded Forest"                 
+                   # "Wetland", "Grassland", "Rocky outcrop"                     
+                   # "Magrove", "Tidal Flat", "Wooded Restinga"                   
+                   # "Shrub Restinga", "Other Non Forest Natural Formation"
+
+
+# Excluding classes - "Rocky outcrop", "Magrove", "Tidal Flat", "Other Non Forest Natural Formation"
+# According to MapBiomas legend - "Other Non Forest Natural Formation" correponds to "Outras Formações Naturais não florestais que não puderam ser categorizadas" IBGE classes - "Herbácea (Planícies fluviomarinhas)", "Vegetação com influência marinha (Restinga) Pm - Arbustiva (das dunas)", "Vegetação com influência marinha (Restinga) Pm - Herbácea (das praias)"
+
+  
+
+
+
+
+
+
+
+# Checking if values in the tab "STATE_BIOME" are the same in the tab "PIVOT_STATE_BIOME"
+
+MB %>% 
+  group_by(BIOME) %>% 
+  filter(dr_class_name == "Supressão Veg. Primária") %>% 
+  summarise(across(`1986`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Filtering, summarizing, and summing values for each year
