@@ -88,7 +88,7 @@ MB <- MB %>%
                          "Tidal Flat", "Other Non Forest Natural Formation"))
 
 
-# Checking if it was excluded and other classes
+# Checking if it was excluded and checking other classes
 
 unique(MB$level_2)
 unique(MB$level_3)
