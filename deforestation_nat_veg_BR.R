@@ -63,7 +63,7 @@ unique(MB$level_3_id)
 unique(MB$level_4_id)
 unique(MB$level_0)    # "Natural", "Anthropic", "Not applied"
 
-# Filtering level_0 =  "Natural"
+# Filtering to only consider level_0 = "Natural"
 
 MB <- MB %>% 
   filter(level_0 == "Natural")
@@ -117,9 +117,9 @@ unique(MB$level_4)
 # Summing area values for the selected values above ----------------------------
 
 MB_sum <- MB %>% 
-  filter(level_0 == "Natural") %>% 
-  group_by(biome) %>%
-  summarise(across(`1985`:`2022`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+  group_by(BIOME) %>% 
+  filter(dr_class_name == "Supressão Veg. Primária") %>% 
+  summarise(across(`1986`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
 
 
 # converting from tibble to data frame to change row names
