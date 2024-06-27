@@ -1,4 +1,4 @@
-# Code to create curves of proportional loss of native vegetation in Brazil through presidential terms since 1985
+# Code to create curves of proportional deforestation of native vegetation in Brazil through presidential terms
 # Vinicius Tonetti  - vrtonetti@gmail.com
 # ------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ library(ggspatial)
 # Directories ------------------------------------------------------------------
 
 input <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/data"
-output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/outputs"
+output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/outputs/prop_deforestation"
 
 
 # Loading data -----------------------------------------------------------------
