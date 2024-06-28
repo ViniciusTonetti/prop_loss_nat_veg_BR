@@ -181,9 +181,17 @@ mtx_rate_long <- mtx_rate %>%
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
-               values_to = "rate_change") 
+               values_to = "rate_change")
+
+# Excluding data before 1990
+
+mtx_loss_gain_long <- mtx_loss_gain_long %>%
+                        filter(!year < 1990)
+
+mtx_rate_long <- mtx_rate_long %>% 
+                  filter(!year < 1990)
   
-  
+
 ################################################################################
 # Plotting the proportion of vegetation loss/gain ------------------------------
 
