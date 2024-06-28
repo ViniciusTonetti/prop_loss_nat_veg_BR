@@ -178,7 +178,6 @@ mtx_rate$biome <- row.names(mtx_rate)
   
 mtx_rate_long <- mtx_rate %>%
   filter(biome != "Pantanal", biome != "Pampa") %>% 
-  select(-rate_change_1985) %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
