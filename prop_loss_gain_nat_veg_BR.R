@@ -142,7 +142,7 @@ colnames(mtx) <- paste("prop_loss_", 1986:2022, sep = "")
 # loop to fill the matrix with the prop loss/gain of natural vegetation
 
 for (i in 2:ncol(MB_sum)) {
-  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,"sum_1985"]
+  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,i-1] # proportional loss in relation to the previous year
 }
 
 
@@ -150,9 +150,6 @@ for (i in 2:ncol(MB_sum)) {
 
 row.names(mtx)[which(row.names(mtx) == "Amazônia")] <- "Amazon"
 row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
-
-# Filling the prop of loss/gain in 1985 with zeros
-mtx$prop_loss_1985 <- c(0, 0, 0, 0, 0, 0)
 
 mtx <- mtx[,paste("prop_loss_", 1985:2022, sep = "")]
 
