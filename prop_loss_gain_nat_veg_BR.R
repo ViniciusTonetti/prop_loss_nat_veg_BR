@@ -302,43 +302,6 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 # Gray and white plots 
 
 # Mean proportion loss/gains
-# Sarney -----------------------------------------------------------------------
-
-(bar_chart_Sarney <- mtx_loss_gain_long %>% 
-  filter(year >= 1985 & year < 1990) %>% 
-   group_by(biome) %>%
-   mutate(total_prop_loss = sum(prop_loss),
-          median_total_prop_loss = median(prop_loss),
-          num_years = n_distinct(year) - 1, # For Sarney the mean should be calculated from 1986 - 1989 since values in 1985 are not being considered
-          mean_rate_prop = total_prop_loss/num_years,
-          q1 = quantile(prop_loss, probs = 0.25),
-          q3 = quantile(prop_loss, probs = 0.75)) %>%
-   ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_current_dist, by = "biome") %>%
-   filter(biome != "Pampa", biome != "Pantanal") %>% 
-   distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) + 
-   geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75") +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
-   labs(x = "", y = "", title = "") +
-   geom_hline(yintercept = 0)+
-   theme_classic()+
-   theme(
-     text = element_text(size = 0),       
-     axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
-   )+
-   scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = -0.013, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.017, -0.0085, 0, 0.003),
-                      labels = c(-0.017, -0.0085, 0, 0.003),
-                      #labels = scales::scientific_format(), # testing how is to put labels in scientific notation
-                      limits = c(-0.017, 0.003))
-)
-
 
 # Collor -----------------------------------------------------------------------
 
