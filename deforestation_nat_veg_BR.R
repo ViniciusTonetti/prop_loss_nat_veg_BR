@@ -197,7 +197,7 @@ mtx_defo_rate_long <- mtx_rate %>%
 # Plotting the proportion of deforestation -------------------------------------
 
 biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
-                  "Atlantic Forest" = "#DF5E1F", "Pampa" = "white", "Pantanal" = "white")
+                  "Atlantic Forest" = "#DF5E1F", "Pampa" = "blue", "Pantanal" = "black")
 
 
 # plot -------------------------------------------------------------------------
@@ -247,7 +247,6 @@ ggplot() +
 
 (plot_prop_deforestation <- mtx_defo_long %>%
   ggplot(aes(x  = as.numeric(year), y= prop_defo)) +
-  geom_rect(aes(xmin = 1987.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
   geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
@@ -282,7 +281,7 @@ ggplot() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_defo_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
