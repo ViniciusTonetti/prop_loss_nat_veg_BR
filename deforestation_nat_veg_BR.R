@@ -347,10 +347,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.15, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.2),
-                      labels = c(-0.32, 0, 0.2),
-                      limits = c(-0.32, 0.2))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
+                      labels = c(-0.32, 0, 0.32),
+                      limits = c(-0.32, 0.32))
 )
 
 
@@ -384,10 +384,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.15, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.2),
-                      labels = c(-0.32, 0, 0.2),
-                      limits = c(-0.32, 0.2))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
+                      labels = c(-0.32, 0, 0.32),
+                      limits = c(-0.32, 0.32))
 )
 
 
@@ -421,7 +421,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.2, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
    scale_y_continuous(breaks = c(-0.32, 0, 0.32),
                       labels = c(-0.32, 0, 0.32),
                       limits = c(-0.32, 0.32))
@@ -458,7 +458,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.2, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
    scale_y_continuous(breaks = c(-0.32, 0, 0.32),
                       labels = c(-0.32, 0, 0.32),
                       limits = c(-0.32, 0.32))
@@ -495,7 +495,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.2, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
    scale_y_continuous(breaks = c(-0.32, 0, 0.32),
                       labels = c(-0.32, 0, 0.32),
                       limits = c(-0.32, 0.32))
@@ -532,7 +532,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.2, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
    scale_y_continuous(breaks = c(-0.32, 0, 0.32),
                       labels = c(-0.32, 0, 0.32),
                       limits = c(-0.32, 0.32))
@@ -568,7 +568,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.2, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Jair Bolsonaro - 3 years", size = 5)+
    scale_y_continuous(breaks = c(-0.32, 0, 0.32),
                       labels = c(-0.32, 0, 0.32),
                       limits = c(-0.32, 0.32))
@@ -587,7 +587,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 # Collor -----------------------------------------------------------------------
 
-(plot_rate_long_Collor <- mtx_rate_long %>% 
+(plot_rate_long_Collor <- mtx_defo_rate_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -614,16 +614,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                      labels = c(-0.3, 0, 0.33),
+                      limits = c(-0.3, 0.33))
 )
 
 
 # Itamar Franco ----------------------------------------------------------------
 
-(plot_rate_long_Itamar <- mtx_rate_long %>% 
+(plot_rate_long_Itamar <- mtx_defo_rate_long %>% 
    filter(year > 1992 & year < 1995) %>% 
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -650,16 +650,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                      labels = c(-0.3, 0, 0.33),
+                      limits = c(-0.3, 0.33))
 )
 
 
 # FHC --------------------------------------------------------------------------
 
-(plot_rate_long_FHC <- mtx_rate_long %>% 
+(plot_rate_long_FHC <- mtx_defo_rate_long %>% 
    filter(year >= 1995 & year < 2003) %>% 
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -686,16 +686,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                      labels = c(-0.3, 0, 0.33),
+                      limits = c(-0.3, 0.33))
 )
 
 
 # Lula -------------------------------------------------------------------------
 
-(plot_rate_long_Lula <- mtx_rate_long %>% 
+(plot_rate_long_Lula <- mtx_defo_rate_long %>% 
    filter(year >= 2003 & year < 2011) %>%  
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -722,16 +722,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                      labels = c(-0.3, 0, 0.33),
+                      limits = c(-0.3, 0.33))
 )
 
 
 # Dilma ------------------------------------------------------------------------
 
-(plot_rate_long_Dilma <- mtx_rate_long %>% 
+(plot_rate_long_Dilma <- mtx_defo_rate_long %>% 
    filter(year >= 2011 & year < 2017) %>%   
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -758,16 +758,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                      labels = c(-0.3, 0, 0.33),
+                      limits = c(-0.3, 0.33))
 )
 
 
 # Temer ------------------------------------------------------------------------
 
-(plot_rate_long_Temer <- mtx_rate_long %>% 
+(plot_rate_long_Temer <- mtx_defo_rate_long %>% 
    filter(year >= 2017 & year < 2019) %>%    
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -794,16 +794,16 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                      labels = c(-0.3, 0, 0.33),
+                      limits = c(-0.3, 0.33))
 )
 
 
 # Bolsonaro --------------------------------------------------------------------
 
-(plot_rate_long_Bolsonaro <- mtx_rate_long %>% 
+(plot_rate_long_Bolsonaro <- mtx_defo_rate_long %>% 
    filter(year >= 2019 & year <= 2022) %>%    
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -830,10 +830,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Jair Bolsonaro - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
+                       labels = c(-0.3, 0, 0.33),
+                       limits = c(-0.3, 0.33))
 )
 
 
