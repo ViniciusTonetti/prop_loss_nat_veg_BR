@@ -103,7 +103,7 @@ unique(MB$level_4)
 #"Other Non Forest Natural Formation"
 
 
-# Land cover classes considered in this analysis:
+# Land cover classes considered in this analysis (Primary cover only):
 
 #"Forest Formation"
 #"Savanna Formation"
@@ -157,10 +157,12 @@ row.names(mtx)[which(row.names(mtx) == "Amazônia")] <- "Amazon"
 row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 
 
-# Filling the matrix with the change of rate gain/loss native vegetation
+# Filling the matrix with the change of deforestation
 
 mtx_rate <- mtx
-colnames(mtx_rate) <- paste("rate_change_", 1990:2021, sep = "")
+colnames(mtx_rate) <- paste("rate_change_", 1987:2021, sep = "")
+mtx_rate[,] <- NA # filling the data frame with NA just to erase previous values
+
 
 for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
@@ -170,21 +172,21 @@ for (i in 2:ncol(mtx_rate)) {
 
 mtx$biome <- row.names(mtx)
 
-mtx_loss_gain_long <- mtx %>%
-  filter(biome != "Pantanal", biome != "Pampa") %>% 
-  select(-prop_loss_1985) %>% 
-  pivot_longer(cols = starts_with("prop_loss_"),  
+mtx_defo_long <- mtx %>%
+  #filter(biome != "Pantanal", biome != "Pampa") %>% # First considering all biomes
+   select(-c("prop_defo_1987", "prop_defo_1988", "prop_defo_1989")) %>% 
+   pivot_longer(cols = starts_with("prop_defo_"),  
                names_to = "year",                 
-               names_prefix = "prop_loss_",      
-               values_to = "prop_loss")
+               names_prefix = "prop_defo_",      
+               values_to = "prop_defo")
   
 
 
 mtx_rate$biome <- row.names(mtx_rate)
   
-mtx_rate_long <- mtx_rate %>%
-  filter(biome != "Pantanal", biome != "Pampa") %>% 
-  select(-rate_change_1985) %>% 
+mtx_defo_rate_long <- mtx_rate %>%
+  #filter(biome != "Pantanal", biome != "Pampa") %>% # First considering all biomes
+  select(-c("rate_change_1987", "rate_change_1988", "rate_change_1989")) %>%  
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
@@ -192,7 +194,7 @@ mtx_rate_long <- mtx_rate %>%
   
   
 ################################################################################
-# Plotting the proportion of vegetation loss/gain ------------------------------
+# Plotting the proportion of deforestation -------------------------------------
 
 biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
                   "Atlantic Forest" = "#DF5E1F", "Pampa" = "white", "Pantanal" = "white")
@@ -243,9 +245,9 @@ ggplot() +
 
 # Line chart
 
-(plot_prop_loss_gain <- mtx_loss_gain_long %>%
-  ggplot(aes(x  = as.numeric(year), y= prop_loss)) +
-  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
+(plot_prop_deforestation <- mtx_defo_long %>%
+  ggplot(aes(x  = as.numeric(year), y= prop_defo)) +
+  geom_rect(aes(xmin = 1987.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
   geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
