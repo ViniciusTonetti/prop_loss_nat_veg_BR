@@ -155,7 +155,7 @@ row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 # Filling the matrix with the change of rate gain/loss native vegetation
 
 mtx_rate <- mtx
-colnames(mtx_rate) <- paste("rate_change_", 1985:2022, sep = "")
+colnames(mtx_rate) <- paste("rate_change_", 1986:2022, sep = "")
 
 for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
@@ -167,7 +167,6 @@ mtx$biome <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
   filter(biome != "Pantanal", biome != "Pampa") %>% 
-  select(-prop_loss_1985) %>% 
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
                names_prefix = "prop_loss_",      
