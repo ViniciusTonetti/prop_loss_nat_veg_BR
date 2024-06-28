@@ -122,7 +122,7 @@ unique(MB$level_4)
 MB_sum <- MB %>% 
   group_by(BIOME) %>% 
   filter(dr_class_name == "Supressão Veg. Primária") %>% 
-  summarise(across(`1989`:`2021`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+  summarise(across(`1986`:`2021`, ~sum(.x, na.rm = TRUE), .names = "defo_{.col}"))
 
 
 # converting from tibble to data frame to change row names
@@ -135,19 +135,19 @@ MB_sum <- MB_sum[,-1]
 # Preparing data to plot ------------------------------------------------------
 ################################################################################
 
-# First, creating an empty dataframe to be filled with the prop loss/gain of natural vegetation
+# First, creating an empty dataframe to be filled with the prop deforestation
 
 mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
 mtx <- as.data.frame(mtx)
 
 row.names(mtx) <- row.names(MB_sum)
-colnames(mtx) <- paste("prop_loss_", 1986:2022, sep = "")
+colnames(mtx) <- paste("prop_defo_", 1987:2021, sep = "")
 
 
-# loop to fill the matrix with the prop loss/gain of natural vegetation
+# loop to fill the matrix with the prop deforestation of natural vegetation
 
 for (i in 2:ncol(MB_sum)) {
-  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,"sum_1985"]
+  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,"defo_1989"]
 }
 
 
@@ -156,16 +156,11 @@ for (i in 2:ncol(MB_sum)) {
 row.names(mtx)[which(row.names(mtx) == "Amazônia")] <- "Amazon"
 row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 
-# Filling the prop of loss/gain in 1985 with zeros
-mtx$prop_loss_1985 <- c(0, 0, 0, 0, 0, 0)
-
-mtx <- mtx[,paste("prop_loss_", 1985:2022, sep = "")]
-
 
 # Filling the matrix with the change of rate gain/loss native vegetation
 
 mtx_rate <- mtx
-colnames(mtx_rate) <- paste("rate_change_", 1985:2022, sep = "")
+colnames(mtx_rate) <- paste("rate_change_", 1990:2021, sep = "")
 
 for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
