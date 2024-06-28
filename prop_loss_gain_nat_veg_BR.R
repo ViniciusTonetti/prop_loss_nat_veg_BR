@@ -151,8 +151,6 @@ for (i in 2:ncol(MB_sum)) {
 row.names(mtx)[which(row.names(mtx) == "Amazônia")] <- "Amazon"
 row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 
-mtx <- mtx[,paste("prop_loss_", 1985:2022, sep = "")]
-
 
 # Filling the matrix with the change of rate gain/loss native vegetation
 
