@@ -173,7 +173,7 @@ for (i in 2:ncol(mtx_rate)) {
 mtx$biome <- row.names(mtx)
 
 mtx_defo_long <- mtx %>%
-  #filter(biome != "Pantanal", biome != "Pampa") %>% # First considering all biomes
+   filter(biome != "Pantanal", biome != "Pampa") %>% # Excluding Pantanal and Pampa
    select(-c("prop_defo_1987", "prop_defo_1988", "prop_defo_1989")) %>% 
    pivot_longer(cols = starts_with("prop_defo_"),  
                names_to = "year",                 
@@ -185,7 +185,7 @@ mtx_defo_long <- mtx %>%
 mtx_rate$biome <- row.names(mtx_rate)
   
 mtx_defo_rate_long <- mtx_rate %>%
-  #filter(biome != "Pantanal", biome != "Pampa") %>% # First considering all biomes
+  filter(biome != "Pantanal", biome != "Pampa") %>% # Excluding Pantanal and Pampa
   select(-c("rate_change_1987", "rate_change_1988", "rate_change_1989")) %>%  
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
@@ -281,7 +281,7 @@ ggplot() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-#ggsave(paste(output, "/1_prop_defo_all_biomes.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_defo_excl_Pantanal_Pampa.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
