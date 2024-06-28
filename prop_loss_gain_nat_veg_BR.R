@@ -238,7 +238,6 @@ ggplot() +
 
 (plot_prop_loss_gain <- mtx_loss_gain_long %>%
   ggplot(aes(x  = as.numeric(year), y= prop_loss)) +
-  geom_rect(aes(xmin = 1985.2, xmax = 1989.8, ymin = -Inf, ymax = Inf, fill = as.factor("José Sarney")), colour = NA) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
   geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
@@ -265,8 +264,8 @@ ggplot() +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   scale_x_continuous(
-    breaks = c(1985, 1990, 1993, 1995, 2003, 2011, 2016.9, 2019, 2022),
-    labels = c("1985", "1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
+    breaks = c(1990, 1993, 1995, 2003, 2011, 2016.9, 2019, 2022),
+    labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
