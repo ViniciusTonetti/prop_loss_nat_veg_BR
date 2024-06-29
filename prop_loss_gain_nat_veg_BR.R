@@ -570,54 +570,18 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 
 ## Combining plots in a single plot
 
-all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, 
+(all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, 
                                       nrow = 1, ncol = 4),
                             plot_grid(NULL, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, NULL, 
                              rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
                             nrow = 2
-                            )
+                            ))
   
 #ggsave(paste(output, "/2_bar_charts_loss_gain.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 ################################################################################
 ## Plotting bar graphs rate of the prop loss/increase --------------------------
-
-# Sarney -----------------------------------------------------------------------
-
-(plot_rate_long_Sarney <- mtx_rate_long %>% 
-  filter(year >= 1985 & year < 1990) %>% 
-  group_by(biome) %>%
-  mutate(total_rate_change = sum(rate_change),
-         median_total_rate_change = median(rate_change),
-         num_years = n_distinct(year) - 1, # For Sarney the mean should be calculated from 1986 - 1989 since values in 1985 are not being considered
-         mean_rate_prop = total_rate_change/num_years, 
-         q1 = quantile(rate_change, probs = 0.25),
-         q3 = quantile(rate_change, probs = 0.75)) %>%
-  ungroup() %>% 
-  mutate(biome_x = as.numeric(factor(biome))) %>% 
-  left_join(biome_areas_current_dist, by = "biome") %>%
-    distinct(total_rate_change, .keep_all = TRUE) %>%
-    ggplot(aes(x = biome, y = mean_rate_prop)) +
-    geom_bar(stat = "identity", aes(width = area / max(area)), fill = "gray75") +
-    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
-    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "red", size = 0.9) +
-    labs(x = "", y = "", title = "") +
-    geom_hline(yintercept = 0)+
-    theme_classic()+
-    theme(
-      text = element_text(size = 0),       
-      axis.title = element_text(size = 0), 
-      axis.text = element_text(size = 15),  
-      plot.title = element_text(size = 14)  
-    )+
-    scale_x_discrete(labels = biome_labels)+
-    annotate("text", x = 4.3, y = -0.0067, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-    scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                       labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                       limits = c(-0.0072, 0.0052))
-)
-
 
 # Collor -----------------------------------------------------------------------
 
@@ -648,10 +612,10 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
@@ -684,10 +648,10 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 2.8, y = 0.0054, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
@@ -720,10 +684,10 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
@@ -756,10 +720,10 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
@@ -792,10 +756,10 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
@@ -828,10 +792,10 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
@@ -864,19 +828,23 @@ all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_ch
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0055, hjust = 1, label = "Jair Bolsonaro - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))
+   annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
+                      labels = c(-0.0025, 0, 0.0027, 0.0054),
+                      limits = c(-0.0025, 0.0054))
 )
 
 
 ## Combining plots in a single plot
 
-(all_bar_charts_rate <- plot_grid(plot_rate_long_Sarney, plot_rate_long_Collor, plot_rate_long_Itamar,
-                                  plot_rate_long_FHC, plot_rate_long_Lula, plot_rate_long_Dilma,
-                                  plot_rate_long_Temer, plot_rate_long_Bolsonaro,
-                                  labels = "", ncol = 4, nrow = 2))
+(all_bar_charts <- plot_grid(plot_grid(plot_rate_long_Collor, plot_rate_long_Itamar, 
+                                       plot_rate_long_FHC, plot_rate_long_Lula, 
+                                       nrow = 1, ncol = 4),
+                             plot_grid(NULL, plot_rate_long_Dilma, plot_rate_long_Temer, 
+                                       plot_rate_long_Bolsonaro, NULL, 
+                                       rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
+                             nrow = 2
+))
 
 #ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
