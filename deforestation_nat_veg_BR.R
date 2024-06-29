@@ -622,10 +622,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                      labels = c(-0.3, 0, 0.33),
-                      limits = c(-0.3, 0.33))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
@@ -658,10 +658,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                      labels = c(-0.3, 0, 0.33),
-                      limits = c(-0.3, 0.33))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
@@ -694,10 +694,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                      labels = c(-0.3, 0, 0.33),
-                      limits = c(-0.3, 0.33))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
@@ -730,10 +730,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                      labels = c(-0.3, 0, 0.33),
-                      limits = c(-0.3, 0.33))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
@@ -766,10 +766,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                      labels = c(-0.3, 0, 0.33),
-                      limits = c(-0.3, 0.33))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
@@ -802,10 +802,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                      labels = c(-0.3, 0, 0.33),
-                      limits = c(-0.3, 0.33))
+   annotate("text", x = 2.3, y = 0.7, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
@@ -838,21 +838,25 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Jair Bolsonaro - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.3, 0, 0.33),
-                       labels = c(-0.3, 0, 0.33),
-                       limits = c(-0.3, 0.33))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Jair Bolsonaro - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.7, 0, 0.72),
+                      labels = c(-0.7, 0, 0.72),
+                      limits = c(-0.7, 0.72))
 )
 
 
 ## Combining plots in a single plot
 
-(all_bar_charts_rate <- plot_grid(plot_rate_long_Collor, plot_rate_long_Itamar,
-                                  plot_rate_long_FHC, plot_rate_long_Lula, plot_rate_long_Dilma,
-                                  plot_rate_long_Temer, plot_rate_long_Bolsonaro,
-                                  labels = "", ncol = 4, nrow = 2))
+(all_bar_charts <- plot_grid(plot_grid(plot_rate_long_Collor, plot_rate_long_Itamar, 
+                                       plot_rate_long_FHC, plot_rate_long_Lula, 
+                                       nrow = 1, ncol = 4),
+                             plot_grid(NULL, plot_rate_long_Dilma, plot_rate_long_Temer, 
+                                       plot_rate_long_Bolsonaro, NULL, 
+                                       rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
+                             nrow = 2
+))
 
-#ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
+#ggsave(paste(output, "/3_bar_charts_rate_defo_t-1.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 # Plotting coloured barplots ---------------------------------------------------
