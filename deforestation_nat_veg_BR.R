@@ -156,7 +156,7 @@ colnames(mtx) <- paste("prop_defo_", 1987:2021, sep = "")
 # loop to fill the matrix with the prop deforestation of natural vegetation
 
 for (i in 2:ncol(MB_sum)) {
-  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,"defo_1989"]
+  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,i-1]
 }
 
 
@@ -285,7 +285,7 @@ ggplot() +
     breaks = c(1985, 1990, 1993, 1995, 2003, 2011, 2016.9, 2019, 2022),
     labels = c("1985", "1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
   xlab("Year") + 
-  ylab("Proportional gains or losses of native vegetation") + 
+  ylab("Proportional deforestation of primary vegetation") + 
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
