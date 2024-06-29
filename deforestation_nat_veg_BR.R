@@ -859,6 +859,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 #ggsave(paste(output, "/3_bar_charts_rate_defo_t-1.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
+
 # Plotting coloured barplots ---------------------------------------------------
 ################################################################################
 
