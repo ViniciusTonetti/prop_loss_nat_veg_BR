@@ -347,10 +347,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 
@@ -384,10 +384,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 
@@ -421,10 +421,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 
@@ -458,10 +458,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 
@@ -495,10 +495,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 
@@ -532,10 +532,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 2.5, y = 0.7, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 # Bolsonaro --------------------------------------------------------------------
@@ -568,22 +568,30 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
      plot.title = element_text(size = 14)  
    )+
    scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = 0.25, hjust = 1, label = "Jair Bolsonaro - 3 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.32, 0, 0.32),
-                      labels = c(-0.32, 0, 0.32),
-                      limits = c(-0.32, 0.32))
+   annotate("text", x = 4.3, y = 0.7, hjust = 1, label = "Jair Bolsonaro - 3 years", size = 5)+
+   scale_y_continuous(breaks = c(-0.58, 0, 0.7),
+                      labels = c(-0.58, 0, 0.7),
+                      limits = c(-0.58, 0.7))
 )
 
 
 ## Combining plots in a single plot
 
-(all_bar_charts <- plot_grid(bar_chart_Collor, bar_chart_Itamar, bar_chart_FHC, bar_chart_Lula, bar_chart_Dilma, bar_chart_Temer, bar_chart_Bolsonaro, labels = "", ncol = 4, nrow = 2))
 
-#ggsave(paste(output, "/2_bar_charts_mean_prop_defo.png", sep = ""), width = 20, height = 7, dpi = 300)
+(all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, 
+                                       bar_chart_FHC, bar_chart_Lula, 
+                                       nrow = 1, ncol = 4),
+                             plot_grid(NULL, bar_chart_Dilma, bar_chart_Temer, 
+                                       bar_chart_Bolsonaro, NULL, 
+                                       rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
+                             nrow = 2
+))
+
+#ggsave(paste(output, "/2_bar_charts_mean_prop_defo_t-1.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
 ################################################################################
-## Plotting bar graphs rate of the prop loss/increase --------------------------
+## Plotting bar graphs rate of the prop deforestation --------------------------
 
 # Collor -----------------------------------------------------------------------
 
