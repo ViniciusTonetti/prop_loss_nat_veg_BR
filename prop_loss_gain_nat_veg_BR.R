@@ -1160,45 +1160,6 @@ colors_presidents <- c("#FFCCCC", "#FFFFE0",
 # Rate of change ---------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
-# Sarney -----------------------------------------------------------------------
-
-(plot_rate_long_Sarney <- mtx_rate_long %>% 
-   filter(year >= 1985 & year < 1990) %>% 
-   group_by(biome) %>%
-   mutate(total_rate_change = sum(rate_change),
-          median_total_rate_change = median(rate_change),
-          num_years = n_distinct(year) - 1, # For Sarney the mean should be calculated from 1986 - 1989 since values in 1985 are not being considered
-          mean_rate_prop = total_rate_change/num_years, 
-          q1 = quantile(rate_change, probs = 0.25),
-          q3 = quantile(rate_change, probs = 0.75)) %>%
-   ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(biome))) %>% 
-   left_join(biome_areas_current_dist, by = "biome") %>%
-   distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
-   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[1], inherit.aes = FALSE) +  
-   geom_bar(stat = "identity", aes(width = area / max(area))) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "black", size = 0.9) +
-   labs(x = "", y = "", title = "") +
-   geom_hline(yintercept = 0)+
-   theme_classic()+
-   theme(
-     text = element_text(size = 0),       
-     axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
-   )+
-   scale_x_discrete(labels = biome_labels)+
-   annotate("text", x = 4.3, y = -0.0067, hjust = 1, label = "José Sarney - 5 years", size = 5)+
-   scale_y_continuous(breaks = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      labels = c(-0.0072, -0.0036, 0, 0.0026, 0.0052),
-                      limits = c(-0.0072, 0.0052))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none")
-)
-
-
 # Collor -----------------------------------------------------------------------
 
 (plot_rate_long_Collor <- mtx_rate_long %>% 
