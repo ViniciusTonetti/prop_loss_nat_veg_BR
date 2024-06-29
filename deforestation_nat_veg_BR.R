@@ -290,7 +290,7 @@ ggplot() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-#ggsave(paste(output, "/1_prop_defo_excl_Pantanal_Pampa.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_defo_excl_Pantanal_Pampa_t-1.png", sep = ""), width = 10, height = 7, dpi = 300)
 
 
 ################################################################################
