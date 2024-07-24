@@ -411,8 +411,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
