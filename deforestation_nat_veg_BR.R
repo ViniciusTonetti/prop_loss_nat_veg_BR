@@ -267,10 +267,10 @@ ggplot() +
   geom_line(aes(color = biome, group = biome), lwd = 1)+
   scale_color_manual(values = biome_colors, name = "") +
   scale_fill_manual(name = "",
-                    values = c("#FFCCCC", "#FFFFE0", 
+                    values = c("#E5FFE5", "#FFCCCC",
                                "#F5E5FF", "#FFE5CC", 
                                "gray92",  "#E5FFFF", 
-                               "#E5FFE5", "#FFF7E6"),
+                               "#FFFFE0"),
                     guide = guide_legend(override.aes = list(alpha = 1))) +
   geom_hline(yintercept = 0) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
