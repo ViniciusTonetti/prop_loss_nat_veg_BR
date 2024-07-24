@@ -279,10 +279,11 @@ ggplot() +
   theme_classic() +
   theme(text = element_text(size = 13),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
-        axis.text.y = element_text(size = 12))
+        axis.text.y = element_text(size = 12),
+        legend.text = element_text(size = 13))
 )
 
-#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 10, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 12, height = 7, dpi = 300)
 
 
 ################################################################################
