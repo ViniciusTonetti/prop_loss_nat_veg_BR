@@ -280,10 +280,10 @@ ggplot() +
   theme(text = element_text(size = 13),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
         axis.text.y = element_text(size = 12),
-        legend.text = element_text(size = 13))
+        legend.text = element_text(size = 12))
 )
 
-#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 12, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 11, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -339,8 +339,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
@@ -376,8 +375,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
@@ -450,8 +448,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
@@ -487,8 +484,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
@@ -524,8 +520,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
@@ -560,8 +555,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
@@ -611,8 +605,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
@@ -647,8 +640,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 2.8, y = 0.0054, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
@@ -683,8 +675,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
@@ -719,8 +710,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
@@ -755,8 +745,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
@@ -791,8 +780,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
@@ -827,8 +815,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
@@ -892,8 +879,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
@@ -932,8 +918,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
@@ -972,8 +957,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
@@ -1012,8 +996,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
@@ -1052,8 +1035,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
@@ -1092,8 +1074,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
@@ -1131,8 +1112,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
@@ -1189,8 +1169,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Collor - 3 years", size = 5)+
@@ -1228,8 +1207,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 2.8, y = 0.0054, hjust = 1, label = "Itamar Franco - 2 years", size = 5)+
@@ -1267,8 +1245,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Henrique Cardoso - 8 years", size = 5)+
@@ -1306,8 +1283,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 years", size = 5)+
@@ -1345,8 +1321,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Dilma Rousseff - 6 years", size = 5)+
@@ -1384,8 +1359,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Michel Temer - 2 years", size = 5)+
@@ -1423,8 +1397,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    theme(
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 15),  
-     plot.title = element_text(size = 14)  
+     axis.text = element_text(size = 15)  
    )+
    scale_x_discrete(labels = biome_labels)+
    annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Jair Bolsonaro - 4 years", size = 5)+
