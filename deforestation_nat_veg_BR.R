@@ -864,10 +864,10 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 ################################################################################
 
 
-colors_presidents <- c("#FFCCCC", "#FFFFE0", 
+colors_presidents <- c("#E5FFE5", "#FFCCCC",
                        "#F5E5FF", "#FFE5CC", 
                        "gray92",  "#E5FFFF", 
-                       "#E5FFE5", "#FFF7E6")
+                       "#FFFFE0")
 
 
 
