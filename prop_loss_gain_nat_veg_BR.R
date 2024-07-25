@@ -324,7 +324,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Collor -----------------------------------------------------------------------
 
-(bar_chart_Collor <- mtx_loss_gain_long %>% 
+(mean_Collor <- mtx_loss_gain_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -364,7 +364,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Itamar Franco ----------------------------------------------------------------
 
-(bar_chart_Itamar <- mtx_loss_gain_long %>% 
+(mean_Itamar <- mtx_loss_gain_long %>% 
    filter(year > 1992 & year < 1995) %>% 
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -404,7 +404,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # FHC --------------------------------------------------------------------------
 
-(bar_chart_FHC <- mtx_loss_gain_long %>% 
+(mean_FHC <- mtx_loss_gain_long %>% 
    filter(year >= 1995 & year < 2003) %>%  
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -444,7 +444,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Lula -------------------------------------------------------------------------
 
-(bar_chart_Lula <- mtx_loss_gain_long %>% 
+(mean_Lula <- mtx_loss_gain_long %>% 
    filter(year >= 2003 & year < 2011) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -484,7 +484,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Dilma ------------------------------------------------------------------------
 
-(bar_chart_Dilma<- mtx_loss_gain_long %>% 
+(mean_Dilma<- mtx_loss_gain_long %>% 
    filter(year >= 2011 & year < 2017) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -524,7 +524,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Temer ------------------------------------------------------------------------
 
-(bar_chart_Temer <- mtx_loss_gain_long %>% 
+(mean_Temer <- mtx_loss_gain_long %>% 
    filter(year >= 2017 & year < 2019) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -563,7 +563,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Bolsonaro --------------------------------------------------------------------
 
-(bar_chart_Bolsonaro <- mtx_loss_gain_long %>% 
+(mean_Bolsonaro <- mtx_loss_gain_long %>% 
    filter(year >= 2019 & year <= 2022) %>%   
    group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
@@ -601,28 +601,12 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-## Combining plots in a single plot
-
-(all_bar_charts <- plot_grid(plot_grid(bar_chart_Collor, bar_chart_Itamar, 
-                                       bar_chart_FHC, bar_chart_Lula, 
-                                       nrow = 1, ncol = 4),
-                             plot_grid(NULL, bar_chart_Dilma, bar_chart_Temer, 
-                                       bar_chart_Bolsonaro, NULL, 
-                                       rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
-                             nrow = 2
-))
-
-#ggsave(paste(output, "/2_bar_charts_loss_gain_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
-
-
-
-
 # Rate of change ---------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
 # Collor -----------------------------------------------------------------------
 
-(plot_rate_long_Collor <- mtx_rate_long %>% 
+(rate_Collor <- mtx_rate_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -661,7 +645,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Itamar Franco ----------------------------------------------------------------
 
-(plot_rate_long_Itamar <- mtx_rate_long %>% 
+(rate_Itamar <- mtx_rate_long %>% 
    filter(year > 1992 & year < 1995) %>% 
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -700,7 +684,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # FHC --------------------------------------------------------------------------
 
-(plot_rate_long_FHC <- mtx_rate_long %>% 
+(rate_FHC <- mtx_rate_long %>% 
    filter(year >= 1995 & year < 2003) %>% 
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -739,7 +723,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Lula -------------------------------------------------------------------------
 
-(plot_rate_long_Lula <- mtx_rate_long %>% 
+(rate_Lula <- mtx_rate_long %>% 
    filter(year >= 2003 & year < 2011) %>%  
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -778,7 +762,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Dilma ------------------------------------------------------------------------
 
-(plot_rate_long_Dilma <- mtx_rate_long %>% 
+(rate_Dilma <- mtx_rate_long %>% 
    filter(year >= 2011 & year < 2017) %>%   
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -817,7 +801,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Temer ------------------------------------------------------------------------
 
-(plot_rate_long_Temer <- mtx_rate_long %>% 
+(rate_Temer <- mtx_rate_long %>% 
    filter(year >= 2017 & year < 2019) %>%    
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
@@ -856,7 +840,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Bolsonaro --------------------------------------------------------------------
 
-(plot_rate_long_Bolsonaro <- mtx_rate_long %>% 
+(rate_Bolsonaro <- mtx_rate_long %>% 
    filter(year >= 2019 & year <= 2022) %>%    
    group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
