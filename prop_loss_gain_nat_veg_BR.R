@@ -1412,15 +1412,15 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 ## Combining plots in a single plot
 
-(all_bar_charts <- plot_grid(plot_grid(plot_rate_long_Collor, plot_rate_long_Itamar, 
-                                       plot_rate_long_FHC, plot_rate_long_Lula, 
-                                       nrow = 1, ncol = 4),
-                             plot_grid(NULL, plot_rate_long_Dilma, plot_rate_long_Temer, 
-                                       plot_rate_long_Bolsonaro, NULL, 
-                                       rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
-                             nrow = 2
-))
-
+(all_bar_charts <- plot_grid(mean_Collor, rate_Collor,
+                                       mean_Itamar, rate_Itamar,
+                                       mean_FHC, rate_FHC,
+                                       mean_Lula, rate_Lula,
+                                       mean_Dilma, rate_Dilma,
+                                       mean_Temer, rate_Temer,
+                                       mean_Bolsonaro, rate_Bolsonaro,
+                                       nrow = 7, ncol = 2))
+  
 #ggsave(paste(output, "/3_bar_charts_rate.png", sep = ""), width = 20, height = 7, dpi = 300)
 
 
