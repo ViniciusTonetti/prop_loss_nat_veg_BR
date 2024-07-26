@@ -347,19 +347,19 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
-   )+
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
+     )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
-)
+   scale_fill_manual(values = biome_colors)
+   )
 
 
 # Itamar Franco ----------------------------------------------------------------
@@ -387,18 +387,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Itamar Franco - 2 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -427,18 +427,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Henrique Cardoso - 8 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -467,18 +467,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -507,18 +507,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Dilma Rousseff - 6 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -547,18 +547,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Michel Temer - 2 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 # Bolsonaro --------------------------------------------------------------------
@@ -586,18 +586,20 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Jair Bolsonaro - 4 y", size = 6)+
    scale_y_continuous(breaks = c(-0.012, -0.006, 0, 0.003),
                       labels = c(-0.012, -0.006, 0, 0.003),
                       limits = c(-0.012, 0.003))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)#+
+   #theme(legend.position = "none",
+   #     axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
 
@@ -628,18 +630,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Collor - 3 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -667,18 +669,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 2.8, y = 0.0054, hjust = 1, label = "Itamar Franco - 2 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -706,18 +708,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Fernando Henrique Cardoso - 8 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -745,18 +747,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Luiz Inácio Lula da Silva - 8 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -784,18 +786,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Dilma Rousseff - 6 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -823,18 +825,18 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Michel Temer - 2 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)
 )
 
 
@@ -862,33 +864,35 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    geom_hline(yintercept = 0)+
    theme_classic()+
    theme(
+     legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 18)  
+     axis.text = element_text(size = 26),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    #annotate("text", x = 4.3, y = 0.0054, hjust = 1, label = "Jair Bolsonaro - 4 y", size = 6)+
    scale_y_continuous(breaks = c(-0.0025, 0, 0.0027, 0.0054),
                       labels = c(-0.0025, 0, 0.0027, 0.0054),
                       limits = c(-0.0025, 0.0054))+
-   scale_fill_manual(values = biome_colors)+
-   theme(legend.position = "none",
-         axis.text.x = element_text(angle = 45, hjust = 1))
+   scale_fill_manual(values = biome_colors)#+
+   #theme(legend.position = "none",
+   #       axis.text.x = element_text(angle = 45, hjust = 1))
 )
 
-(all_bar_charts <- plot_grid(plot_grid(plot_rate_long_Collor, plot_rate_long_Itamar, 
-                                       plot_rate_long_FHC, plot_rate_long_Lula, 
-                                       nrow = 1, ncol = 4),
-                             plot_grid(NULL, plot_rate_long_Dilma, plot_rate_long_Temer, 
-                                       plot_rate_long_Bolsonaro, NULL, 
-                                       rel_widths = c(0.5, 1, 1, 1, 0.5), nrow = 1),
-                             nrow = 2
-))
 
-#ggsave(paste(output, "/3_bar_charts_rate_COLOR.png", sep = ""), width = 20, height = 7, dpi = 300)
+## Combining plots in a single plot
 
+(all_bar_charts <- plot_grid(mean_Collor, rate_Collor,
+                             mean_Itamar, rate_Itamar,
+                             mean_FHC, rate_FHC,
+                             mean_Lula, rate_Lula,
+                             mean_Dilma, rate_Dilma,
+                             mean_Temer, rate_Temer,
+                             mean_Bolsonaro, rate_Bolsonaro,
+                             nrow = 7, ncol = 2))
 
-
+#ggsave(paste(output, "/all_bar_charts_rate.png", sep = ""), width = 15, height = 30, dpi = 300)
 
 
 
@@ -1399,18 +1403,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-## Combining plots in a single plot
 
-(all_bar_charts <- plot_grid(mean_Collor, rate_Collor,
-                                       mean_Itamar, rate_Itamar,
-                                       mean_FHC, rate_FHC,
-                                       mean_Lula, rate_Lula,
-                                       mean_Dilma, rate_Dilma,
-                                       mean_Temer, rate_Temer,
-                                       mean_Bolsonaro, rate_Bolsonaro,
-                                       nrow = 7, ncol = 2))
-  
-#ggsave(paste(output, "/all_bar_charts_rate.png", sep = ""), width = 15, height = 30, dpi = 300)
 
 
 
