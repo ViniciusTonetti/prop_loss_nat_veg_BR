@@ -58,81 +58,81 @@ MB %>%
 # First, checking classes considered natural vegetation
 
 
-# Checking level_1 class considering natural vegetation only
+# Checking class_level_1 considering natural vegetation only
 
 MB %>% 
-  filter(level_0 == "Natural") %>% 
-  select(level_1) %>% 
+  filter(class_level_0 == "Natural") %>% 
+  select(class_level_1) %>% 
   distinct()
 
 
-# excluding from level_1 class: "Water"
+# excluding from class_level_1: "Water and Marine Environment"
 
 MB <- MB %>% 
-  filter(level_0 == "Natural") %>% 
-  filter(level_1 != "5. Water")
+  filter(class_level_0 == "Natural") %>% 
+  filter(class_level_1 != "5. Water and Marine Environment", class_level_1 != "4. Non vegetated area")
 
 
 # Checking level_2 class
 
 MB %>% 
-  select(level_2) %>% 
+  select(class_level_2) %>% 
   distinct()
 
 
-# excluding from level_2 class: "Rocky outcrop", "Salt flat", "Beach and Dune", "Wetland", "Grassland", "Other Non Forest Natural Formation"
+# excluding from level_2 class: "2.1. Wetland", "2.2. Grassland", "2.4. Rocky Outcrop", "2.3. Hypersaline Tidal Flat", "2.4. Herbaceous Sandbank Vegetation"
 
 MB <- MB %>% 
-  filter(level_2 != "Rocky outcrop") %>% 
-  filter(level_2 != "Salt flat") %>% 
-  filter(level_2 != "Beach and Dune") %>% 
-  filter(level_2 != "Wetland") %>%
-  filter(level_2 != "Grassland") %>%
-  filter(level_2 != "Other Non Forest Natural Formation")
-
+  filter(class_level_2 != "2.1. Wetland") %>% 
+  filter(class_level_2 != "2.2. Grassland") %>% 
+  filter(class_level_2 != "2.4. Rocky Outcrop") %>% 
+  filter(class_level_2 != "2.3. Hypersaline Tidal Flat") %>%
+  filter(class_level_2 != "2.4. Herbaceous Sandbank Vegetation")
 
 # Checking level_3 class
 
 MB %>% 
-  select(level_3) %>% 
+  select(class_level_3) %>% 
   distinct()
 
 
 # Checking level_4 class
 
 MB %>% 
-  select(level_4) %>% 
+  select(class_level_4) %>% 
   distinct()
 
 
-# Classes level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
+# class_level_2, 3, and 4 only varies for artificial formations, e.g., agriculture
 
 # Land cover classes excluded:
 
-# Water
-# Rocky outcrop
-# Salt flat
-# Beach and Dune
-# "Wetland"
-# "Grassland"
-# "Other Non Forest Natural Formation"
+# "Undefined" (natural, anthropic)
+# "Antropic"
+# "Natural/Antropic"
+# "2.1. Wetland"
+# "2.2. Grassland"
+# "2.4. Rocky Outcrop"
+# "2.3. Hypersaline Tidal Flat"
+# "2.4. Herbaceous Sandbank Vegetation"
 
 
 # Classes considered in this analysis:
-# Forest Formation                  
-# Savanna Formation                 
-# Flooded Forest                    
-# Magrove                           
-# Wooded Restinga                   
-# Restinga Herbácea/Arbustiva
+
+# Natural               
+# Forest               
+# Forest Formation                
+# Savanna Formation                           
+# Mangrove                  
+# Floodable Forest
+# Wooded Sandbank Vegetation
 
 
 # Summing area values for the selected values above ----------------------------
 
 MB_sum <- MB %>% 
-  filter(level_0 == "Natural") %>% 
-  group_by(biome) %>%
-  summarise(across(`1985`:`2022`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+  group_by(territory) %>%
+  summarise(across(`1985`:`2023`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
 
 
 # converting from tibble to data frame to change row names
