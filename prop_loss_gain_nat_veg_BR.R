@@ -612,7 +612,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Lula III ---------------------------------------------------------------------
 
 (mean_Lula_III <- mtx_loss_gain_long %>% 
-   filter(year > 2022) %>%   
+   filter(year == 2023) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -628,8 +628,6 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[8], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
-   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
-   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "black", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -961,10 +959,6 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              nrow = 8, ncol = 2))
 
 #ggsave(paste(output, "/all_bar_charts_rate_col_9.png", sep = ""), width = 15, height = 30, dpi = 300)
-
-
-
-
 
 
 # Gray and white plots 
