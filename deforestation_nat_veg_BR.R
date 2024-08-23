@@ -27,11 +27,11 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 
 
 # Loading data -----------------------------------------------------------------
-# Data downloaded on 27/06/2024 from MapBiomas collection 8 from the tab "estatísticas" > DESMATAMENTO E VEGETAÇÃO SECUNDÁRIA (COLEÇÃO 8) –  dados de área (ha) de desmatamento e vegetação secundária por classe de cobertura para os recortes de bioma e estado de 1986 e 2022 (Versão 2, atualizada em 20/02/2024 com filtro espacial de 1ha)
+# Data downloaded on 23/08/2024 from MapBiomas collection 9 from the tab "estatísticas" > DESMATAMENTO E VEGETAÇÃO SECUNDÁRIA (COLEÇÃO 9) – dados de área (ha) de desmatamento e vegetação secundária por classe de cobertura para os recortes de bioma e estado de 1986 e 2023 (atualizada em 21/08/2024)
 
 # https://brasil.mapbiomas.org/estatisticas/
 
-MB <- readxl::read_excel(path = paste(input, "/TABELA-DESMATAMENTO-E-VEGETACAO-SECUNDARIA-BIOMA-x-ESTADO-MAPBIOMAS-COL8.0-v2.xlsx", sep = ""), sheet = "STATE_BIOME")
+MB <- readxl::read_excel(path = paste(input, "/mapbiomas_brasil_col9_deforestation_and_secondary_vegetation_state_municipality.xlsx", sep = ""), sheet = "DEF_SECVEG")
 
 
 # Checking and filtering data --------------------------------------------------

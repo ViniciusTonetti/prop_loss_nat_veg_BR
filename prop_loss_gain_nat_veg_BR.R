@@ -27,7 +27,7 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 
 
 # Loading data -----------------------------------------------------------------
-# Data downloaded on 30/05/2024 from MapBiomas collection 9 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES PARA OS BIOMAS (COLEÇÃO 9) – dados de áreas (ha) por classe de cobertura e uso da terra para os biomas para o período de 1985 a 2023 (atualizada em 21/08/2024)
+# Data downloaded on 23/08/2024 from MapBiomas collection 9 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES PARA OS BIOMAS (COLEÇÃO 9) – dados de áreas (ha) por classe de cobertura e uso da terra para os biomas para o período de 1985 a 2023 (atualizada em 21/08/2024)
 
 # https://brasil.mapbiomas.org/estatisticas/
 
