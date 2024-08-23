@@ -151,7 +151,7 @@ mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
 mtx <- as.data.frame(mtx)
 
 row.names(mtx) <- row.names(MB_sum)
-colnames(mtx) <- paste("prop_loss_", 1986:2022, sep = "")
+colnames(mtx) <- paste("prop_loss_", 1986:2023, sep = "")
 
 
 # loop to fill the matrix with the prop loss/gain of natural vegetation
@@ -170,7 +170,7 @@ row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 # Filling the matrix with the change of rate gain/loss native vegetation
 
 mtx_rate <- mtx
-colnames(mtx_rate) <- paste("rate_change_", 1986:2022, sep = "")
+colnames(mtx_rate) <- paste("rate_change_", 1986:2023, sep = "")
 
 for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
@@ -178,10 +178,10 @@ for (i in 2:ncol(mtx_rate)) {
 
 # Creating long data frames ----------------------------------------------------
 
-mtx$biome <- row.names(mtx)
+mtx$territory <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
-  filter(biome != "Pantanal", biome != "Pampa") %>% 
+  filter(territory != "Pantanal", territory != "Pampa") %>% 
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
                names_prefix = "prop_loss_",      
@@ -189,10 +189,10 @@ mtx_loss_gain_long <- mtx %>%
   
 
 
-mtx_rate$biome <- row.names(mtx_rate)
+mtx_rate$territory <- row.names(mtx_rate)
   
 mtx_rate_long <- mtx_rate %>%
-  filter(biome != "Pantanal", biome != "Pampa") %>% 
+  filter(territory != "Pantanal", territory != "Pampa") %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
@@ -268,14 +268,15 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
   geom_rect(aes(xmin = 2011.2, xmax = 2016.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
   geom_rect(aes(xmin = 2017.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
-  geom_point(aes(color = biome))+
-  geom_line(aes(color = biome, group = biome), lwd = 1)+
+  geom_rect(aes(xmin = 2022.2, xmax = 2023.1, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_point(aes(color = territory))+
+  geom_line(aes(color = territory, group = territory), lwd = 1)+
   scale_color_manual(values = biome_colors, name = "") +
   scale_fill_manual(name = "",
                     values = c("#E5FFE5", "#FFCCCC",
                                "#F5E5FF", "#FFE5CC", 
                                "gray92",  "#E5FFFF", 
-                               "#FFFFE0"),
+                               "#FFFFE0", "#FFE5CC"),
                     guide = guide_legend(override.aes = list(alpha = 1))) +
   geom_hline(yintercept = 0) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
@@ -286,9 +287,10 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2016.9) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2023.3) +
   scale_x_continuous(
-    breaks = c(1990, 1993, 1995, 2003, 2011, 2016.9, 2019, 2022),
-    labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022")) +
+    breaks = c(1990, 1993, 1995, 2003, 2011, 2016.9, 2019, 2022, 2023.3),
+    labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022", "2023")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
   theme_classic() +
@@ -298,7 +300,7 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
         legend.text = element_text(size = 12))
 )
 
-#ggsave(paste(output, "/1_prop_loss_excl_pantanal_pampa_excl_grass_wet_other.png", sep = ""), width = 11, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_col_9.png", sep = ""), width = 11, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -331,7 +333,7 @@ biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
 colors_presidents <- c("#E5FFE5", "#FFCCCC",
                        "#F5E5FF", "#FFE5CC", 
                        "gray92",  "#E5FFFF", 
-                       "#FFFFE0")
+                       "#FFFFE0", "#FFE5CC")
 
 
 
