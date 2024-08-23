@@ -38,13 +38,25 @@ MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.9-BIOMES.xls
 # Checking and filtering data --------------------------------------------------
 ################################################################################
 
+
+colnames(MB)
+head(MB)
+
 # Checking unique biome classes
 unique(MB$territory)
+
+# Checking unique class 0 values
+unique(MB$class_level_0)
+
+# Checking "Natural/Antropic" class 0 - All values correspond to non vegetated areas
+MB %>% 
+  filter(class_level_0 == "Natural/Antropic") %>% 
+  select(class_level_1)
+
 
 # Filtering, summarizing, and summing values for each year
 # First, checking classes considered natural vegetation
 
-colnames(MB)
 
 # Checking level_1 class considering natural vegetation only
 
