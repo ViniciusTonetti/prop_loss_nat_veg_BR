@@ -27,21 +27,24 @@ output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/output
 
 
 # Loading data -----------------------------------------------------------------
-# Data downloaded on 30/05/2024 from MapBiomas collection 8 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES BIOMA & ESTADOS (COLEÇÃO 8) – dados de área (ha) de cobertura e uso da terra por bioma e estado de 1985 a 2022 (atualizada em 01/09/2023)
+# Data downloaded on 30/05/2024 from MapBiomas collection 9 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES PARA OS BIOMAS (COLEÇÃO 9) – dados de áreas (ha) por classe de cobertura e uso da terra para os biomas para o período de 1985 a 2023 (atualizada em 21/08/2024)
 
 # https://brasil.mapbiomas.org/estatisticas/
 
-MB <- readxl::read_excel(path = paste(input, "/TABELA-GERAL-MAPBIOMAS-COL8.0-BIOMASxESTADOS-1.xlsx", sep = ""), sheet = "COBERTURA_COL8.0", )
+
+MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.9-BIOMES.xlsx", sep = ""), sheet = "COVERAGE_9", )
 
 
 # Checking and filtering data --------------------------------------------------
 ################################################################################
 
 # Checking unique biome classes
-unique(MB$biome)
+unique(MB$territory)
 
 # Filtering, summarizing, and summing values for each year
 # First, checking classes considered natural vegetation
+
+colnames(MB)
 
 # Checking level_1 class considering natural vegetation only
 
