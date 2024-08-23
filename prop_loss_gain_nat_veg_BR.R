@@ -371,7 +371,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
      )+
    scale_x_discrete(labels = biome_labels)+
-   #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 y", size = 6)+
+   annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 y", size = 6)+
    scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
                       labels = c(-0.020, -0.01, 0, 0.004),
                       limits = c(-0.020, 0.004))+
@@ -676,7 +676,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
      axis.text = element_text(size = 26),
-     axis.text.x = element_blank()
+     #axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.006, 0.012),
