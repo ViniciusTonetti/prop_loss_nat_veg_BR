@@ -180,7 +180,7 @@ for (i in 2:ncol(mtx_rate)) {
 # Filling the matrix with the change of rate gain/loss native vegetation proportional to the previous year
 
 mtx_rate_prop <- mtx
-colnames(mtx_rate_prop) <- paste("prop_rate_change_", 1986:2023, sep = "")
+colnames(mtx_rate_prop) <- paste("rate_change_", 1986:2023, sep = "")
 
 for (i in 2:ncol(mtx_rate_prop)) {
   mtx_rate_prop[,i] <- (mtx[,i] - mtx[,i-1])/mtx[,i]
