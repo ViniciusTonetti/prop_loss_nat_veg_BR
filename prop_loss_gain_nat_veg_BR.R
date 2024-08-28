@@ -198,7 +198,6 @@ mtx_loss_gain_long <- mtx %>%
                names_to = "year",                 
                names_prefix = "prop_loss_",      
                values_to = "prop_loss")
-  
 
 
 mtx_rate$territory <- row.names(mtx_rate)
@@ -1024,7 +1023,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    scale_x_discrete(labels = biome_labels)+
    scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.006, 0.012),
                       labels = c(-0.0078, -0.0039, 0, 0.006, 0.012),
-                      limits = c(-0.0078, 0.012))+
+                      limits = c(-1, 1))+
    scale_fill_manual(values = biome_colors)
 )
 
