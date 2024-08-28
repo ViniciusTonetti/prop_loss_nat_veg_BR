@@ -211,6 +211,8 @@ mtx_rate_long <- mtx_rate %>%
                values_to = "rate_change")
 
 
+mtx_rate_prop$territory <- row.names(mtx_rate_prop)
+
 mtx_rate_prop_long <- mtx_rate_prop %>%
   filter(territory != "Pantanal", territory != "Pampa") %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
