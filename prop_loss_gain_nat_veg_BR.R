@@ -193,7 +193,7 @@ for (i in 2:ncol(mtx_rate_prop)) {
 mtx$territory <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
-  filter(territory != "Pantanal", territory != "Pampa") %>% 
+  filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
                names_prefix = "prop_loss_",      
@@ -203,7 +203,7 @@ mtx_loss_gain_long <- mtx %>%
 mtx_rate$territory <- row.names(mtx_rate)
   
 mtx_rate_long <- mtx_rate %>%
-  filter(territory != "Pantanal", territory != "Pampa") %>% 
+  filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
@@ -213,7 +213,7 @@ mtx_rate_long <- mtx_rate %>%
 mtx_rate_prop$territory <- row.names(mtx_rate_prop)
 
 mtx_rate_prop_long <- mtx_rate_prop %>%
-  filter(territory != "Pantanal", territory != "Pampa") %>% 
+  filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
