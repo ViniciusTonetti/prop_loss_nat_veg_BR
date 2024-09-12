@@ -348,7 +348,7 @@ biome_areas_current_dist <- tibble(territory = c("Amazon", "Caatinga", "Cerrado"
                                    area = round((MB_sum[,ncol(MB_sum)]/current_dist_total)*100, digits = 1))
 
 
-biome_labels <- c("Amazon", "Atlantic\nForest", "Caatinga", "Cerrado")
+biome_labels <- c("Amazon", "Atlantic\nForest", "Cerrado")
 
 
 # Plotting coloured barplots ---------------------------------------------------
@@ -701,7 +701,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
      axis.text = element_text(size = 26),
-     #axis.text.x = element_blank()
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.006, 0.012),
@@ -983,7 +983,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              mean_Lula_III, rate_Lula_III,
                              nrow = 8, ncol = 2))
 
-#ggsave(paste(output, "/all_bar_charts_rate_col_9.png", sep = ""), width = 15, height = 30, dpi = 300)
+#ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga.png", sep = ""), width = 15, height = 30, dpi = 300)
 
 
 
