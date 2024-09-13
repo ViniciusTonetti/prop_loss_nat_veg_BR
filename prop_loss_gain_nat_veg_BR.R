@@ -961,7 +961,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
      axis.text = element_text(size = 26),
-     axis.text.x = element_blank()
+     #axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
@@ -984,7 +984,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              nrow = 8, ncol = 2))
 
 #ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga.png", sep = ""), width = 15, height = 30, dpi = 300)
-
+#ggsave(paste(output, "/LEGEND.png", sep = ""), width = 15, height = 30, dpi = 300)
 
 
 ### Plotting the proportional rate of change
