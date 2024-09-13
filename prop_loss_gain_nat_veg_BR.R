@@ -333,6 +333,7 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "white", "Cerrado" = "#CCBB
 )
 
 #ggsave(paste(output, "/1_prop_loss_col_9_excl_Caatinga.png", sep = ""), width = 11, height = 7, dpi = 300)
+#ggsave(paste(output, "/legend_lines_excl_Caatinga.png", sep = ""), width = 11, height = 7, dpi = 300)
 
 
 ################################################################################
