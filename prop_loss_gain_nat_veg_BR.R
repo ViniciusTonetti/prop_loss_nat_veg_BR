@@ -235,7 +235,7 @@ mtx_rate_prop_long <- mtx_rate_prop_long %>%
 ################################################################################
 # Plotting the proportion of vegetation loss/gain ------------------------------
 
-biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCBB44",
+biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "white", "Cerrado" = "#CCBB44",
                   "Atlantic Forest" = "#DF5E1F", "Pampa" = "white", "Pantanal" = "white")
 
 
@@ -249,37 +249,45 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "gray50", "Cerrado" = "#CCB
 
 # Map 
 
-#ggplot() +
-#  geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
-#  scale_fill_manual(values = biome_colors) +
-#  theme_void() +
-#  theme(legend.position = "none")+
-#  annotation_scale(location = "bl", width_hint = 0.5)
+ggplot() +
+  geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
+  scale_fill_manual(values = biome_colors) +
+  theme_void() +
+  theme(legend.position = "none")+
+  annotation_scale(location = "bl", width_hint = 0.5)
 
 
 # Define the longitude and latitude limits for your data
-#min_longitude <- -75
-#max_longitude <- -35
-#min_latitude <- -35
-#max_latitude <- 5
+min_longitude <- -75
+max_longitude <- -35
+min_latitude <- -35
+max_latitude <- 5
 
-#ggplot() +
-#  geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
-#  scale_fill_manual(values = biome_colors) +
-#  scale_x_continuous(breaks = seq(min_longitude, max_longitude, by = 10)) +
-#  scale_y_continuous(breaks = seq(min_latitude, max_latitude, by = 10)) +
-#  theme_void() +
-#  theme(
-#    legend.position = "none",
-#    panel.grid.major = element_line(color = "lightgray", size = 1),
-#    axis.text = element_text(color = "gray50", margin = margin(t = 15, r = 15, b = 15, l = 15), size = 20),
-#    axis.ticks = element_line(color = "gray50"),
-#    plot.margin = unit(c(1, 1, 1, 1), "cm")
-#  ) +
-#  annotation_scale(location = "bl", width_hint = 0.5) +
-#  coord_sf(xlim = c(min_longitude, max_longitude), ylim = c(min_latitude, max_latitude), expand = FALSE)
+ggplot() +
+  geom_sf(data = biomes_shapefile, aes(fill = Bioma), color = "black") +
+  scale_fill_manual(values = biome_colors) +
+  scale_x_continuous(breaks = seq(min_longitude, max_longitude, by = 10)) +
+  scale_y_continuous(breaks = seq(min_latitude, max_latitude, by = 10)) +
+  theme_void() +
+  theme(
+    legend.position = "none",
+    panel.grid.major = element_line(color = "lightgray", size = 1),
+    axis.text = element_text(color = "gray50", margin = margin(t = 15, r = 15, b = 15, l = 15), size = 20),
+    axis.ticks = element_line(color = "gray50"),
+    plot.margin = unit(c(1, 1, 1, 1), "cm")
+  ) +
+  #annotation_scale(location = "bl", width_hint = 0.5) +
+  annotation_scale(
+    location = "bl", 
+    width_hint = 0.5,
+    text_col = "black",
+    text_cex = 1.5,
+    #pad_x = unit(0.5, "cm"),
+    #pad_y = unit(0.5, "cm")
+  )+ 
+  coord_sf(xlim = c(min_longitude, max_longitude), ylim = c(min_latitude, max_latitude), expand = FALSE)
 
-#ggsave(paste(output, "/map_biomas.jpg", sep = ""), width = 8, height = 7, dpi = 300)
+#ggsave(paste(output, "/map_biomas_excl_Caatinga.jpg", sep = ""), width = 8, height = 7, dpi = 300)
 
 
 # Line chart
