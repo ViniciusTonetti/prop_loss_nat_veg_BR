@@ -1029,9 +1029,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-1, 0, 1),
-                      labels = c(-1, 0, 1),
-                      limits = c(-1, 1))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1067,9 +1067,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
       axis.text.x = element_blank()
     )+
     scale_x_discrete(labels = biome_labels)+
-    scale_y_continuous(breaks = c(-1, 0, 1),
-                       labels = c(-1, 0, 1),
-                       limits = c(-1, 1))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
     scale_fill_manual(values = biome_colors)
 )
 
@@ -1105,9 +1105,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-1, 0, 1),
-                      labels = c(-1, 0, 1),
-                      limits = c(-1, 1.2))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1143,9 +1143,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-1, 0, 1),
-                      labels = c(-1, 0, 1),
-                      limits = c(-1, 1.2))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1181,9 +1181,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-1, 0, 1),
-                      labels = c(-1, 0, 1),
-                      limits = c(-1, 1.2))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1219,9 +1219,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-1, 0, 1),
-                      labels = c(-1, 0, 1),
-                      limits = c(-1.2, 1.2))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1294,9 +1294,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      #axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-50, 0, 50),
-                      labels = c(-50, 0, 50),
-                      limits = c(-50, 50))+
+   scale_y_continuous(breaks = c(-1, 0, 0.6),
+                      labels = c(-1, 0, 0.6),
+                      limits = c(-1, 0.6))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1313,7 +1313,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              prop_rate_Lula_III,
                              nrow = 8, ncol = 1))
 
-#ggsave(paste(output, "/prop_rate_change_col_9.png", sep = ""), width = 7.5, height = 30, dpi = 300)
+#ggsave(paste(output, "/prop_rate_change_col_9_excl_Caatinga.png", sep = ""), width = 7.5, height = 30, dpi = 300)
 
 
 
