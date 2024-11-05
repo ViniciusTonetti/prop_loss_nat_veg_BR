@@ -874,7 +874,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Temer ------------------------------------------------------------------------
 
 (rate_Temer <- mtx_rate_long %>% 
-   filter(year >= 2017 & year < 2019) %>%    
+   filter(year >= 2017 & year <= 2019) %>%    
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
