@@ -684,7 +684,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Collor -----------------------------------------------------------------------
 
 (rate_Collor <- mtx_rate_long %>% 
-   filter(year >= 1990 & year <= 1992) %>% 
+   filter(year > 1990 & year <= 1993) %>% 
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -722,7 +722,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Itamar Franco ----------------------------------------------------------------
 
 (rate_Itamar <- mtx_rate_long %>% 
-   filter(year > 1992 & year < 1995) %>% 
+   filter(year > 1993 & year <= 1995) %>% 
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -760,7 +760,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # FHC --------------------------------------------------------------------------
 
 (rate_FHC <- mtx_rate_long %>% 
-   filter(year >= 1995 & year < 2003) %>% 
+   filter(year > 1995 & year <= 2003) %>% 
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -798,7 +798,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Lula -------------------------------------------------------------------------
 
 (rate_Lula <- mtx_rate_long %>% 
-   filter(year >= 2003 & year < 2011) %>%  
+   filter(year > 2003 & year <= 2011) %>%  
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -836,7 +836,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Dilma ------------------------------------------------------------------------
 
 (rate_Dilma <- mtx_rate_long %>% 
-   filter(year >= 2011 & year < 2017) %>%   
+   filter(year > 2011 & year <= 2017) %>%   
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -874,7 +874,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Temer ------------------------------------------------------------------------
 
 (rate_Temer <- mtx_rate_long %>% 
-   filter(year >= 2017 & year <= 2019) %>%    
+   filter(year > 2017 & year <= 2019) %>%    
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -912,7 +912,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Bolsonaro --------------------------------------------------------------------
 
 (rate_Bolsonaro <- mtx_rate_long %>% 
-   filter(year >= 2019 & year <= 2022) %>%    
+   filter(year > 2019 & year <= 2022) %>%    
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
