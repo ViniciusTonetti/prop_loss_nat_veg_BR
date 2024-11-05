@@ -23,7 +23,7 @@ library(ggspatial)
 # Directories ------------------------------------------------------------------
 
 input <- "D:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazil/data"
-output <- "D:/_Vinicius/artigos/loss of habitat presidential terms Brazil/outputs/prop_loss"
+output <- "D:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazil/outputs/prop_loss"
 
 
 # Loading data -----------------------------------------------------------------
@@ -711,7 +711,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -749,7 +749,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -787,7 +787,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -825,7 +825,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -863,7 +863,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -901,7 +901,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -939,7 +939,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -971,8 +971,8 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
-     #axis.text.x = element_blank()
+     axis.text = element_text(size = 29),
+     axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
    scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
