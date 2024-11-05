@@ -375,7 +375,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Collor -----------------------------------------------------------------------
 
 (mean_Collor <- mtx_loss_gain_long %>% 
-   filter(year >= 1990 & year <= 1992) %>% 
+   filter(year > 1990 & year <= 1993) %>% 
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -400,22 +400,22 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
-     )+
+   )+
    scale_x_discrete(labels = biome_labels)+
-   #annotate("text", x = 4.3, y = 0.003, hjust = 1, label = "Fernando Collor - 3 y", size = 6)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
-   )
+)
+
 
 
 # Itamar Franco ----------------------------------------------------------------
 
 (mean_Itamar <- mtx_loss_gain_long %>% 
-   filter(year > 1992 & year < 1995) %>%
+   filter(year > 1993 & year <= 1995) %>%
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -440,21 +440,21 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
-   
+
 
 # FHC --------------------------------------------------------------------------
 
 (mean_FHC <- mtx_loss_gain_long %>% 
-   filter(year >= 1995 & year < 2003) %>%  
+   filter(year > 1995 & year <= 2003) %>%  
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -479,21 +479,22 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
+
 
 
 # Lula -------------------------------------------------------------------------
 
 (mean_Lula <- mtx_loss_gain_long %>% 
-   filter(year >= 2003 & year < 2011) %>%   
+   filter(year > 2003 & year <= 2011) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -518,20 +519,20 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
 
 # Dilma ------------------------------------------------------------------------
 
 (mean_Dilma<- mtx_loss_gain_long %>% 
-   filter(year >= 2011 & year < 2017) %>%   
+   filter(year > 2011 & year <= 2017) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -556,20 +557,21 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
+
 
 # Temer ------------------------------------------------------------------------
 
 (mean_Temer <- mtx_loss_gain_long %>% 
-   filter(year >= 2017 & year < 2019) %>%   
+   filter(year > 2017 & year <= 2019) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -594,20 +596,21 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
+
 
 # Bolsonaro --------------------------------------------------------------------
 
 (mean_Bolsonaro <- mtx_loss_gain_long %>% 
-   filter(year >= 2019 & year <= 2022) %>%   
+   filter(year > 2019 & year <= 2022) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -632,13 +635,13 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.020, -0.01, 0, 0.004),
-                      labels = c(-0.020, -0.01, 0, 0.004),
-                      limits = c(-0.020, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -668,13 +671,13 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 26),
+     axis.text = element_text(size = 29),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.004),
-                      labels = c(-0.02, -0.01, 0, 0.004),
-                      limits = c(-0.02, 0.004))+
+   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
+                      labels = c(-0.02, -0.01, 0, 0.0033),
+                      limits = c(-0.02, 0.0033))+
    scale_fill_manual(values = biome_colors)
 )
 
