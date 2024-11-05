@@ -375,7 +375,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Collor -----------------------------------------------------------------------
 
 (mean_Collor <- mtx_loss_gain_long %>% 
-   filter(year > 1990 & year <= 1993) %>% 
+   filter(year >= 1990 & year < 1993) %>% 
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -415,7 +415,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Itamar Franco ----------------------------------------------------------------
 
 (mean_Itamar <- mtx_loss_gain_long %>% 
-   filter(year > 1993 & year <= 1995) %>%
+   filter(year >= 1993 & year <= 1994) %>%
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -454,7 +454,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # FHC --------------------------------------------------------------------------
 
 (mean_FHC <- mtx_loss_gain_long %>% 
-   filter(year > 1995 & year <= 2003) %>%  
+   filter(year >= 1995 & year <= 2002) %>%  
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -494,7 +494,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Lula -------------------------------------------------------------------------
 
 (mean_Lula <- mtx_loss_gain_long %>% 
-   filter(year > 2003 & year <= 2011) %>%   
+   filter(year >= 2003 & year <= 2010) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -532,7 +532,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Dilma ------------------------------------------------------------------------
 
 (mean_Dilma<- mtx_loss_gain_long %>% 
-   filter(year > 2011 & year <= 2017) %>%   
+   filter(year >= 2011 & year <= 2016) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -571,7 +571,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Temer ------------------------------------------------------------------------
 
 (mean_Temer <- mtx_loss_gain_long %>% 
-   filter(year > 2017 & year <= 2019) %>%   
+   filter(year >= 2017 & year <= 2018) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -610,7 +610,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Bolsonaro --------------------------------------------------------------------
 
 (mean_Bolsonaro <- mtx_loss_gain_long %>% 
-   filter(year > 2019 & year <= 2022) %>%   
+   filter(year >= 2019 & year <= 2022) %>%   
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
@@ -687,7 +687,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Collor -----------------------------------------------------------------------
 
 (rate_Collor <- mtx_rate_long %>% 
-   filter(year > 1990 & year <= 1993) %>% 
+   filter(year >= 1990 & year <= 1992) %>% 
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -715,9 +715,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -725,7 +725,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Itamar Franco ----------------------------------------------------------------
 
 (rate_Itamar <- mtx_rate_long %>% 
-   filter(year > 1993 & year <= 1995) %>% 
+   filter(year >= 1993 & year <= 1994) %>% 
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -753,9 +753,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -763,7 +763,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # FHC --------------------------------------------------------------------------
 
 (rate_FHC <- mtx_rate_long %>% 
-   filter(year > 1995 & year <= 2003) %>% 
+   filter(year >= 1995 & year <= 2002) %>% 
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -791,9 +791,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -801,7 +801,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Lula -------------------------------------------------------------------------
 
 (rate_Lula <- mtx_rate_long %>% 
-   filter(year > 2003 & year <= 2011) %>%  
+   filter(year >= 2003 & year <= 2010) %>%  
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -829,9 +829,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -839,7 +839,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Dilma ------------------------------------------------------------------------
 
 (rate_Dilma <- mtx_rate_long %>% 
-   filter(year > 2011 & year <= 2017) %>%   
+   filter(year >= 2011 & year <= 2016) %>%   
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -867,9 +867,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -877,7 +877,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Temer ------------------------------------------------------------------------
 
 (rate_Temer <- mtx_rate_long %>% 
-   filter(year > 2017 & year <= 2019) %>%    
+   filter(year >= 2017 & year <= 2018) %>%    
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -905,9 +905,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -915,7 +915,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Bolsonaro --------------------------------------------------------------------
 
 (rate_Bolsonaro <- mtx_rate_long %>% 
-   filter(year > 2019 & year <= 2022) %>%    
+   filter(year >= 2019 & year <= 2022) %>%    
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
@@ -943,16 +943,16 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
 # Lula III ---------------------------------------------------------------------
 
 (rate_Lula_III <- mtx_rate_long %>% 
-   filter(year > 2022) %>%    
+   filter(year == 2023) %>%    
    group_by(territory) %>%
    mutate(total_rate_change = sum(rate_change),
           num_years = n_distinct(year),
@@ -975,9 +975,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
-                      labels = c(-0.0078, -0.0039, 0, 0.0028),
-                      limits = c(-0.0078, 0.0028))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
+                      labels = c(-0.0078, -0.0039, 0, 0.0035),
+                      limits = c(-0.0078, 0.0035))+
    scale_fill_manual(values = biome_colors)
 )
 
