@@ -712,9 +712,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -750,9 +750,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -788,9 +788,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -826,9 +826,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -864,9 +864,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -902,9 +902,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -940,9 +940,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -972,9 +972,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      #axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0028),
+                      labels = c(-0.0078, -0.0039, 0, 0.0028),
+                      limits = c(-0.0078, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
