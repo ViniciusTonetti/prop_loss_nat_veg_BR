@@ -375,7 +375,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Collor -----------------------------------------------------------------------
 
 (mean_Collor <- mtx_loss_gain_long %>% 
-   filter(year >= 1990 & year < 1993) %>% 
+   filter(year >= 1990 & year <= 1992) %>% 
    group_by(territory) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
