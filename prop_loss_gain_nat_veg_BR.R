@@ -157,7 +157,7 @@ colnames(mtx) <- paste("prop_loss_", 1986:2023, sep = "")
 # loop to fill the matrix with the prop loss/gain of natural vegetation
 
 for (i in 2:ncol(MB_sum)) {
-  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,i-1] # proportional loss in relation to the previous year
+  mtx[,i-1] <- (MB_sum[,i] - MB_sum[,i-1])/MB_sum[,i-1] # proportional gain/loss in relation to the previous year
 }
 
 
