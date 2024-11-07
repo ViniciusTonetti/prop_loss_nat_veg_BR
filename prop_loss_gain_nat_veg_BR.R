@@ -292,13 +292,13 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "white", "Cerrado" = "#CCBB
 # Line chart
 
 (plot_prop_loss_gain <- mtx_loss_gain_long %>%
-  ggplot(aes(x  = as.numeric(year), y= prop_loss)) +
+  ggplot(aes(x  = as.numeric(year)+0.5, y= prop_loss)) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
   geom_rect(aes(xmin = 1993.2, xmax = 1994.8, ymin = -Inf, ymax = Inf, fill = as.factor("Itamar Franco")), colour = NA) +
   geom_rect(aes(xmin = 1995.2, xmax = 2002.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Henrique Cardoso")), colour = NA) +
   geom_rect(aes(xmin = 2003.2, xmax = 2010.8, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
-  geom_rect(aes(xmin = 2011.2, xmax = 2016.7, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
-  geom_rect(aes(xmin = 2017.11, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
+  geom_rect(aes(xmin = 2011.2, xmax = 2016.8, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
+  geom_rect(aes(xmin = 2017.2, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_rect(aes(xmin = 2022.2, xmax = 2023.1, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
   geom_point(aes(color = territory))+
@@ -316,12 +316,12 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "white", "Cerrado" = "#CCBB
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2016.9) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2017) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2023.3) +
   scale_x_continuous(
-    breaks = c(1990, 1993, 1995, 2003, 2011, 2016.9, 2019, 2022, 2023.3),
+    breaks = c(1990.5, 1993.5, 1995.5, 2003.5, 2011.5, 2017.5, 2019.6, 2022.5, 2023.5),
     labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022", "2023")) +
   xlab("Year") + 
   ylab("Proportional gains or losses of native vegetation") + 
