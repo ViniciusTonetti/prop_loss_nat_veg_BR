@@ -319,12 +319,11 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "white", "Cerrado" = "#CCBB
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2017) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2023.3) +
   scale_x_continuous(
     breaks = c(1990.5, 1993.5, 1995.5, 2003.5, 2011.5, 2017.5, 2019.6, 2022.5, 2023.5),
     labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022", "2023")) +
   xlab("Year") + 
-  ylab("Proportional gains or losses of native vegetation") + 
+  ylab("Annual rate of change in native vegetation cover") + 
   theme_classic() +
   theme(text = element_text(size = 13),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
