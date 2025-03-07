@@ -340,7 +340,7 @@ ggplot() +
 
 # Informing percentage of area each biome occupy and creating biome labels
 
-# Original proportion each biome occupy
+# Original proportion each biome occupy in Brazil
 
 biome_areas_original_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
                                     area = c(49, 13, 24, 10, 2, 2))
@@ -371,7 +371,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 # Mean proportion loss/gains
 
-# Collor -----------------------------------------------------------------------
+# Fernando Collor --------------------------------------------------------------
 
 (mean_Collor <- mtx_loss_gain_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
@@ -450,7 +450,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# FHC --------------------------------------------------------------------------
+# Fernando Henrique Cardoso (FHC) ----------------------------------------------
 
 (mean_FHC <- mtx_loss_gain_long %>% 
    filter(year >= 1995 & year <= 2002) %>%  
@@ -490,7 +490,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 
 
-# Lula -------------------------------------------------------------------------
+# Luis Inácio Lula da Silva ----------------------------------------------------
 
 (mean_Lula <- mtx_loss_gain_long %>% 
    filter(year >= 2003 & year <= 2010) %>%   
@@ -528,7 +528,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    scale_fill_manual(values = biome_colors)
 )
 
-# Dilma ------------------------------------------------------------------------
+# Dilma Rousseff ---------------------------------------------------------------
 
 (mean_Dilma<- mtx_loss_gain_long %>% 
    filter(year >= 2011 & year <= 2016) %>%   
@@ -567,7 +567,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# Temer ------------------------------------------------------------------------
+# Michel Temer -----------------------------------------------------------------
 
 (mean_Temer <- mtx_loss_gain_long %>% 
    filter(year >= 2017 & year <= 2018) %>%   
@@ -606,7 +606,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# Bolsonaro --------------------------------------------------------------------
+# Jair Bolsonaro ---------------------------------------------------------------
 
 (mean_Bolsonaro <- mtx_loss_gain_long %>% 
    filter(year >= 2019 & year <= 2022) %>%   
@@ -644,7 +644,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    scale_fill_manual(values = biome_colors)
 )
 
-# Lula III ---------------------------------------------------------------------
+# Luis Inácio Lula da Silva III ------------------------------------------------
 
 (mean_Lula_III <- mtx_loss_gain_long %>% 
    filter(year == 2023) %>%   
@@ -683,7 +683,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 # Rate of change ---------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
-# Collor -----------------------------------------------------------------------
+# Fernando Collor --------------------------------------------------------------
 
 (rate_Collor <- mtx_rate_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
@@ -759,7 +759,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# FHC --------------------------------------------------------------------------
+# Fernando Henrique Cardoso ----------------------------------------------------
 
 (rate_FHC <- mtx_rate_long %>% 
    filter(year >= 1995 & year <= 2002) %>% 
@@ -797,7 +797,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# Lula -------------------------------------------------------------------------
+# Luis Inácio Lula da Silva ----------------------------------------------------
 
 (rate_Lula <- mtx_rate_long %>% 
    filter(year >= 2003 & year <= 2010) %>%  
@@ -835,7 +835,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# Dilma ------------------------------------------------------------------------
+# Dilma Rousseff ---------------------------------------------------------------
 
 (rate_Dilma <- mtx_rate_long %>% 
    filter(year >= 2011 & year <= 2016) %>%   
@@ -873,7 +873,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# Temer ------------------------------------------------------------------------
+# Michel Temer -----------------------------------------------------------------
 
 (rate_Temer <- mtx_rate_long %>% 
    filter(year >= 2017 & year <= 2018) %>%    
@@ -911,7 +911,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 )
 
 
-# Bolsonaro --------------------------------------------------------------------
+# Jair Bolsonaro ---------------------------------------------------------------
 
 (rate_Bolsonaro <- mtx_rate_long %>% 
    filter(year >= 2019 & year <= 2022) %>%    
@@ -948,7 +948,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    scale_fill_manual(values = biome_colors)
 )
 
-# Lula III ---------------------------------------------------------------------
+# Luís Inácio Lula da Silva III ------------------------------------------------
 
 (rate_Lula_III <- mtx_rate_long %>% 
    filter(year == 2023) %>%    
