@@ -1,4 +1,4 @@
-# Code to create curves of proportional loss of native vegetation in Brazil through presidential terms since 1985
+# Code to create curves of proportional change of native vegetation in Brazil across presidential terms
 # Vinicius Tonetti  - vrtonetti@gmail.com
 # ------------------------------------------------------------------------------
 
