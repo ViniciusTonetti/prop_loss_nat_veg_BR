@@ -291,6 +291,14 @@ ggplot() +
 
 # Line chart
 
+years <- 1990:2023
+breaks <- years + 0.5
+labels <- ifelse(years %in% c(1990, 1993, 1993, 2003, 2011, 2016, 2019, 2022, 2023),
+                 as.character(years),
+                 "")
+
+labels[27] <- "2016 (August)"
+
 (plot_prop_loss_gain <- mtx_loss_gain_long %>%
   ggplot(aes(x  = as.numeric(year)+0.5, y= prop_loss)) +
   geom_rect(aes(xmin = 1990.2, xmax = 1992.8, ymin = -Inf, ymax = Inf, fill = as.factor("Fernando Collor")), colour = NA) +
@@ -320,8 +328,12 @@ ggplot() +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
   scale_x_continuous(
-    breaks = c(1990.5, 1993.5, 1995.5, 2003.5, 2011.5, 2017.5, 2019.6, 2022.5, 2023.5),
-    labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022", "2023")) +
+    breaks = breaks,
+    labels = labels)+
+    
+  #scale_x_continuous(
+   # breaks = c(1990.5, 1993.5, 1995.5, 2003.5, 2011.5, 2017.5, 2019.6, 2022.5, 2023.5),
+    #labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022", "2023")) +
   xlab("Year") + 
   ylab("Annual rate of change in native vegetation cover") + 
   theme_classic() +
@@ -331,8 +343,8 @@ ggplot() +
         legend.text = element_text(size = 12))
 )
 
-#ggsave(paste(output, "/1_prop_loss_col_9_excl_Caatinga.png", sep = ""), width = 11, height = 7, dpi = 300)
-#ggsave(paste(output, "/legend_lines_excl_Caatinga.png", sep = ""), width = 11, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_col_9.png", sep = ""), width = 11, height = 7, dpi = 300)
+#ggsave(paste(output, "/legend_lines.png", sep = ""), width = 11, height = 7, dpi = 300)
 
 
 ################################################################################
