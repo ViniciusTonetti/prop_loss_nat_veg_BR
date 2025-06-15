@@ -310,7 +310,7 @@ labels[27] <- "2016 (August)"
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
   geom_rect(aes(xmin = 2022.2, xmax = 2023.1, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
   geom_point(aes(color = territory))+
-  geom_line(aes(color = territory, group = territory), lwd = 1)+
+  geom_line(aes(color = territory, group = territory), lwd = 0.7)+
   scale_color_manual(values = biome_colors, name = "") +
   scale_fill_manual(name = "",
                     values = c("#E5FFE5", "#FFCCCC",
@@ -319,14 +319,14 @@ labels[27] <- "2016 (August)"
                                "#FFFFE0", "#FFE5CC"),
                     guide = guide_legend(override.aes = list(alpha = 1))) +
   geom_hline(yintercept = 0) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1990) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1993) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 1995) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2003) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2011) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2017) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2019) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.6, xintercept = 2022) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 1990) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 1993) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 1995) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2003) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2011) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2017) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2019) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2022) +
   scale_x_continuous(
     breaks = breaks,
     labels = labels)+
@@ -334,16 +334,16 @@ labels[27] <- "2016 (August)"
   #scale_x_continuous(
    # breaks = c(1990.5, 1993.5, 1995.5, 2003.5, 2011.5, 2017.5, 2019.6, 2022.5, 2023.5),
     #labels = c("1990", "1993", "1995", "2003", "2011", "2016 (August)", "2019", "2022", "2023")) +
-  xlab("Year") + 
-  ylab("Annual rate of change in native vegetation cover") + 
+  xlab("") + 
+  ylab("") + 
   theme_classic() +
-  theme(text = element_text(size = 13),
-        axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text = element_text(size = 12))
+  theme(text = element_text(size = 10),
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 8),
+        axis.text.y = element_text(size = 8),
+        legend.text = element_text(size = 8))
 )
 
-#ggsave(paste(output, "/1_prop_loss_col_9.png", sep = ""), width = 11, height = 7, dpi = 300)
+#ggsave(paste(output, "/1_prop_loss_col_9.png", sep = ""), width = 8, height = 4, dpi = 300)
 #ggsave(paste(output, "/legend_lines.png", sep = ""), width = 11, height = 7, dpi = 300)
 
 
@@ -411,7 +411,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -451,7 +451,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -490,7 +490,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -530,7 +530,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -568,7 +568,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -607,7 +607,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -646,7 +646,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -682,7 +682,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -722,7 +722,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -760,7 +760,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -798,7 +798,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -836,7 +836,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -874,7 +874,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -912,7 +912,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -950,7 +950,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -982,7 +982,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      legend.position = "none",
      text = element_text(size = 0),       
      axis.title = element_text(size = 0), 
-     axis.text = element_text(size = 29),
+     axis.text = element_text(size = 37),
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
@@ -1004,6 +1004,12 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              mean_Bolsonaro, rate_Bolsonaro,
                              mean_Lula_III, rate_Lula_III,
                              nrow = 8, ncol = 2))
+
+(all_bar_charts_horizontal <- plot_grid(mean_Collor, mean_Itamar,mean_FHC,mean_Lula,mean_Dilma,mean_Temer, mean_Bolsonaro,mean_Lula_III,
+                             rate_Collor, rate_Itamar, rate_FHC, rate_Lula, rate_Dilma, rate_Temer, rate_Bolsonaro, rate_Lula_III,
+                             nrow = 2, ncol = 8))
+
+#ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga_HORIZONTAL.png", sep = ""), width = 50, height = 10, dpi = 300, limitsize = FALSE)
 
 #ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga.png", sep = ""), width = 15, height = 30, dpi = 300)
 #ggsave(paste(output, "/LEGEND.png", sep = ""), width = 15, height = 30, dpi = 300)
