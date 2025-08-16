@@ -32,7 +32,7 @@ output <- "E:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazi
 # https://brasil.mapbiomas.org/en/estatisticas/
 
 
-MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.9-BIOMES.xlsx", sep = ""), sheet = "COVERAGE_9", )
+MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.10-BIOME_STATE_MUNICIPALITY.xlsx", sep = ""), sheet = "COVERAGE_10", )
 
 
 # Checking and filtering data --------------------------------------------------
@@ -43,7 +43,7 @@ colnames(MB)
 head(MB)
 
 # Checking unique biome classes
-unique(MB$territory)
+unique(MB$biome)
 
 # Checking unique class 0 values
 unique(MB$class_level_0)
