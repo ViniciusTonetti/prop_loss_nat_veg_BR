@@ -22,14 +22,14 @@ library(ggspatial)
 
 # Directories ------------------------------------------------------------------
 
-input <- "input path"
-output <- "output path"
+input <- "E:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazil/data"
+output <- "E:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazil/outputs/prop_loss/_images"
 
 
 # Loading data -----------------------------------------------------------------
-# Data downloaded on 23/08/2024 from MapBiomas collection 9 from the tab "estatísticas" > COBERTURA E TRANSIÇÕES PARA OS BIOMAS (COLEÇÃO 9) – dados de áreas (ha) por classe de cobertura e uso da terra para os biomas para o período de 1985 a 2023 (atualizada em 21/08/2024)
+# Data downloaded on 16/08/2025 from MapBiomas collection 10 from the tab "estatísticas" > Land cover and use - Biome and Political Divison
 
-# https://brasil.mapbiomas.org/estatisticas/
+# https://brasil.mapbiomas.org/en/estatisticas/
 
 
 MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.9-BIOMES.xlsx", sep = ""), sheet = "COVERAGE_9", )
