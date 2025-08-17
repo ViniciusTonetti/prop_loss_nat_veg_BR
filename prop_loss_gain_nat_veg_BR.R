@@ -174,7 +174,7 @@ row.names(mtx)[which(row.names(mtx) == "Mata Atlântica")] <- "Atlantic Forest"
 # Filling the matrix with the change of rate (gain/loss) of native vegetation
 
 mtx_rate <- mtx
-colnames(mtx_rate) <- paste("rate_change_", 1986:2023, sep = "")
+colnames(mtx_rate) <- paste("rate_change_", 1986:2024, sep = "")
 
 for (i in 2:ncol(mtx_rate)) {
   mtx_rate[,i] <- mtx[,i] - mtx[,i-1]
@@ -184,7 +184,7 @@ for (i in 2:ncol(mtx_rate)) {
 # Filling the matrix with the change of rate (gain/loss) of native vegetation proportional to the previous year
 
 mtx_rate_prop <- mtx
-colnames(mtx_rate_prop) <- paste("rate_change_", 1986:2023, sep = "")
+colnames(mtx_rate_prop) <- paste("rate_change_", 1986:2024, sep = "")
 
 for (i in 2:ncol(mtx_rate_prop)) {
   mtx_rate_prop[,i] <- (mtx[,i] - mtx[,i-1])/mtx[,i]
@@ -194,7 +194,7 @@ for (i in 2:ncol(mtx_rate_prop)) {
 
 # Creating long data frames ----------------------------------------------------
 
-mtx$territory <- row.names(mtx)
+mtx$biome <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
   filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
