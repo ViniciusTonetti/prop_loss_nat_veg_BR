@@ -88,7 +88,9 @@ MB <- MB %>%
   filter(class_level_2 != "2.2. Grassland") %>% 
   filter(class_level_2 != "2.4. Rocky Outcrop") %>% 
   filter(class_level_2 != "2.3. Hypersaline Tidal Flat") %>%
-  filter(class_level_2 != "2.4. Herbaceous Sandbank Vegetation")
+  filter(class_level_2 != "2.4. Herbaceous Sandbank Vegetation") %>% 
+  filter(class_level_2 != "2.6. Other non Forest Formations")
+
 
 # Checking level_3 class
 
