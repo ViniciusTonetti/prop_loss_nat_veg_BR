@@ -63,11 +63,10 @@ MB %>%
 
 MB %>% 
   filter(class_level_0 == "Natural") %>% 
-  select(class_level_1) %>% 
-  distinct()
+  distinct(class_level_1)
 
 
-# excluding from class_level_1: "Water and Marine Environment"
+# excluding from class_level_1: "Water and Marine Environment", and "4. Non vegetated area"
 
 MB <- MB %>% 
   filter(class_level_0 == "Natural") %>% 
@@ -82,6 +81,7 @@ MB %>%
 
 
 # excluding from level_2 class: "2.1. Wetland", "2.2. Grassland", "2.4. Rocky Outcrop", "2.3. Hypersaline Tidal Flat", "2.4. Herbaceous Sandbank Vegetation"
+# as these land cover types are difficult to map correctly (please see the manuscript)
 
 MB <- MB %>% 
   filter(class_level_2 != "2.1. Wetland") %>% 
