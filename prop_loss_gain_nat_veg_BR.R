@@ -48,10 +48,11 @@ unique(MB$biome)
 # Checking unique class 0 values
 unique(MB$class_level_0)
 
-# Checking "Natural/Antropic" class 0 - All values correspond to non vegetated areas
+# Checking "Natural/Antropic" class - All values correspond to non vegetated areas
+
 MB %>% 
   filter(class_level_0 == "Natural/Antropic") %>% 
-  select(class_level_1)
+  distinct(class_level_1)
 
 
 # Filtering, summarizing, and summing values for each year
