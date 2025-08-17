@@ -118,6 +118,7 @@ MB %>%
 # "2.4. Rocky Outcrop"
 # "2.3. Hypersaline Tidal Flat"
 # "2.4. Herbaceous Sandbank Vegetation"
+# "2.6. Other non Forest Formations" # According to IBGE these are all herbaceous vegetation
 
 
 # Classes considered in this analysis:
