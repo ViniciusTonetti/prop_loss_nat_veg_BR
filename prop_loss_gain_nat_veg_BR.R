@@ -197,17 +197,17 @@ for (i in 2:ncol(mtx_rate_prop)) {
 mtx$biome <- row.names(mtx)
 
 mtx_loss_gain_long <- mtx %>%
-  filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
+  filter(biome != "Pantanal", biome != "Pampa", biome != "Caatinga") %>% 
   pivot_longer(cols = starts_with("prop_loss_"),  
                names_to = "year",                 
                names_prefix = "prop_loss_",      
                values_to = "prop_loss")
 
 
-mtx_rate$territory <- row.names(mtx_rate)
+mtx_rate$biome <- row.names(mtx_rate)
   
 mtx_rate_long <- mtx_rate %>%
-  filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
+  filter(biome != "Pantanal", biome != "Pampa", biome != "Caatinga") %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
