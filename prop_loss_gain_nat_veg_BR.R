@@ -135,8 +135,8 @@ MB %>%
 # Summing area values for the selected values above ----------------------------
 
 MB_sum <- MB %>% 
-  group_by(territory) %>%
-  summarise(across(`1985`:`2023`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
+  group_by(biome) %>%
+  summarise(across(`1985`:`2024`, ~sum(.x, na.rm = TRUE), .names = "sum_{.col}"))
 
 
 # converting from tibble to data frame to change row names
