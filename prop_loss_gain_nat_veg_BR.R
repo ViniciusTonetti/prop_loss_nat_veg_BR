@@ -295,9 +295,9 @@ ggplot() +
 
 # Line chart
 
-years <- 1990:2023
+years <- 1990:2024
 breaks <- years + 0.5
-labels <- ifelse(years %in% c(1990, 1993, 1993, 2003, 2011, 2016, 2019, 2022, 2023),
+labels <- ifelse(years %in% c(1990, 1993, 1993, 2003, 2011, 2016, 2019, 2022, 2024),
                  as.character(years),
                  "")
 
@@ -312,9 +312,9 @@ labels[27] <- "2016 (August)"
   geom_rect(aes(xmin = 2011.2, xmax = 2016.8, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
   geom_rect(aes(xmin = 2017.2, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
-  geom_rect(aes(xmin = 2022.2, xmax = 2023.1, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
-  geom_point(aes(color = territory))+
-  geom_line(aes(color = territory, group = territory), lwd = 0.7)+
+  geom_rect(aes(xmin = 2022.2, xmax = 2024.1, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_point(aes(color = biome))+
+  geom_line(aes(color = biome, group = biome), lwd = 0.7)+
   scale_color_manual(values = biome_colors, name = "") +
   scale_fill_manual(name = "",
                     values = c("#E5FFE5", "#FFCCCC",
@@ -330,7 +330,7 @@ labels[27] <- "2016 (August)"
   geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2011) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2017) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2019) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2022) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2023) +
   scale_x_continuous(
     breaks = breaks,
     labels = labels)+
@@ -347,8 +347,8 @@ labels[27] <- "2016 (August)"
         legend.text = element_text(size = 8))
 )
 
-#ggsave(paste(output, "/1_prop_loss_col_9.png", sep = ""), width = 8, height = 4, dpi = 300)
-#ggsave(paste(output, "/legend_lines.png", sep = ""), width = 11, height = 7, dpi = 300)
+
+#ggsave(paste(output, "/prop_loss_col_10.png", sep = ""), width = 11, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -367,7 +367,7 @@ biome_areas_original_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "
 current_dist_total <- sum(MB_sum[,ncol(MB_sum)])
 round((MB_sum[,ncol(MB_sum)]/current_dist_total)*100, digits = 1)
 
-biome_areas_current_dist <- tibble(territory = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
+biome_areas_current_dist <- tibble(biome = c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal"),
                                    area = round((MB_sum[,ncol(MB_sum)]/current_dist_total)*100, digits = 1))
 
 
