@@ -214,10 +214,10 @@ mtx_rate_long <- mtx_rate %>%
                values_to = "rate_change")
 
 
-mtx_rate_prop$territory <- row.names(mtx_rate_prop)
+mtx_rate_prop$biome <- row.names(mtx_rate_prop)
 
 mtx_rate_prop_long <- mtx_rate_prop %>%
-  filter(territory != "Pantanal", territory != "Pampa", territory != "Caatinga") %>% 
+  filter(biome != "Pantanal", biome != "Pampa", biome != "Caatinga") %>% 
   pivot_longer(cols = starts_with("rate_change_"),  
                names_to = "year",                 
                names_prefix = "rate_change_",      
@@ -248,7 +248,7 @@ biome_colors <- c("Amazon" = "#24693D", "Caatinga" = "white", "Cerrado" = "#CCBB
 # path to biomes shapefile
 # Biome delimitation used by MapBiomas downloaded from https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/15842-biomas.html?=&t=acesso-ao-produto (2019 version)
 
-biomes_shapefile <- st_read("D:/_Vinicius/Mapas/Biomas brasileiros/IBGE 2019/lm_bioma_250.shp")
+biomes_shapefile <- st_read("E:/_Vinicius/Mapas/Biomas brasileiros/IBGE 2019/lm_bioma_250.shp")
 biomes_shapefile$Bioma <- c("Amazon", "Caatinga", "Cerrado", "Atlantic Forest", "Pampa", "Pantanal")
 
 # Map 
