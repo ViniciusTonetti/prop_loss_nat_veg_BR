@@ -391,7 +391,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_Collor <- mtx_loss_gain_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -399,11 +399,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[1], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -419,9 +419,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -431,7 +431,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_Itamar <- mtx_loss_gain_long %>% 
    filter(year >= 1993 & year <= 1994) %>%
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -439,11 +439,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[2], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -459,9 +459,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -470,7 +470,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_FHC <- mtx_loss_gain_long %>% 
    filter(year >= 1995 & year <= 2002) %>%  
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -478,11 +478,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[3], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -498,9 +498,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -510,7 +510,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_Lula <- mtx_loss_gain_long %>% 
    filter(year >= 2003 & year <= 2010) %>%   
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -518,11 +518,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[4], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -538,9 +538,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -548,7 +548,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_Dilma<- mtx_loss_gain_long %>% 
    filter(year >= 2011 & year <= 2016) %>%   
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -556,11 +556,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[5], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -576,9 +576,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -587,7 +587,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_Temer <- mtx_loss_gain_long %>% 
    filter(year >= 2017 & year <= 2018) %>%   
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -595,11 +595,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[6], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -615,9 +615,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -626,7 +626,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (mean_Bolsonaro <- mtx_loss_gain_long %>% 
    filter(year >= 2019 & year <= 2022) %>%   
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -634,11 +634,11 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[7], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
@@ -654,17 +654,17 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
 # Luis Inácio Lula da Silva III ------------------------------------------------
 
 (mean_Lula_III <- mtx_loss_gain_long %>% 
-   filter(year == 2023) %>%   
-   group_by(territory) %>%
+   filter(year >= 2023 & year <= 2024) %>%   
+   group_by(biome) %>%
    mutate(total_prop_loss = sum(prop_loss),
           median_total_prop_loss = median(prop_loss),
           num_years = n_distinct(year),
@@ -672,13 +672,15 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(prop_loss, probs = 0.25),
           q3 = quantile(prop_loss, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
-   filter(territory != "Pampa", territory != "Pantanal") %>% 
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
+   filter(biome != "Pampa", biome != "Pantanal") %>% 
    distinct(total_prop_loss, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[8], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_prop_loss, yend =  median_total_prop_loss), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "black", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -690,9 +692,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.02, -0.01, 0, 0.0033),
-                      labels = c(-0.02, -0.01, 0, 0.0033),
-                      limits = c(-0.02, 0.0033))+
+   scale_y_continuous(breaks = c(-0.012, -0.01, 0, 0.002),
+                      labels = c(-0.012, -0.01, 0, 0.002),
+                      limits = c(-0.0125, 0.0015))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -703,7 +705,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_Collor <- mtx_rate_long %>% 
    filter(year >= 1990 & year <= 1992) %>% 
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -711,10 +713,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[1], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -730,9 +732,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -741,7 +743,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_Itamar <- mtx_rate_long %>% 
    filter(year >= 1993 & year <= 1994) %>% 
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -749,10 +751,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[2], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -768,9 +770,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -779,7 +781,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_FHC <- mtx_rate_long %>% 
    filter(year >= 1995 & year <= 2002) %>% 
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -787,10 +789,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[3], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -806,9 +808,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -817,7 +819,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_Lula <- mtx_rate_long %>% 
    filter(year >= 2003 & year <= 2010) %>%  
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -825,10 +827,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[4], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -844,9 +846,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -855,7 +857,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_Dilma <- mtx_rate_long %>% 
    filter(year >= 2011 & year <= 2016) %>%   
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -863,10 +865,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[5], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -882,9 +884,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -893,7 +895,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_Temer <- mtx_rate_long %>% 
    filter(year >= 2017 & year <= 2018) %>%    
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -901,10 +903,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[6], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -920,9 +922,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -931,7 +933,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 
 (rate_Bolsonaro <- mtx_rate_long %>% 
    filter(year >= 2019 & year <= 2022) %>%    
-   group_by(territory) %>%
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
           median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
@@ -939,10 +941,10 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
           q1 = quantile(rate_change, probs = 0.25),
           q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[7], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
@@ -958,27 +960,32 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
 # Luís Inácio Lula da Silva III ------------------------------------------------
 
 (rate_Lula_III <- mtx_rate_long %>% 
-   filter(year == 2023) %>%    
-   group_by(territory) %>%
+   filter(year >= 2023 & year <= 2024) %>%    
+   group_by(biome) %>%
    mutate(total_rate_change = sum(rate_change),
+          median_total_rate_change = median(rate_change),
           num_years = n_distinct(year),
-          mean_rate_prop = total_rate_change/num_years) %>%
+          mean_rate_prop = total_rate_change/num_years,
+          q1 = quantile(rate_change, probs = 0.25),
+          q3 = quantile(rate_change, probs = 0.75)) %>%
    ungroup() %>% 
-   mutate(biome_x = as.numeric(factor(territory))) %>% 
-   left_join(biome_areas_current_dist, by = "territory") %>%
+   mutate(biome_x = as.numeric(factor(biome))) %>% 
+   left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
-   ggplot(aes(x = territory, y = mean_rate_prop, fill = territory)) +
-   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[8], inherit.aes = FALSE) +
+   ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
+   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[7], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
+   geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
+   geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "black", size = 0.9) +
    labs(x = "", y = "", title = "") +
    geom_hline(yintercept = 0)+
    theme_classic()+
@@ -990,9 +997,9 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
      axis.text.x = element_blank()
    )+
    scale_x_discrete(labels = biome_labels)+
-   scale_y_continuous(breaks = c(-0.0078, -0.0039, 0, 0.0035),
-                      labels = c(-0.0078, -0.0039, 0, 0.0035),
-                      limits = c(-0.0078, 0.0035))+
+   scale_y_continuous(breaks = c(-0.0025, 0, 0.0028),
+                      labels = c(-0.0025, 0, 0.0028),
+                      limits = c(-0.0026, 0.0028))+
    scale_fill_manual(values = biome_colors)
 )
 
@@ -1013,7 +1020,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              rate_Collor, rate_Itamar, rate_FHC, rate_Lula, rate_Dilma, rate_Temer, rate_Bolsonaro, rate_Lula_III,
                              nrow = 2, ncol = 8))
 
-#ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga_HORIZONTAL.png", sep = ""), width = 50, height = 10, dpi = 300, limitsize = FALSE)
+#ggsave(paste(output, "/all_bar_charts_rate_col_10_HORIZONTAL.png", sep = ""), width = 50, height = 10, dpi = 300, limitsize = FALSE)
 
 #ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga.png", sep = ""), width = 15, height = 30, dpi = 300)
 #ggsave(paste(output, "/LEGEND.png", sep = ""), width = 15, height = 30, dpi = 300)
