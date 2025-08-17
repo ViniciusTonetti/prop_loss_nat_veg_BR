@@ -344,11 +344,14 @@ labels[27] <- "2016 (August)"
   theme(text = element_text(size = 10),
         axis.text.x = element_text(angle = 45, hjust = 1, size = 8),
         axis.text.y = element_text(size = 8),
-        legend.text = element_text(size = 8))
+        legend.text = element_text(size = 8))+
+  scale_y_continuous(breaks = c(-0.013, -0.005, -0.010, 0, 0.0015),
+                     labels = c(-0.013, -0.005, -0.010, 0, 0.0015),
+                     limits = c(-0.0135, 0.0015))
 )
 
 
-#ggsave(paste(output, "/prop_loss_col_10.png", sep = ""), width = 11, height = 7, dpi = 300)
+#ggsave(paste(output, "/prop_loss_col_10.png", sep = ""), width = 10, height = 6, dpi = 300)
 
 
 ################################################################################
@@ -982,7 +985,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
    left_join(biome_areas_current_dist, by = "biome") %>%
    distinct(total_rate_change, .keep_all = TRUE) %>%
    ggplot(aes(x = biome, y = mean_rate_prop, fill = biome)) +
-   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[7], inherit.aes = FALSE) +
+   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), fill = colors_presidents[8], inherit.aes = FALSE) +
    geom_bar(stat = "identity", aes(width = area / max(area))) +
    geom_segment(aes(x = biome_x - (area / max(area))/2, xend = biome_x +(area / max(area))/2, y = median_total_rate_change, yend =  median_total_rate_change), color = "black", size = 0.9)+
    geom_errorbar(aes(ymin = q1, ymax = q3), width = 0.1, color = "black", size = 0.9) +
