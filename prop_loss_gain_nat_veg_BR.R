@@ -155,7 +155,7 @@ mtx <- matrix(nrow = nrow(MB_sum), ncol = ncol(MB_sum)-1)
 mtx <- as.data.frame(mtx)
 
 row.names(mtx) <- row.names(MB_sum)
-colnames(mtx) <- paste("prop_loss_", 1986:2023, sep = "")
+colnames(mtx) <- paste("prop_loss_", 1986:2024, sep = "")
 
 
 # loop to fill the matrix with the Annual rate of change in native vegetation cover
