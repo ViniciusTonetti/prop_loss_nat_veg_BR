@@ -1028,3 +1028,28 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
 #ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga.png", sep = ""), width = 15, height = 30, dpi = 300)
 #ggsave(paste(output, "/LEGEND.png", sep = ""), width = 15, height = 30, dpi = 300)
 
+
+#################################################################################
+# Calculating the area of natural land cover for each biome ---------------------
+
+# Cleaning directory
+rm(list = ls())
+
+input <- "E:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazil/data"
+
+MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.10-BIOME_STATE_MUNICIPALITY.xlsx", sep = ""), sheet = "COVERAGE_10", )
+
+
+# Filtering natural vegetation only
+
+MB_grouped_biome <- MB %>%
+  filter(class_level_0 == "Natural") %>%
+  select(biome, `2024`) %>%
+  group_by(biome) %>%
+  summarise(total_area = sum(`2024`, na.rm = TRUE),
+    .groups = "drop") %>% 
+  mutate(perc_area = 100 * (total_area / sum(total_area)))
+
+
+
+
