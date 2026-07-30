@@ -348,9 +348,9 @@ labels[27] <- "2016 (August)"
         axis.text.x = element_text(angle = 45, hjust = 1, size = 11),
         axis.text.y = element_text(size = 11),
         legend.text = element_text(size = 11))+
-  scale_y_continuous(breaks = c(-0.015, -0.018, -0.005, -0.010, 0, 0.0020),
-                     labels = c(-0.015, -0.018, -0.005, -0.010, 0, 0.0020),
-                     limits = c(-0.018, 0.0020))
+  scale_y_continuous(breaks = c(-0.015, -0.020, -0.005, -0.010, 0, 0.0020),
+                     labels = c(-0.015, -0.020, -0.005, -0.010, 0, 0.0020),
+                     limits = c(-0.022, 0.0020))
 )
 
 print(mtx_loss_gain_long, n = 110)
