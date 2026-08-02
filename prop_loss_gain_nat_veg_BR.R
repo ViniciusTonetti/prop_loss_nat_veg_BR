@@ -1040,16 +1040,16 @@ rm(list = ls())
 
 input <- "E:/_Vinicius/artigos/2024.09 loss of habitat presidential terms Brazil/data"
 
-MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.10-BIOME_STATE_MUNICIPALITY.xlsx", sep = ""), sheet = "COVERAGE_10", )
+MB <- readxl::read_excel(path = paste(input, "/MAPBIOMAS_BRAZIL-COL.11-BIOME_STATE_PROVISIONAL.xlsx", sep = ""), sheet = "COVERAGE_11", )
 
 
 # Filtering natural vegetation only
 
 MB_grouped_biome <- MB %>%
   filter(class_level_0 == "Natural") %>%
-  select(biome, `2024`) %>%
+  select(biome, `2025`) %>%
   group_by(biome) %>%
-  summarise(total_area = sum(`2024`, na.rm = TRUE),
+  summarise(total_area = sum(`2025`, na.rm = TRUE),
     .groups = "drop") %>% 
   mutate(perc_area = 100 * (total_area / sum(total_area)))
 
