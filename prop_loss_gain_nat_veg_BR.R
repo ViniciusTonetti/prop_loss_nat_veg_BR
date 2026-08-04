@@ -315,7 +315,7 @@ labels[27] <- "2016 (August)"
   geom_rect(aes(xmin = 2011.2, xmax = 2016.8, ymin = -Inf, ymax = Inf, fill = as.factor("Dilma Rousseff")), colour = NA) +
   geom_rect(aes(xmin = 2017.2, xmax = 2018.8, ymin = -Inf, ymax = Inf, fill = as.factor("Michel Temer")), colour = NA) +
   geom_rect(aes(xmin = 2019.2, xmax = 2021.8, ymin = -Inf, ymax = Inf, fill = as.factor("Jair Bolsonaro")), colour = NA) +
-  geom_rect(aes(xmin = 2022.2, xmax = 2025.1, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
+  geom_rect(aes(xmin = 2022.2, xmax = 2025.45, ymin = -Inf, ymax = Inf, fill = as.factor("Luiz Inácio Lula da Silva")), colour = NA) +
   geom_point(aes(color = biome))+
   geom_line(aes(color = biome, group = biome), lwd = 0.7)+
   scale_color_manual(values = biome_colors, name = "") +
@@ -333,7 +333,8 @@ labels[27] <- "2016 (August)"
   geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2011) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2017) +
   geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2019) +
-  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2025) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2022) +
+  geom_vline(color = "gray70", linetype = "dashed", size = 0.4, xintercept = 2025.5) +
   scale_x_continuous(
     breaks = breaks,
     labels = labels)+
