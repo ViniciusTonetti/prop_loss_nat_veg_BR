@@ -1027,7 +1027,7 @@ colors_presidents <- c("#E5FFE5", "#FFCCCC",
                              rate_Collor, rate_Itamar, rate_FHC, rate_Lula, rate_Dilma, rate_Temer, rate_Bolsonaro, rate_Lula_III,
                              nrow = 2, ncol = 8))
 
-#ggsave(paste(output, "/all_bar_charts_rate_col_11_HORIZONTAL.png", sep = ""), width = 50, height = 10, dpi = 300, limitsize = FALSE)
+#ggsave(paste(output, "/all_bar_charts_rate_col_11_HORIZONTAL_14.png", sep = ""), width = 50, height = 14, dpi = 300, limitsize = FALSE)
 
 #ggsave(paste(output, "/all_bar_charts_rate_col_9_excl_Caatinga.png", sep = ""), width = 15, height = 30, dpi = 300)
 #ggsave(paste(output, "/LEGEND.png", sep = ""), width = 15, height = 30, dpi = 300)
